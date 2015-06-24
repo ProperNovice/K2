@@ -1,6 +1,8 @@
 package controller;
 
 import instances.Instances;
+import maps.Map;
+import maps.MapEasy;
 import utils.Executor;
 import enums.GameStateEnum;
 
@@ -8,6 +10,7 @@ public class Controller {
 
 	private GameStateController gameStateController = null;
 	private TextController textController = null;
+	private Map map = null;
 
 	public Controller() {
 
@@ -23,6 +26,7 @@ public class Controller {
 
 		this.gameStateController = new GameStateController();
 		this.textController = new TextController();
+		this.map = new MapEasy();
 
 	}
 
@@ -32,6 +36,10 @@ public class Controller {
 
 	public TextController textController() {
 		return this.textController;
+	}
+
+	public Map map() {
+		return this.map;
 	}
 
 }
