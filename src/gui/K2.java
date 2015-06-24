@@ -11,7 +11,7 @@ import utils.Logger;
 import utils.ShutDown;
 import enums.Dimensions;
 
-public class TestFX extends Application {
+public class K2 extends Application {
 
 	private Panel panel = null;
 
@@ -31,12 +31,14 @@ public class TestFX extends Application {
 		primaryStage.setHeight(height);
 		primaryStage.setResizable(false);
 
-		primaryStage.setTitle("TestFX");
+		primaryStage.setTitle("K2");
 
 		primaryStage
 				.setX((Screen.getPrimary().getBounds().getWidth() - width) / 2);
+//		primaryStage
+//				.setY((Screen.getPrimary().getBounds().getHeight() - height) / 2);
 		primaryStage
-				.setY((Screen.getPrimary().getBounds().getHeight() - height) / 2);
+		.setY(6);
 
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 
