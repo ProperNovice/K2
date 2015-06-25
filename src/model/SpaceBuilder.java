@@ -34,9 +34,9 @@ public class SpaceBuilder {
 		return this;
 	}
 
-	public SpaceBuilder topLeftCoordinates(double centerX, double centerY) {
-		this.topLeftX = centerX;
-		this.topLeftY = centerY;
+	public SpaceBuilder topLeftCoordinates(double topLeftX, double topLeftY) {
+		this.topLeftX = topLeftX;
+		this.topLeftY = topLeftY;
 		return this;
 	}
 

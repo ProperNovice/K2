@@ -37,7 +37,7 @@ public class MapEasy extends Map {
 		super.spaces.add(new SpaceBuilder().movementCost(1)
 				.acclimatizationIndicator(1).victoryPoints(1)
 				.altitudeZone(AltitudeZone.UNDER_6000)
-				.topLeftCoordinates(546, 1219).spaceSize(SpaceSize.BIG)
+				.topLeftCoordinates(545, 1218).spaceSize(SpaceSize.BIG)
 				.create());
 
 		// 3
@@ -138,7 +138,7 @@ public class MapEasy extends Map {
 				.add(new SpaceBuilder().movementCost(1)
 						.acclimatizationIndicator(-1).victoryPoints(3)
 						.altitudeZone(AltitudeZone.BETWEEN_6000_AND_7000)
-						.topLeftCoordinates(454, 727).spaceSize(SpaceSize.BIG)
+						.topLeftCoordinates(453, 727).spaceSize(SpaceSize.BIG)
 						.create());
 
 		// 15
@@ -196,7 +196,7 @@ public class MapEasy extends Map {
 		super.spaces.add(new SpaceBuilder().movementCost(2)
 				.acclimatizationIndicator(-1).victoryPoints(5)
 				.altitudeZone(AltitudeZone.BETWEEN_7000_AND_8000)
-				.topLeftCoordinates(579, 487).spaceSize(SpaceSize.SMALL)
+				.topLeftCoordinates(578, 487).spaceSize(SpaceSize.SMALL)
 				.create());
 
 		// 22
@@ -204,7 +204,7 @@ public class MapEasy extends Map {
 		super.spaces.add(new SpaceBuilder().movementCost(3)
 				.acclimatizationIndicator(-2).victoryPoints(6)
 				.altitudeZone(AltitudeZone.BETWEEN_7000_AND_8000)
-				.topLeftCoordinates(561, 355).spaceSize(SpaceSize.SMALL)
+				.topLeftCoordinates(560, 355).spaceSize(SpaceSize.SMALL)
 				.create());
 
 		// 23
@@ -220,7 +220,7 @@ public class MapEasy extends Map {
 		super.spaces.add(new SpaceBuilder().movementCost(2)
 				.acclimatizationIndicator(-1).victoryPoints(5)
 				.altitudeZone(AltitudeZone.BETWEEN_7000_AND_8000)
-				.topLeftCoordinates(326, 448).spaceSize(SpaceSize.SMALL)
+				.topLeftCoordinates(325, 448).spaceSize(SpaceSize.SMALL)
 				.create());
 
 		// 25
@@ -228,7 +228,7 @@ public class MapEasy extends Map {
 		super.spaces.add(new SpaceBuilder().movementCost(2)
 				.acclimatizationIndicator(-1).victoryPoints(6)
 				.altitudeZone(AltitudeZone.BETWEEN_7000_AND_8000)
-				.topLeftCoordinates(389, 335).spaceSize(SpaceSize.SMALL)
+				.topLeftCoordinates(388, 334).spaceSize(SpaceSize.SMALL)
 				.create());
 
 		// 26
@@ -244,7 +244,7 @@ public class MapEasy extends Map {
 		super.spaces.add(new SpaceBuilder().movementCost(3)
 				.acclimatizationIndicator(-2).victoryPoints(10)
 				.altitudeZone(AltitudeZone.OVER_8000)
-				.topLeftCoordinates(462, 97).spaceSize(SpaceSize.SMALL)
+				.topLeftCoordinates(461, 97).spaceSize(SpaceSize.SMALL)
 				.create());
 
 	}

@@ -42,16 +42,14 @@ public class Map implements EventHandlerAble {
 	@Override
 	public void handleMouseButtonPrimary() {
 
-		System.out.println("pressed");
-
 		double x = this.eventHandler.getX();
 		double y = this.eventHandler.getY();
 
-		System.out.println((int) x + ", " + (int) y);
+		double ratio = Dimensions.MAP_RATIO.x();
 
 		for (Space space : this.spaces) {
 
-			if (!space.isPressed(x, y))
+			if (!space.isPressed(x * ratio, y * ratio))
 				continue;
 
 			System.out.println(space.getMovementCost() + " mo");
@@ -60,6 +58,7 @@ public class Map implements EventHandlerAble {
 
 		}
 
+		System.out.println((int) x + ", " + (int) y);
 		System.out.println();
 
 	}
