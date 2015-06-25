@@ -1,5 +1,6 @@
 package gameState;
 
+import model.Space;
 import instances.Instances;
 import controller.Controller;
 import enums.TextEnum;
@@ -13,6 +14,10 @@ public class GameState {
 	}
 
 	public void handleTextOptionPressed(TextEnum textEnum) {
+
+	}
+
+	public void handleSpacePressed(Space space) {
 
 	}
 
