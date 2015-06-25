@@ -1,5 +1,7 @@
 package maps;
 
+import instances.Instances;
+
 import java.util.ArrayList;
 
 import model.Space;
@@ -52,14 +54,10 @@ public class Map implements EventHandlerAble {
 			if (!space.isPressed(x * ratio, y * ratio))
 				continue;
 
-			System.out.println(space.getMovementCost() + " mo");
-			System.out.println(space.getAcclimatizationIndicator() + " ac");
-			System.out.println(space.getVictoryPoints() + " vi");
+			Instances.getControllerInstance().gameStateController()
+					.handleSpacePressed(space);
 
 		}
-
-		System.out.println((int) x + ", " + (int) y);
-		System.out.println();
 
 	}
 

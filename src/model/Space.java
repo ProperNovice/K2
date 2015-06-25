@@ -39,7 +39,8 @@ public class Space {
 		this.circle = new Circle(radius);
 		this.circle.relocate(Coordinates.MAP.x() + topLeftX * mapRatio,
 				Coordinates.MAP.y() + topLeftY * mapRatio);
-		
+		this.circle.setVisible(false);
+
 	}
 
 	public boolean isPressed(double x, double y) {
