@@ -1,5 +1,8 @@
 package maps;
 
+import java.util.ArrayList;
+
+import model.Space;
 import utils.ImageView;
 import enums.Dimensions;
 
@@ -7,6 +10,7 @@ public class Map {
 
 	private ImageView imageView = null;
 	protected String path = null;
+	protected ArrayList<Space> spaces = new ArrayList<>();
 
 	public Map() {
 

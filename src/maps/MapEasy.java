@@ -1,8 +1,6 @@
 package maps;
 
 import model.SpaceBuilder;
-import instances.Instances;
-import controller.SpaceController;
 import enums.AltitudeZone;
 import enums.SpaceSize;
 
@@ -18,12 +16,9 @@ public class MapEasy extends Map {
 	@Override
 	protected void createSpaces() {
 
-		SpaceController spaceController = Instances.getControllerInstance()
-				.spaceController();
-
 		// 0
 
-		spaceController.addSpace(new SpaceBuilder().movementCost(1)
+		super.spaces.add(new SpaceBuilder().movementCost(1)
 				.acclimatizationIndicator(1).victoryPoints(1)
 				.altitudeZone(AltitudeZone.UNDER_6000)
 				.topLeftCoordinates(636, 1332).spaceSize(SpaceSize.BIG)
@@ -31,7 +26,7 @@ public class MapEasy extends Map {
 
 		// 1
 
-		spaceController.addSpace(new SpaceBuilder().movementCost(1)
+		super.spaces.add(new SpaceBuilder().movementCost(1)
 				.acclimatizationIndicator(1).victoryPoints(1)
 				.altitudeZone(AltitudeZone.UNDER_6000)
 				.topLeftCoordinates(819, 1332).spaceSize(SpaceSize.BIG)
@@ -39,7 +34,7 @@ public class MapEasy extends Map {
 
 		// 2
 
-		spaceController.addSpace(new SpaceBuilder().movementCost(1)
+		super.spaces.add(new SpaceBuilder().movementCost(1)
 				.acclimatizationIndicator(1).victoryPoints(1)
 				.altitudeZone(AltitudeZone.UNDER_6000)
 				.topLeftCoordinates(546, 1219).spaceSize(SpaceSize.BIG)
@@ -47,7 +42,7 @@ public class MapEasy extends Map {
 
 		// 3
 
-		spaceController.addSpace(new SpaceBuilder().movementCost(1)
+		super.spaces.add(new SpaceBuilder().movementCost(1)
 				.acclimatizationIndicator(1).victoryPoints(1)
 				.altitudeZone(AltitudeZone.UNDER_6000)
 				.topLeftCoordinates(423, 1143).spaceSize(SpaceSize.BIG)
@@ -55,7 +50,7 @@ public class MapEasy extends Map {
 
 		// 4
 
-		spaceController.addSpace(new SpaceBuilder().movementCost(2)
+		super.spaces.add(new SpaceBuilder().movementCost(2)
 				.acclimatizationIndicator(1).victoryPoints(1)
 				.altitudeZone(AltitudeZone.UNDER_6000)
 				.topLeftCoordinates(274, 1129).spaceSize(SpaceSize.BIG)
@@ -63,7 +58,7 @@ public class MapEasy extends Map {
 
 		// 5
 
-		spaceController.addSpace(new SpaceBuilder().movementCost(1)
+		super.spaces.add(new SpaceBuilder().movementCost(1)
 				.acclimatizationIndicator(1).victoryPoints(1)
 				.altitudeZone(AltitudeZone.UNDER_6000)
 				.topLeftCoordinates(466, 1340).spaceSize(SpaceSize.BIG)
@@ -71,7 +66,7 @@ public class MapEasy extends Map {
 
 		// 6
 
-		spaceController.addSpace(new SpaceBuilder().movementCost(1)
+		super.spaces.add(new SpaceBuilder().movementCost(1)
 				.acclimatizationIndicator(1).victoryPoints(1)
 				.altitudeZone(AltitudeZone.UNDER_6000)
 				.topLeftCoordinates(334, 1276).spaceSize(SpaceSize.BIG)
@@ -79,7 +74,7 @@ public class MapEasy extends Map {
 
 		// 7
 
-		spaceController.addSpace(new SpaceBuilder().movementCost(1)
+		super.spaces.add(new SpaceBuilder().movementCost(1)
 				.acclimatizationIndicator(1).victoryPoints(1)
 				.altitudeZone(AltitudeZone.UNDER_6000)
 				.topLeftCoordinates(189, 1247).spaceSize(SpaceSize.BIG)
@@ -87,8 +82,8 @@ public class MapEasy extends Map {
 
 		// 8
 
-		spaceController
-				.addSpace(new SpaceBuilder().movementCost(1)
+		super.spaces
+				.add(new SpaceBuilder().movementCost(1)
 						.acclimatizationIndicator(1).victoryPoints(1)
 						.altitudeZone(AltitudeZone.UNDER_6000)
 						.topLeftCoordinates(44, 1244).spaceSize(SpaceSize.BIG)
@@ -96,8 +91,8 @@ public class MapEasy extends Map {
 
 		// 9
 
-		spaceController
-				.addSpace(new SpaceBuilder().movementCost(1)
+		super.spaces
+				.add(new SpaceBuilder().movementCost(1)
 						.acclimatizationIndicator(0).victoryPoints(1)
 						.altitudeZone(AltitudeZone.UNDER_6000)
 						.topLeftCoordinates(43, 1104).spaceSize(SpaceSize.BIG)
@@ -105,15 +100,15 @@ public class MapEasy extends Map {
 
 		// 10
 
-		spaceController.addSpace(new SpaceBuilder().movementCost(1)
+		super.spaces.add(new SpaceBuilder().movementCost(1)
 				.acclimatizationIndicator(0).victoryPoints(1)
 				.altitudeZone(AltitudeZone.UNDER_6000)
 				.topLeftCoordinates(77, 971).spaceSize(SpaceSize.BIG).create());
 
 		// 11
 
-		spaceController
-				.addSpace(new SpaceBuilder().movementCost(1)
+		super.spaces
+				.add(new SpaceBuilder().movementCost(1)
 						.acclimatizationIndicator(0).victoryPoints(1)
 						.altitudeZone(AltitudeZone.UNDER_6000)
 						.topLeftCoordinates(244, 993).spaceSize(SpaceSize.BIG)
@@ -121,8 +116,8 @@ public class MapEasy extends Map {
 
 		// 12
 
-		spaceController
-				.addSpace(new SpaceBuilder().movementCost(2)
+		super.spaces
+				.add(new SpaceBuilder().movementCost(2)
 						.acclimatizationIndicator(0).victoryPoints(1)
 						.altitudeZone(AltitudeZone.UNDER_6000)
 						.topLeftCoordinates(390, 972).spaceSize(SpaceSize.BIG)
@@ -130,8 +125,8 @@ public class MapEasy extends Map {
 
 		// 13
 
-		spaceController
-				.addSpace(new SpaceBuilder().movementCost(2)
+		super.spaces
+				.add(new SpaceBuilder().movementCost(2)
 						.acclimatizationIndicator(0).victoryPoints(2)
 						.altitudeZone(AltitudeZone.BETWEEN_6000_AND_7000)
 						.topLeftCoordinates(346, 823).spaceSize(SpaceSize.BIG)
@@ -139,8 +134,8 @@ public class MapEasy extends Map {
 
 		// 14
 
-		spaceController
-				.addSpace(new SpaceBuilder().movementCost(1)
+		super.spaces
+				.add(new SpaceBuilder().movementCost(1)
 						.acclimatizationIndicator(-1).victoryPoints(3)
 						.altitudeZone(AltitudeZone.BETWEEN_6000_AND_7000)
 						.topLeftCoordinates(454, 727).spaceSize(SpaceSize.BIG)
@@ -148,8 +143,8 @@ public class MapEasy extends Map {
 
 		// 15
 
-		spaceController
-				.addSpace(new SpaceBuilder().movementCost(2)
+		super.spaces
+				.add(new SpaceBuilder().movementCost(2)
 						.acclimatizationIndicator(-1).victoryPoints(4)
 						.altitudeZone(AltitudeZone.BETWEEN_6000_AND_7000)
 						.topLeftCoordinates(535, 617).spaceSize(SpaceSize.BIG)
@@ -157,8 +152,8 @@ public class MapEasy extends Map {
 
 		// 16
 
-		spaceController
-				.addSpace(new SpaceBuilder().movementCost(2)
+		super.spaces
+				.add(new SpaceBuilder().movementCost(2)
 						.acclimatizationIndicator(0).victoryPoints(2)
 						.altitudeZone(AltitudeZone.BETWEEN_6000_AND_7000)
 						.topLeftCoordinates(199, 853).spaceSize(SpaceSize.BIG)
@@ -166,15 +161,15 @@ public class MapEasy extends Map {
 
 		// 17
 
-		spaceController.addSpace(new SpaceBuilder().movementCost(2)
+		super.spaces.add(new SpaceBuilder().movementCost(2)
 				.acclimatizationIndicator(0).victoryPoints(2)
 				.altitudeZone(AltitudeZone.BETWEEN_6000_AND_7000)
 				.topLeftCoordinates(41, 813).spaceSize(SpaceSize.BIG).create());
 
 		// 18
 
-		spaceController
-				.addSpace(new SpaceBuilder().movementCost(1)
+		super.spaces
+				.add(new SpaceBuilder().movementCost(1)
 						.acclimatizationIndicator(0).victoryPoints(3)
 						.altitudeZone(AltitudeZone.BETWEEN_6000_AND_7000)
 						.topLeftCoordinates(169, 716).spaceSize(SpaceSize.BIG)
@@ -182,8 +177,8 @@ public class MapEasy extends Map {
 
 		// 19
 
-		spaceController
-				.addSpace(new SpaceBuilder().movementCost(2)
+		super.spaces
+				.add(new SpaceBuilder().movementCost(2)
 						.acclimatizationIndicator(-1).victoryPoints(4)
 						.altitudeZone(AltitudeZone.BETWEEN_6000_AND_7000)
 						.topLeftCoordinates(322, 627).spaceSize(SpaceSize.BIG)
@@ -191,10 +186,66 @@ public class MapEasy extends Map {
 
 		// 20
 
-		spaceController.addSpace(new SpaceBuilder().movementCost(3)
+		super.spaces.add(new SpaceBuilder().movementCost(3)
 				.acclimatizationIndicator(-1).victoryPoints(4)
 				.altitudeZone(AltitudeZone.BETWEEN_6000_AND_7000)
 				.topLeftCoordinates(58, 621).spaceSize(SpaceSize.BIG).create());
+
+		// 21
+
+		super.spaces.add(new SpaceBuilder().movementCost(2)
+				.acclimatizationIndicator(-1).victoryPoints(5)
+				.altitudeZone(AltitudeZone.BETWEEN_7000_AND_8000)
+				.topLeftCoordinates(579, 487).spaceSize(SpaceSize.SMALL)
+				.create());
+
+		// 22
+
+		super.spaces.add(new SpaceBuilder().movementCost(3)
+				.acclimatizationIndicator(-2).victoryPoints(6)
+				.altitudeZone(AltitudeZone.BETWEEN_7000_AND_8000)
+				.topLeftCoordinates(561, 355).spaceSize(SpaceSize.SMALL)
+				.create());
+
+		// 23
+
+		super.spaces.add(new SpaceBuilder().movementCost(2)
+				.acclimatizationIndicator(-1).victoryPoints(5)
+				.altitudeZone(AltitudeZone.BETWEEN_7000_AND_8000)
+				.topLeftCoordinates(204, 524).spaceSize(SpaceSize.SMALL)
+				.create());
+
+		// 24
+
+		super.spaces.add(new SpaceBuilder().movementCost(2)
+				.acclimatizationIndicator(-1).victoryPoints(5)
+				.altitudeZone(AltitudeZone.BETWEEN_7000_AND_8000)
+				.topLeftCoordinates(326, 448).spaceSize(SpaceSize.SMALL)
+				.create());
+
+		// 25
+
+		super.spaces.add(new SpaceBuilder().movementCost(2)
+				.acclimatizationIndicator(-1).victoryPoints(6)
+				.altitudeZone(AltitudeZone.BETWEEN_7000_AND_8000)
+				.topLeftCoordinates(389, 335).spaceSize(SpaceSize.SMALL)
+				.create());
+
+		// 26
+
+		super.spaces.add(new SpaceBuilder().movementCost(3)
+				.acclimatizationIndicator(-2).victoryPoints(7)
+				.altitudeZone(AltitudeZone.OVER_8000)
+				.topLeftCoordinates(488, 219).spaceSize(SpaceSize.SMALL)
+				.create());
+
+		// 27
+
+		super.spaces.add(new SpaceBuilder().movementCost(3)
+				.acclimatizationIndicator(-2).victoryPoints(10)
+				.altitudeZone(AltitudeZone.OVER_8000)
+				.topLeftCoordinates(462, 97).spaceSize(SpaceSize.SMALL)
+				.create());
 
 	}
 
