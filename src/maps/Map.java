@@ -14,15 +14,20 @@ public class Map {
 
 	protected void createMap() {
 		createImageView();
+		createSpaces();
 	}
 
-	protected void createImageView() {
+	private void createImageView() {
 
 		this.imageView = new ImageView("board/" + this.path + ".jpg");
 
 		this.imageView.setHeight(Dimensions.MAP.y());
 		this.imageView.relocate(Dimensions.GAP_BETWEEN_BORDERS.x(),
 				Dimensions.GAP_BETWEEN_BORDERS.y());
+
+	}
+
+	protected void createSpaces() {
 
 	}
 

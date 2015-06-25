@@ -9,7 +9,7 @@ public class Space {
 
 	private int movementCost, acclimatizationIndicator, victoryPoints;
 	private AltitudeZone altitudeZone = null;
-	private double centerX, centerY;
+	private double topLeftX, topLeftY;
 	private SpaceSize spaceSize = null;
 	private ArrayList<Space> adjacentUp = new ArrayList<>();
 	private ArrayList<Space> adjacentDown = new ArrayList<>();
@@ -22,8 +22,8 @@ public class Space {
 		this.acclimatizationIndicator = acclimatizationIndicator;
 		this.victoryPoints = victoryPoints;
 		this.altitudeZone = altitudeZone;
-		this.centerX = centerX;
-		this.centerY = centerY;
+		this.topLeftX = centerX;
+		this.topLeftY = centerY;
 		this.spaceSize = spaceSize;
 
 	}
@@ -34,6 +34,14 @@ public class Space {
 
 	public void addAdjacentDown(Space space) {
 		this.adjacentDown.add(space);
+	}
+
+	public int getMovementCost() {
+		return this.movementCost;
+	}
+
+	public int getAcclimatizationIndicator() {
+		return this.acclimatizationIndicator;
 	}
 
 }

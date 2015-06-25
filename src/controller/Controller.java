@@ -10,6 +10,7 @@ public class Controller {
 
 	private GameStateController gameStateController = null;
 	private TextController textController = null;
+	private SpaceController spaceController = null;
 	private Map map = null;
 
 	public Controller() {
@@ -26,6 +27,7 @@ public class Controller {
 
 		this.gameStateController = new GameStateController();
 		this.textController = new TextController();
+		this.spaceController = new SpaceController();
 		this.map = new MapEasy();
 
 	}
@@ -36,6 +38,10 @@ public class Controller {
 
 	public TextController textController() {
 		return this.textController;
+	}
+
+	public SpaceController spaceController() {
+		return this.spaceController;
 	}
 
 	public Map map() {
