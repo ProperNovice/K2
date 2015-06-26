@@ -33,7 +33,7 @@ public class Map implements EventHandlerAble {
 
 		this.imageView = new ImageView("board/" + this.path + ".jpg");
 
-		this.imageView.setHeight(Dimensions.MAP.y());
+		this.imageView.setHeight(Dimensions.MAP_GAME.y());
 		this.imageView.relocate(Coordinates.MAP.x(), Coordinates.MAP.y());
 		this.imageView.setOnMousePressed(this.eventHandler);
 

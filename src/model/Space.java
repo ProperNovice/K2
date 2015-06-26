@@ -7,6 +7,7 @@ import utils.Logger;
 import enums.AltitudeZone;
 import enums.Coordinates;
 import enums.Dimensions;
+import enums.SpaceMountaineerLocationEnum;
 import enums.SpaceSize;
 
 public class Space {
@@ -14,6 +15,8 @@ public class Space {
 	private int movementCost, acclimatizationIndicator, victoryPoints;
 	private AltitudeZone altitudeZone = null;
 	private Circle circle = null;
+	private double topLeftX, topLeftY;
+	private SpaceSize spaceSize = null;
 	private ArrayList<Space> adjacentUp = new ArrayList<>();
 	private ArrayList<Space> adjacentDown = new ArrayList<>();
 
@@ -25,23 +28,24 @@ public class Space {
 		this.acclimatizationIndicator = acclimatizationIndicator;
 		this.victoryPoints = victoryPoints;
 		this.altitudeZone = altitudeZone;
+		this.spaceSize = spaceSize;
 
-		createCircle(topLeftX, topLeftY, spaceSize);
+		this.topLeftX = topLeftX * Dimensions.MAP_RATIO.x();
+		this.topLeftY = topLeftY * Dimensions.MAP_RATIO.x();
+
+		createCircle();
 
 	}
 
-	private void createCircle(double topLeftX, double topLeftY,
-			SpaceSize spaceSize) {
+	private void createCircle() {
 
-		double mapRatio = Dimensions.MAP_RATIO.x();
-
-		double radius = spaceSize.width() * mapRatio / 2;
+		double radius = this.spaceSize.width() * Dimensions.MAP_RATIO.x() / 2;
 
 		this.circle = new Circle(radius);
-		this.circle.relocate(Coordinates.MAP.x() + topLeftX * mapRatio,
-				Coordinates.MAP.y() + topLeftY * mapRatio);
+		this.circle.relocate(Coordinates.MAP.x() + this.topLeftX,
+				Coordinates.MAP.y() + this.topLeftY);
 
-		this.circle.setVisible(false);
+		// this.circle.setVisible(false);
 
 	}
 
@@ -84,7 +88,7 @@ public class Space {
 
 	}
 
-	public void printAdjacencies() {
+	public void printAdjacencies() { // TODO remove
 
 		System.out.println("up");
 		System.out.println();
@@ -100,6 +104,19 @@ public class Space {
 
 		System.out.println("-");
 		System.out.println();
+
+	}
+
+	public void relocateMountaineer(
+			SpaceMountaineerLocationEnum spaceMountaineerLocationEnum) {
+
+		double mountaineerWidth = Dimensions.MOUNTAINEER_GAME.x();
+		double mountaineerHeight = Dimensions.MOUNTAINEER_GAME.y();
+
+		double spaceRadius = this.spaceSize.width() * Dimensions.MAP_RATIO.x()
+				/ 2;
+		
+		this.circle.getLayoutX();
 
 	}
 

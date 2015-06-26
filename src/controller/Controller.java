@@ -11,6 +11,7 @@ public class Controller {
 	private GameStateController gameStateController = null;
 	private TextController textController = null;
 	private Map map = null;
+	private MountaineerController mountaineerController = null;
 
 	public Controller() {
 
@@ -27,6 +28,7 @@ public class Controller {
 		this.gameStateController = new GameStateController();
 		this.textController = new TextController();
 		this.map = new MapEasy();
+		this.mountaineerController = new MountaineerController();
 
 	}
 
@@ -40,6 +42,10 @@ public class Controller {
 
 	public Map map() {
 		return this.map;
+	}
+
+	public MountaineerController mountaineerController() {
+		return this.mountaineerController;
 	}
 
 }
