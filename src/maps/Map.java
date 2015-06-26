@@ -50,7 +50,7 @@ public class Map implements EventHandlerAble {
 	protected void addAdjacentUpUp(int indexOne, int indexTwo) {
 
 		this.spaces.get(indexOne).addAdjacentUp(this.spaces.get(indexTwo));
-		this.spaces.get(indexTwo).addAdjacentUp(this.spaces.get(indexOne));
+		this.spaces.get(indexTwo). addAdjacentUp(this.spaces.get(indexOne));
 
 	}
 
