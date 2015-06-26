@@ -189,7 +189,7 @@ public class MapEasy extends Map {
 		super.spaces.add(new SpaceBuilder().movementCost(3)
 				.acclimatizationIndicator(-1).victoryPoints(4)
 				.altitudeZone(AltitudeZone.BETWEEN_6000_AND_7000)
-				.topLeftCoordinates(58, 621).spaceSize(SpaceSize.BIG).create());
+				.topLeftCoordinates(57, 620).spaceSize(SpaceSize.BIG).create());
 
 		// 21
 
@@ -212,7 +212,7 @@ public class MapEasy extends Map {
 		super.spaces.add(new SpaceBuilder().movementCost(2)
 				.acclimatizationIndicator(-1).victoryPoints(5)
 				.altitudeZone(AltitudeZone.BETWEEN_7000_AND_8000)
-				.topLeftCoordinates(204, 524).spaceSize(SpaceSize.SMALL)
+				.topLeftCoordinates(203, 524).spaceSize(SpaceSize.SMALL)
 				.create());
 
 		// 24
