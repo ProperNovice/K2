@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 import utils.Circle;
+import utils.Logger;
 import enums.AltitudeZone;
 import enums.Coordinates;
 import enums.Dimensions;
@@ -71,6 +72,35 @@ public class Space {
 
 	public AltitudeZone getAltitudeZone() {
 		return this.altitudeZone;
+	}
+
+	public void print() {
+
+		Logger.log("movement " + this.movementCost);
+		Logger.log("acclimatization " + this.acclimatizationIndicator);
+		Logger.log("altitude " + this.altitudeZone);
+		Logger.log("points " + this.victoryPoints);
+		Logger.newLine();
+
+	}
+
+	public void printAdjacencies() {
+
+		System.out.println("up");
+		System.out.println();
+
+		for (Space space : this.adjacentUp)
+			space.print();
+
+		System.out.println("down");
+		System.out.println();
+
+		for (Space space : this.adjacentDown)
+			space.print();
+
+		System.out.println("-");
+		System.out.println();
+
 	}
 
 }

@@ -40,17 +40,17 @@ public class Map implements EventHandlerAble {
 	}
 
 	protected void createSpaces() {
-		Logger.logNewLine("you didn't implement spaces");
+		Logger.logNewLine("spaces need to be implemented");
 	}
 
 	protected void createAdjacencies() {
-		Logger.logNewLine("you didn't implement adjacencies");
+		Logger.logNewLine("adjacencies need to be implemented");
 	}
 
 	protected void addAdjacentUpUp(int indexOne, int indexTwo) {
 
 		this.spaces.get(indexOne).addAdjacentUp(this.spaces.get(indexTwo));
-		this.spaces.get(indexTwo). addAdjacentUp(this.spaces.get(indexOne));
+		this.spaces.get(indexTwo).addAdjacentUp(this.spaces.get(indexOne));
 
 	}
 
@@ -64,18 +64,20 @@ public class Map implements EventHandlerAble {
 	@Override
 	public void handleMouseButtonPrimary() {
 
-		double x = this.eventHandler.getX();
-		double y = this.eventHandler.getY();
-
 		double ratio = Dimensions.MAP_RATIO.x();
+
+		double x = this.eventHandler.getX() * ratio;
+		double y = this.eventHandler.getY() * ratio;
 
 		for (Space space : this.spaces) {
 
-			if (!space.isPressed(x * ratio, y * ratio))
+			if (!space.isPressed(x, y))
 				continue;
 
 			Instances.getControllerInstance().gameStateController()
 					.handleSpacePressed(space);
+
+			break;
 
 		}
 

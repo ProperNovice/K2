@@ -21,7 +21,7 @@ public class MapEasy extends Map {
 		super.spaces.add(new SpaceBuilder().movementCost(1)
 				.acclimatizationIndicator(1).victoryPoints(1)
 				.altitudeZone(AltitudeZone.UNDER_6000)
-				.topLeftCoordinates(636, 1332).spaceSize(SpaceSize.BIG)
+				.topLeftCoordinates(819, 1332).spaceSize(SpaceSize.BIG)
 				.create());
 
 		// 1
@@ -29,7 +29,7 @@ public class MapEasy extends Map {
 		super.spaces.add(new SpaceBuilder().movementCost(1)
 				.acclimatizationIndicator(1).victoryPoints(1)
 				.altitudeZone(AltitudeZone.UNDER_6000)
-				.topLeftCoordinates(819, 1332).spaceSize(SpaceSize.BIG)
+				.topLeftCoordinates(636, 1332).spaceSize(SpaceSize.BIG)
 				.create());
 
 		// 2
