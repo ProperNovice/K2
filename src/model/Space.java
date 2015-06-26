@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+import mountaineers.Mountaineer;
 import utils.Circle;
 import utils.Logger;
 import enums.AltitudeZone;
@@ -30,8 +31,10 @@ public class Space {
 		this.altitudeZone = altitudeZone;
 		this.spaceSize = spaceSize;
 
-		this.topLeftX = topLeftX * Dimensions.MAP_RATIO.x();
-		this.topLeftY = topLeftY * Dimensions.MAP_RATIO.x();
+		this.topLeftX = Coordinates.MAP.x() + topLeftX
+				* Dimensions.MAP_RATIO.x();
+		this.topLeftY = Coordinates.MAP.y() + topLeftY
+				* Dimensions.MAP_RATIO.x();
 
 		createCircle();
 
@@ -42,10 +45,9 @@ public class Space {
 		double radius = this.spaceSize.width() * Dimensions.MAP_RATIO.x() / 2;
 
 		this.circle = new Circle(radius);
-		this.circle.relocate(Coordinates.MAP.x() + this.topLeftX,
-				Coordinates.MAP.y() + this.topLeftY);
+		this.circle.relocate(this.topLeftX, this.topLeftY);
 
-		// this.circle.setVisible(false);
+		this.circle.setVisible(false);
 
 	}
 
@@ -107,16 +109,31 @@ public class Space {
 
 	}
 
-	public void relocateMountaineer(
+	public void relocateMountaineer(Mountaineer mountaineer,
 			SpaceMountaineerLocationEnum spaceMountaineerLocationEnum) {
 
 		double mountaineerWidth = Dimensions.MOUNTAINEER_GAME.x();
 		double mountaineerHeight = Dimensions.MOUNTAINEER_GAME.y();
 
-		double spaceRadius = this.spaceSize.width() * Dimensions.MAP_RATIO.x()
-				/ 2;
-		
-		this.circle.getLayoutX();
+		double radius = this.circle.getRadius();
+
+		double x = 0, y = 0;
+
+		if (spaceMountaineerLocationEnum
+				.equals(SpaceMountaineerLocationEnum.TOP_LEFT)) {
+
+			x = this.topLeftX + radius - mountaineerWidth - 10;
+			y = this.topLeftY + radius - mountaineerHeight - 4;
+
+		} else if (spaceMountaineerLocationEnum
+				.equals(SpaceMountaineerLocationEnum.BOTTOM_RIGHT)) {
+
+			x = this.topLeftX + radius + 5;
+			y = this.topLeftY + radius;
+
+		}
+
+		mountaineer.relocate(x, y);
 
 	}
 

@@ -1,5 +1,6 @@
 package mountaineers;
 
+import model.Space;
 import utils.ImageView;
 import enums.Dimensions;
 import enums.MountaineerEnum;
@@ -7,7 +8,8 @@ import enums.MountaineerEnum;
 public class Mountaineer {
 
 	private MountaineerEnum mountaineerEnum = null;
-	private ImageView imageView = null;
+	private ImageView mountaineerMap = null;
+	private Space currentSpace = null;
 
 	public Mountaineer(MountaineerEnum mountaineerEnum) {
 
@@ -21,15 +23,27 @@ public class Mountaineer {
 		String path = "mountaineers/" + this.mountaineerEnum.fileName()
 				+ ".png";
 
-		this.imageView = new ImageView(path);
+		this.mountaineerMap = new ImageView(path);
 
-		this.imageView.setHeight(Dimensions.MOUNTAINEER_GAME.y());
-		this.imageView.relocate(50, 50);
+		this.mountaineerMap.setHeight(Dimensions.MOUNTAINEER_GAME.y());
+		this.mountaineerMap.relocate(50, 50);
 
 	}
 
 	public MountaineerEnum getMountaineerEnum() {
 		return this.mountaineerEnum;
+	}
+
+	public void relocate(double x, double y) {
+		this.mountaineerMap.relocate(x, y);
+	}
+
+	public void setCurrentSpace(Space space) {
+		this.currentSpace = space;
+	}
+
+	public Space getCurrentSpace() {
+		return this.currentSpace;
 	}
 
 }

@@ -28,7 +28,8 @@ public class Controller {
 		this.gameStateController = new GameStateController();
 		this.textController = new TextController();
 		this.map = new MapEasy();
-		this.mountaineerController = new MountaineerController();
+		this.mountaineerController = new MountaineerController(
+				this.map.getStartingSpace());
 
 	}
 

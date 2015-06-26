@@ -31,7 +31,7 @@ public class Map implements EventHandlerAble {
 
 	private void createImageView() {
 
-		this.imageView = new ImageView("board/" + this.path + ".jpg");
+		this.imageView = new ImageView("maps/" + this.path + ".jpg");
 
 		this.imageView.setHeight(Dimensions.MAP_GAME.y());
 		this.imageView.relocate(Coordinates.MAP.x(), Coordinates.MAP.y());
@@ -81,6 +81,10 @@ public class Map implements EventHandlerAble {
 
 		}
 
+	}
+
+	public Space getStartingSpace() {
+		return this.spaces.get(0);
 	}
 
 }
