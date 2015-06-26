@@ -249,4 +249,45 @@ public class MapEasy extends Map {
 
 	}
 
+	@Override
+	protected void createAdjacencies() {
+
+		super.addAdjacentUpUp(0, 1);
+		super.addAdjacentUpUp(2, 3);
+		super.addAdjacentUpUp(3, 4);
+		super.addAdjacentUpUp(2, 5);
+		super.addAdjacentUpUp(5, 6);
+		super.addAdjacentUpUp(6, 7);
+		super.addAdjacentUpUp(4, 7);
+		super.addAdjacentUpUp(8, 9);
+		super.addAdjacentUpUp(9, 10);
+		super.addAdjacentUpUp(4, 11);
+		super.addAdjacentUpUp(11, 12);
+		super.addAdjacentUpUp(12, 13);
+		super.addAdjacentUpUp(10, 16);
+		super.addAdjacentUpUp(10, 17);
+		super.addAdjacentUpUp(13, 16);
+		super.addAdjacentUpUp(16, 18);
+		super.addAdjacentUpUp(14, 15);
+		super.addAdjacentUpUp(14, 19);
+		super.addAdjacentUpUp(20, 23);
+		super.addAdjacentUpUp(23, 24);
+		super.addAdjacentUpUp(24, 25);
+		super.addAdjacentUpUp(22, 26);
+
+		super.addAdjacentDownUp(1, 2);
+		super.addAdjacentDownUp(6, 3);
+		super.addAdjacentDownUp(7, 8);
+		super.addAdjacentDownUp(11, 16);
+		super.addAdjacentDownUp(13, 14);
+		super.addAdjacentDownUp(17, 18);
+		super.addAdjacentDownUp(18, 20);
+		super.addAdjacentDownUp(19, 23);
+		super.addAdjacentDownUp(15, 21);
+		super.addAdjacentDownUp(21, 22);
+		super.addAdjacentDownUp(25, 26);
+		super.addAdjacentDownUp(26, 27);
+
+	}
+
 }

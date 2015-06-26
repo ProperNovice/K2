@@ -8,6 +8,7 @@ import model.Space;
 import utils.EventHandler;
 import utils.EventHandler.EventHandlerAble;
 import utils.ImageView;
+import utils.Logger;
 import enums.Coordinates;
 import enums.Dimensions;
 
@@ -25,6 +26,7 @@ public class Map implements EventHandlerAble {
 	protected void createMap() {
 		createImageView();
 		createSpaces();
+		createAdjacencies();
 	}
 
 	private void createImageView() {
@@ -38,6 +40,24 @@ public class Map implements EventHandlerAble {
 	}
 
 	protected void createSpaces() {
+		Logger.logNewLine("you didn't implement spaces");
+	}
+
+	protected void createAdjacencies() {
+		Logger.logNewLine("you didn't implement adjacencies");
+	}
+
+	protected void addAdjacentUpUp(int indexOne, int indexTwo) {
+
+		this.spaces.get(indexOne).addAdjacentUp(this.spaces.get(indexTwo));
+		this.spaces.get(indexTwo).addAdjacentUp(this.spaces.get(indexOne));
+
+	}
+
+	protected void addAdjacentDownUp(int indexOne, int indexTwo) {
+
+		this.spaces.get(indexOne).addAdjacentUp(this.spaces.get(indexTwo));
+		this.spaces.get(indexTwo).addAdjacentDown(this.spaces.get(indexOne));
 
 	}
 
