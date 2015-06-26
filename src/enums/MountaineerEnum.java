@@ -2,8 +2,8 @@ package enums;
 
 public enum MountaineerEnum {
 
-	I("1"),
-	II("2");
+	I("I"),
+	II("II");
 
 	private String fileName = null;
 
