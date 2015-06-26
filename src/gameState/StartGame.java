@@ -12,7 +12,7 @@ public class StartGame extends GameState {
 	@Override
 	public void handleSpacePressed(Space space) {
 
-		space.printAdjacencies();
+		space.print();
 
 	}
 
