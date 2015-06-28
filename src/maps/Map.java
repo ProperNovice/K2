@@ -67,8 +67,8 @@ public class Map implements EventHandlerAble {
 
 		double ratio = Dimensions.MAP_RATIO.x();
 
-		double x = this.eventHandler.getX() * ratio;
-		double y = this.eventHandler.getY() * ratio;
+		double x = this.eventHandler.getEventX() * ratio;
+		double y = this.eventHandler.getEventY() * ratio;
 
 		for (Space space : this.spaces) {
 
@@ -82,21 +82,6 @@ public class Map implements EventHandlerAble {
 
 		}
 
-	}
-
-	@Override
-	public void handleMouseButtonPressedSecondary() {
-		System.out.println("sec");
-	}
-
-	@Override
-	public void handleMouseEntered() {
-		System.out.println("ent");
-	}
-
-	@Override
-	public void handleMouseExited() {
-		System.out.println("ex");
 	}
 
 	public Space getStartingSpace() {
