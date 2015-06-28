@@ -3,8 +3,11 @@ package model;
 import java.util.ArrayList;
 
 import mountaineers.Mountaineer;
+import utils.Animation;
 import utils.Circle;
+import utils.ImageView;
 import utils.Logger;
+import utils.Animation.AnimationSynch;
 import enums.AltitudeZone;
 import enums.Coordinates;
 import enums.Dimensions;
@@ -134,6 +137,21 @@ public class Space {
 		}
 
 		mountaineer.relocateMountaineer(x, y);
+
+	}
+
+	public void addTentAnimateSynchronous(ImageView imageView) {
+
+		double tentHeight = Dimensions.TENT_GAME.y();
+
+		double radius = this.circle.getRadius();
+
+		double x = 0, y = 0;
+
+		x = this.topLeftX + radius + 23;
+		y = this.topLeftY + radius - tentHeight - 4;
+
+		Animation.animate(imageView, x, y, AnimationSynch.SYNCHRONOUS);
 
 	}
 

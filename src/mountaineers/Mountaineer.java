@@ -16,8 +16,8 @@ public class Mountaineer {
 
 		this.mountaineerEnum = mountaineerEnum;
 
-		createMountaineer();
 		createTent();
+		createMountaineer();
 
 	}
 

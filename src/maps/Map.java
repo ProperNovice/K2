@@ -35,6 +35,7 @@ public class Map implements EventHandlerAble {
 
 		this.imageView.setHeight(Dimensions.MAP_GAME.y());
 		this.imageView.relocate(Coordinates.MAP.x(), Coordinates.MAP.y());
+
 		this.imageView.setOnMousePressed(this.eventHandler);
 
 	}
@@ -62,7 +63,7 @@ public class Map implements EventHandlerAble {
 	}
 
 	@Override
-	public void handleMouseButtonPrimary() {
+	public void handleMouseButtonPressedPrimary() {
 
 		double ratio = Dimensions.MAP_RATIO.x();
 
