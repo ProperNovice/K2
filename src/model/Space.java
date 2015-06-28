@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import mountaineers.Mountaineer;
 import utils.Animation;
+import utils.Animation.AnimationSynch;
 import utils.Circle;
 import utils.ImageView;
 import utils.Logger;
-import utils.Animation.AnimationSynch;
 import enums.AltitudeZone;
 import enums.Coordinates;
 import enums.Dimensions;
@@ -23,6 +23,7 @@ public class Space {
 	private SpaceSize spaceSize = null;
 	private ArrayList<Space> adjacentUp = new ArrayList<>();
 	private ArrayList<Space> adjacentDown = new ArrayList<>();
+	private boolean containsTent = false;
 
 	public Space(int movementCost, int acclimatizationIndicator,
 			int victoryPoints, AltitudeZone altitudeZone, double topLeftX,
@@ -142,6 +143,8 @@ public class Space {
 
 	public void addTentAnimateSynchronous(ImageView imageView) {
 
+		this.containsTent = true;
+
 		double tentHeight = Dimensions.TENT_GAME.y();
 
 		double radius = this.circle.getRadius();
@@ -153,6 +156,10 @@ public class Space {
 
 		Animation.animate(imageView, x, y, AnimationSynch.SYNCHRONOUS);
 
+	}
+
+	public boolean containsTent() {
+		return this.containsTent;
 	}
 
 }
