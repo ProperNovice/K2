@@ -9,16 +9,19 @@ public class Mountaineer {
 
 	private MountaineerEnum mountaineerEnum = null;
 	private ImageView mountaineerMap = null;
-	private Space currentSpace = null;
+	private ImageView tent = null;
+	private Space mountaineerSpace = null;
 
 	public Mountaineer(MountaineerEnum mountaineerEnum) {
 
 		this.mountaineerEnum = mountaineerEnum;
-		createImage();
+
+		createMountaineer();
+		createTent();
 
 	}
 
-	private void createImage() {
+	private void createMountaineer() {
 
 		String path = "mountaineers/" + this.mountaineerEnum.fileName()
 				+ ".png";
@@ -30,20 +33,37 @@ public class Mountaineer {
 
 	}
 
+	private void createTent() {
+
+		String path = "tents/" + this.mountaineerEnum.fileName() + ".png";
+
+		this.tent = new ImageView(path);
+		this.tent.setWidth(Dimensions.TENT_GAME.x());
+
+	}
+
 	public MountaineerEnum getMountaineerEnum() {
 		return this.mountaineerEnum;
 	}
 
-	public void relocate(double x, double y) {
+	public void relocateMountaineer(double x, double y) {
 		this.mountaineerMap.relocate(x, y);
 	}
 
-	public void setCurrentSpace(Space space) {
-		this.currentSpace = space;
+	public void setMountaineerSpace(Space space) {
+		this.mountaineerSpace = space;
 	}
 
-	public Space getCurrentSpace() {
-		return this.currentSpace;
+	public Space getMountaineerSpace() {
+		return this.mountaineerSpace;
+	}
+
+	public void relocateTent(double x, double y) {
+		this.tent.relocate(x, y);
+	}
+
+	public ImageView getTent() {
+		return this.tent;
 	}
 
 }

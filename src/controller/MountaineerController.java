@@ -25,8 +25,8 @@ public class MountaineerController {
 
 	private void relocateMountaineers(Space space) {
 
-		this.mountaineers.get(0).setCurrentSpace(space);
-		this.mountaineers.get(1).setCurrentSpace(space);
+		this.mountaineers.get(0).setMountaineerSpace(space);
+		this.mountaineers.get(1).setMountaineerSpace(space);
 
 		space.relocateMountaineer(this.mountaineers.get(0),
 				SpaceMountaineerLocationEnum.TOP_LEFT);

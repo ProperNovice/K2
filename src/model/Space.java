@@ -133,7 +133,7 @@ public class Space {
 
 		}
 
-		mountaineer.relocate(x, y);
+		mountaineer.relocateMountaineer(x, y);
 
 	}
 
