@@ -36,7 +36,7 @@ public class Map implements EventHandlerAble {
 		this.imageView.setHeight(Dimensions.MAP_GAME.y());
 		this.imageView.relocate(Coordinates.MAP.x(), Coordinates.MAP.y());
 
-		this.imageView.setOnMousePressed(this.eventHandler);
+		this.imageView.setEventHandler(this.eventHandler);
 
 	}
 
@@ -82,6 +82,21 @@ public class Map implements EventHandlerAble {
 
 		}
 
+	}
+
+	@Override
+	public void handleMouseButtonPressedSecondary() {
+		System.out.println("sec");
+	}
+
+	@Override
+	public void handleMouseEntered() {
+		System.out.println("ent");
+	}
+
+	@Override
+	public void handleMouseExited() {
+		System.out.println("ex");
 	}
 
 	public Space getStartingSpace() {
