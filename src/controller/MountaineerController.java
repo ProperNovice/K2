@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import enums.MountaineerEnum;
 import enums.SpaceMountaineerLocationEnum;
+import model.AcclimatizationIndicator;
 import model.Space;
 import mountaineers.Mountaineer;
 
 public class MountaineerController {
 
 	private ArrayList<Mountaineer> mountaineers = new ArrayList<>();
+	private AcclimatizationIndicator acclimatizationIndicator = new AcclimatizationIndicator();
 
 	public MountaineerController(Space spaceStarting) {
 		createMountaineers();
