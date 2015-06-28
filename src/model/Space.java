@@ -126,13 +126,13 @@ public class Space {
 		if (spaceMountaineerLocationEnum
 				.equals(SpaceMountaineerLocationEnum.TOP_LEFT)) {
 
-			x = this.topLeftX + radius - mountaineerWidth - 10;
-			y = this.topLeftY + radius - mountaineerHeight - 4;
+			x = this.topLeftX + radius - mountaineerWidth;
+			y = this.topLeftY + radius - mountaineerHeight;
 
 		} else if (spaceMountaineerLocationEnum
 				.equals(SpaceMountaineerLocationEnum.BOTTOM_RIGHT)) {
 
-			x = this.topLeftX + radius + 5;
+			x = this.topLeftX + radius;
 			y = this.topLeftY + radius;
 
 		}
