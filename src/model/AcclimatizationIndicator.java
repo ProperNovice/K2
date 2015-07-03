@@ -1,5 +1,6 @@
 package model;
 
+import mountaineers.Mountaineer;
 import enums.Coordinates;
 import enums.Dimensions;
 import utils.ImageView;
@@ -8,7 +9,8 @@ public class AcclimatizationIndicator {
 
 	private ImageView imageView = null;
 
-	public AcclimatizationIndicator() {
+	public AcclimatizationIndicator(Mountaineer mountaineerI,
+			Mountaineer mountaineerII) {
 		createImage();
 	}
 

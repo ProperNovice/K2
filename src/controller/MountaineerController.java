@@ -11,11 +11,12 @@ import mountaineers.Mountaineer;
 public class MountaineerController {
 
 	private ArrayList<Mountaineer> mountaineers = new ArrayList<>();
-	private AcclimatizationIndicator acclimatizationIndicator = new AcclimatizationIndicator();
+	private AcclimatizationIndicator acclimatizationIndicator = null;
 
 	public MountaineerController(Space spaceStarting) {
 		createMountaineers();
 		relocateMountaineers(spaceStarting);
+		createAcclimatizationIndicator();
 	}
 
 	private void createMountaineers() {
@@ -35,6 +36,11 @@ public class MountaineerController {
 		space.relocateMountaineer(this.mountaineers.get(1),
 				SpaceMountaineerLocationEnum.BOTTOM_RIGHT);
 
+	}
+
+	private void createAcclimatizationIndicator() {
+		this.acclimatizationIndicator = new AcclimatizationIndicator(
+				this.mountaineers.get(0), this.mountaineers.get(1));
 	}
 
 }
