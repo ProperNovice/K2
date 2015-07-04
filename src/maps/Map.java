@@ -11,6 +11,7 @@ import utils.ImageView;
 import utils.Logger;
 import enums.Coordinates;
 import enums.Dimensions;
+import enums.Ratio;
 
 public class Map implements EventHandlerAble {
 
@@ -65,7 +66,7 @@ public class Map implements EventHandlerAble {
 	@Override
 	public void handleMouseButtonPressedPrimary() {
 
-		double ratio = Dimensions.MAP_RATIO.x();
+		double ratio = Ratio.MAP.ratio();
 
 		double x = this.eventHandler.getEventX() * ratio;
 		double y = this.eventHandler.getEventY() * ratio;

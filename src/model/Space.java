@@ -11,6 +11,7 @@ import utils.Logger;
 import enums.AltitudeZone;
 import enums.Coordinates;
 import enums.Dimensions;
+import enums.Ratio;
 import enums.SpaceMountaineerLocationEnum;
 import enums.SpaceSize;
 
@@ -35,10 +36,8 @@ public class Space {
 		this.altitudeZone = altitudeZone;
 		this.spaceSize = spaceSize;
 
-		this.topLeftX = Coordinates.MAP.x() + topLeftX
-				* Dimensions.MAP_RATIO.x();
-		this.topLeftY = Coordinates.MAP.y() + topLeftY
-				* Dimensions.MAP_RATIO.x();
+		this.topLeftX = Coordinates.MAP.x() + topLeftX * Ratio.MAP.ratio();
+		this.topLeftY = Coordinates.MAP.y() + topLeftY * Ratio.MAP.ratio();
 
 		createCircle();
 
@@ -46,7 +45,7 @@ public class Space {
 
 	private void createCircle() {
 
-		double radius = this.spaceSize.width() * Dimensions.MAP_RATIO.x() / 2;
+		double radius = this.spaceSize.width() * Ratio.MAP.ratio() / 2;
 
 		this.circle = new Circle(radius);
 		this.circle.relocate(this.topLeftX, this.topLeftY);
