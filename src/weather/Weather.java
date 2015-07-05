@@ -51,7 +51,20 @@ public class Weather {
 			if (altitudeZoneModifiers.getAltitudeZone().equals(altitudeZone))
 				return altitudeZoneModifiers.getMovement();
 
-		Logger.logNewLine(("shouldn't be here, public int getMovement()"));
+		Logger.logNewLine(("shouldn't be here, public int getMovement() @ class Weather"));
+		ShutDown.execute();
+
+		return -1;
+
+	}
+
+	public int getAcclimatization(AltitudeZone altitudeZone) {
+
+		for (AltitudeZoneModifiers altitudeZoneModifiers : this.altitudeZoneModifiers)
+			if (altitudeZoneModifiers.getAltitudeZone().equals(altitudeZone))
+				return altitudeZoneModifiers.getAcclimatization();
+
+		Logger.logNewLine(("shouldn't be here, public int getAcclimatization() @ class Weather"));
 		ShutDown.execute();
 
 		return -1;
