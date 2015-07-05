@@ -64,4 +64,8 @@ public class Controller {
 		return this.riskTokenController;
 	}
 
+	public WeatherTileController weatherTileController() {
+		return this.weatherTileController;
+	}
+
 }

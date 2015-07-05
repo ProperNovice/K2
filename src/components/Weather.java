@@ -1,5 +1,6 @@
 package components;
 
+import enums.AltitudeZone;
 import utils.ImageView;
 
 public class Weather {
@@ -15,6 +16,16 @@ public class Weather {
 	private void createImage(String path) {
 
 		this.imageView = new ImageView("weatherTiles/" + path + ".png");
+
+	}
+
+	private class AltitudeZoneModifiers {
+
+		private AltitudeZone altitudeZone = null;
+
+		public AltitudeZoneModifiers(AltitudeZone altitudeZone) {
+			this.altitudeZone = altitudeZone;
+		}
 
 	}
 
