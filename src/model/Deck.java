@@ -1,10 +1,11 @@
 package model;
 
+import components.Card;
+import components.CardAcclimatization;
+import components.CardMovement;
+import components.CardRope;
+
 import utils.ArrayList;
-import cards.Card;
-import cards.CardAcclimatization;
-import cards.CardMovement;
-import cards.CardRope;
 import enums.Coordinates;
 import enums.Dimensions;
 

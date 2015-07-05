@@ -1,4 +1,4 @@
-package cards;
+package components;
 
 import utils.EventHandler;
 import utils.EventHandler.EventHandlerAble;
