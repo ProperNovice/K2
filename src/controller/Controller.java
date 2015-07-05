@@ -15,6 +15,7 @@ public class Controller {
 	private MountaineerController mountaineerController = null;
 	private Deck deck = null;
 	private RiskTokenController riskTokenController = null;
+	private WeatherTileController weatherTileController = null;
 
 	public Controller() {
 
@@ -35,6 +36,7 @@ public class Controller {
 				this.map.getStartingSpace());
 		this.deck = new Deck();
 		this.riskTokenController = new RiskTokenController();
+		this.weatherTileController = new WeatherTileController();
 
 	}
 
