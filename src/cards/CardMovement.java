@@ -1,15 +1,19 @@
 package cards;
 
-public class Movement extends Card {
+public class CardMovement extends Card {
 
 	private int movement;
 
-	public Movement(int movement) {
+	public CardMovement(int movement) {
 
 		this.movement = movement;
 		super.path = "movement" + Integer.toString(this.movement);
 		super.createImage();
 
+	}
+	
+	public int getMovement() {
+		return this.movement;
 	}
 
 }

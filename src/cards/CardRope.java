@@ -1,10 +1,10 @@
 package cards;
 
-public class Rope extends Card {
+public class CardRope extends Card {
 
 	private int movementUp, movementDown;
 
-	public Rope(int movementUp, int movementDown) {
+	public CardRope(int movementUp, int movementDown) {
 
 		this.movementUp = movementUp;
 		this.movementDown = movementDown;
@@ -13,6 +13,14 @@ public class Rope extends Card {
 				+ Integer.toString(this.movementDown);
 		super.createImage();
 
+	}
+
+	public int getMovementUp() {
+		return this.movementUp;
+	}
+
+	public int getMovementDown() {
+		return this.movementDown;
 	}
 
 }

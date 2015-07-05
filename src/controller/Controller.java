@@ -3,6 +3,7 @@ package controller;
 import instances.Instances;
 import maps.Map;
 import maps.MapEasy;
+import model.Deck;
 import utils.Executor;
 import enums.GameStateEnum;
 
@@ -12,6 +13,7 @@ public class Controller {
 	private TextController textController = null;
 	private Map map = null;
 	private MountaineerController mountaineerController = null;
+	private Deck deck = null;
 
 	public Controller() {
 
@@ -30,6 +32,7 @@ public class Controller {
 		this.map = new MapEasy();
 		this.mountaineerController = new MountaineerController(
 				this.map.getStartingSpace());
+		this.deck = new Deck();
 
 	}
 
@@ -47,6 +50,10 @@ public class Controller {
 
 	public MountaineerController mountaineerController() {
 		return this.mountaineerController;
+	}
+
+	public Deck deck() {
+		return this.deck;
 	}
 
 }
