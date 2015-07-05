@@ -1,4 +1,4 @@
-package components;
+package weather;
 
 import enums.AltitudeZone;
 import utils.ImageView;
@@ -22,6 +22,8 @@ public class Weather {
 	private class AltitudeZoneModifiers {
 
 		private AltitudeZone altitudeZone = null;
+		private int movement = 1;
+		private int acclimatization = 0;
 
 		public AltitudeZoneModifiers(AltitudeZone altitudeZone) {
 			this.altitudeZone = altitudeZone;

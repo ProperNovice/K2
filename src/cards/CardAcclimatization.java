@@ -1,4 +1,4 @@
-package components;
+package cards;
 
 import utils.Logger;
 

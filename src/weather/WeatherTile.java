@@ -1,4 +1,4 @@
-package components;
+package weather;
 
 public class WeatherTile {
 
