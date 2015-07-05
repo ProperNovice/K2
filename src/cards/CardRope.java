@@ -20,7 +20,7 @@ public class CardRope extends Card {
 	@Override
 	public void handleMouseButtonPressedPrimary() {
 
-		Logger.logNewLine("rope " + this.movementUp + ", " + this.movementDown);
+		Logger.logNewLine("rope " + this.movementUp + "/" + this.movementDown);
 
 	}
 

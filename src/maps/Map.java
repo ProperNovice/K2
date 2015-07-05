@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import model.Space;
 import utils.EventHandler;
 import utils.EventHandler.EventHandlerAble;
+import utils.Executor;
 import utils.ImageView;
 import utils.Logger;
 import enums.Coordinates;
@@ -76,8 +77,10 @@ public class Map implements EventHandlerAble {
 			if (!space.isPressed(x, y))
 				continue;
 
-			Instances.getControllerInstance().gameStateController()
-					.handleSpacePressed(space);
+			space.print();
+
+			Executor.runLater(() -> Instances.getControllerInstance()
+					.gameStateController().handleSpacePressed(space));
 
 			break;
 
