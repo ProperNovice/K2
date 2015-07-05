@@ -7,24 +7,20 @@ import enums.MountaineerEnum;
 
 public class Mountaineer {
 
-	private MountaineerEnum mountaineerEnum = null;
 	private ImageView mountaineerMap = null;
 	private ImageView tent = null;
 	private Space mountaineerSpace = null;
 
 	public Mountaineer(MountaineerEnum mountaineerEnum) {
 
-		this.mountaineerEnum = mountaineerEnum;
-
-		createTent();
-		createMountaineer();
+		createTent(mountaineerEnum);
+		createMountaineer(mountaineerEnum);
 
 	}
 
-	private void createMountaineer() {
+	private void createMountaineer(MountaineerEnum mountaineerEnum) {
 
-		String path = "mountaineers/" + this.mountaineerEnum.fileName()
-				+ ".png";
+		String path = "mountaineers/" + mountaineerEnum.fileName() + ".png";
 
 		this.mountaineerMap = new ImageView(path);
 
@@ -33,17 +29,13 @@ public class Mountaineer {
 
 	}
 
-	private void createTent() {
+	private void createTent(MountaineerEnum mountaineerEnum) {
 
-		String path = "tents/" + this.mountaineerEnum.fileName() + ".png";
+		String path = "tents/" + mountaineerEnum.fileName() + ".png";
 
 		this.tent = new ImageView(path);
 		this.tent.setWidth(Dimensions.TENT_GAME.x());
 
-	}
-
-	public MountaineerEnum getMountaineerEnum() {
-		return this.mountaineerEnum;
 	}
 
 	public void relocateMountaineer(double x, double y) {
