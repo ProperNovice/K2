@@ -11,8 +11,7 @@ public class CardRope extends Card {
 		this.movementUp = movementUp;
 		this.movementDown = movementDown;
 
-		super.path = "rope" + Integer.toString(this.movementUp)
-				+ Integer.toString(this.movementDown);
+		super.path = "rope" + this.movementUp + this.movementDown;
 		super.createImage();
 
 	}

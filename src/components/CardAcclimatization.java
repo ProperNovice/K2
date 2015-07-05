@@ -9,7 +9,7 @@ public class CardAcclimatization extends Card {
 	public CardAcclimatization(int acclimatization) {
 
 		this.acclimatization = acclimatization;
-		super.path = "acclimatization" + Integer.toString(this.acclimatization);
+		super.path = "acclimatization" + this.acclimatization;
 		super.createImage();
 
 	}

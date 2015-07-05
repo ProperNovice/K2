@@ -9,7 +9,7 @@ public class CardMovement extends Card {
 	public CardMovement(int movement) {
 
 		this.movement = movement;
-		super.path = "movement" + Integer.toString(this.movement);
+		super.path = "movement" + this.movement;
 		super.createImage();
 
 	}
