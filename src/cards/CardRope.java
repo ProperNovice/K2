@@ -1,5 +1,7 @@
 package cards;
 
+import utils.Logger;
+
 public class CardRope extends Card {
 
 	private int movementUp, movementDown;
@@ -12,6 +14,13 @@ public class CardRope extends Card {
 		super.path = "rope" + Integer.toString(this.movementUp)
 				+ Integer.toString(this.movementDown);
 		super.createImage();
+
+	}
+
+	@Override
+	public void handleMouseButtonPressedPrimary() {
+
+		Logger.logNewLine("rope " + this.movementUp + ", " + this.movementDown);
 
 	}
 

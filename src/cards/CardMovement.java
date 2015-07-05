@@ -1,5 +1,7 @@
 package cards;
 
+import utils.Logger;
+
 public class CardMovement extends Card {
 
 	private int movement;
@@ -11,9 +13,16 @@ public class CardMovement extends Card {
 		super.createImage();
 
 	}
-	
+
 	public int getMovement() {
 		return this.movement;
+	}
+
+	@Override
+	public void handleMouseButtonPressedPrimary() {
+
+		Logger.logNewLine("movement " + this.movement);
+
 	}
 
 }

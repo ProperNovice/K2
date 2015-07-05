@@ -1,5 +1,7 @@
 package cards;
 
+import utils.Logger;
+
 public class CardAcclimatization extends Card {
 
 	private int acclimatization;
@@ -9,6 +11,13 @@ public class CardAcclimatization extends Card {
 		this.acclimatization = acclimatization;
 		super.path = "acclimatization" + Integer.toString(this.acclimatization);
 		super.createImage();
+
+	}
+
+	@Override
+	public void handleMouseButtonPressedPrimary() {
+
+		Logger.logNewLine("acclimatization " + this.acclimatization);
 
 	}
 

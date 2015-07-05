@@ -1,11 +1,13 @@
 package cards;
 
+import utils.EventHandler;
+import utils.EventHandler.EventHandlerAble;
 import utils.ImageView;
 
-public class Card {
+public class Card implements EventHandlerAble {
 
 	protected String path = null;
-	private ImageView imageView = null;
+	protected ImageView imageView = null;
 
 	public Card() {
 
@@ -14,6 +16,7 @@ public class Card {
 	protected void createImage() {
 
 		this.imageView = new ImageView("cards/" + this.path + ".png");
+		this.imageView.setEventHandler(new EventHandler(this));
 
 	}
 

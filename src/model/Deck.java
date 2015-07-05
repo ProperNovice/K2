@@ -1,19 +1,20 @@
 package model;
 
-import java.util.ArrayList;
-
-import cards.CardAcclimatization;
+import utils.ArrayList;
 import cards.Card;
+import cards.CardAcclimatization;
 import cards.CardMovement;
 import cards.CardRope;
 
 public class Deck {
 
 	private ArrayList<Card> deckOriginal = new ArrayList<>();
+	private ArrayList<Card> deck = null;
 
 	public Deck() {
 
 		createDeck();
+		relocateDeck();
 
 	}
 
@@ -36,6 +37,12 @@ public class Deck {
 		this.deckOriginal.add(new CardAcclimatization(1));
 		this.deckOriginal.add(new CardAcclimatization(1));
 		this.deckOriginal.add(new CardAcclimatization(0));
+
+		this.deck = this.deckOriginal.clone();
+
+	}
+
+	private void relocateDeck() {
 
 	}
 
