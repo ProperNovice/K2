@@ -34,11 +34,8 @@ public class K2 extends Application {
 		primaryStage.setTitle("K2");
 
 		primaryStage
-				.setX((Screen.getPrimary().getBounds().getWidth() - width) / 2);
-//		primaryStage
-//				.setY((Screen.getPrimary().getBounds().getHeight() - height) / 2);
-		primaryStage
-		.setY(6);
+				.setX((Screen.getPrimary().getBounds().getWidth() - width) / 2 - 45);
+		primaryStage.setY(6);
 
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 
