@@ -6,6 +6,7 @@ import enums.TextEnum;
 import gameState.Animating;
 import gameState.GameState;
 import gameState.StartGame;
+import gameState.StartNewRound;
 import utils.Logger;
 
 public class GameStateController {
@@ -13,6 +14,7 @@ public class GameStateController {
 	private GameState currentGameState = null;
 	private GameState startGame = new StartGame();
 	private GameState animating = new Animating();
+	private GameState startNewRound = new StartNewRound();
 
 	public GameStateController() {
 
@@ -28,6 +30,10 @@ public class GameStateController {
 
 		case ANIMATING:
 			this.currentGameState = this.animating;
+			break;
+			
+		case START_NEW_ROUND:
+			this.currentGameState = this.startNewRound;
 			break;
 
 		}

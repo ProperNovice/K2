@@ -1,4 +1,4 @@
-package model;
+package controller;
 
 import cards.Card;
 import cards.CardAcclimatization;
@@ -12,6 +12,7 @@ public class CardController {
 
 	private ArrayList<Card> deckOriginal = new ArrayList<>();
 	private ArrayList<Card> deck = null;
+	private ArrayList<Card> hand = new ArrayList<>();
 
 	public CardController() {
 
@@ -72,6 +73,12 @@ public class CardController {
 					+ Dimensions.GAP_BETWEEN_COMPONENTS.y();
 
 		}
+
+	}
+
+	public void addThreeCardsFromDeckToHand() {
+		
+		
 
 	}
 

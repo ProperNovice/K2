@@ -3,7 +3,6 @@ package controller;
 import instances.Instances;
 import maps.Map;
 import maps.MapEasy;
-import model.CardController;
 import utils.Executor;
 import enums.GameStateEnum;
 
