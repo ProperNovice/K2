@@ -8,6 +8,7 @@ public enum Coordinates {
 	WEATHER_TILES(ACCLIMATIZATION_INDICATOR.x(), Dimensions.GAP_BETWEEN_BORDERS.y()),
 	RISK_TOKEN_PILE(WEATHER_TILES.x(), WEATHER_TILES.y() + Dimensions.WEATHER_TILE_ORIGINAL.y() * Ratio.WEATHER_TILE.ratio() + Dimensions.GAP_BETWEEN_COMPONENTS.y()),
 	DECK(RISK_TOKEN_PILE.x(), Coordinates.RISK_TOKEN_PILE.y() + 2 * (Dimensions.RISK_TOKEN_ORIGINAL.y() * Ratio.RISK_TOKEN.ratio() + Dimensions.GAP_BETWEEN_COMPONENTS.y())),
+	WEATHER_INDICATOR(51 * Ratio.WEATHER_TILE.ratio(), 20 * Ratio.WEATHER_TILE.ratio()),
 	
 	;
 

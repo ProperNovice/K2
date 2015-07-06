@@ -1,21 +1,29 @@
 package controller;
 
+import javafx.scene.paint.Color;
 import utils.ArrayList;
+import utils.Circle;
 import weather.Weather;
 import weather.WeatherTile;
 import enums.AltitudeZone;
 import enums.Coordinates;
 import enums.Dimensions;
+import enums.Ratio;
 
 public class WeatherTileController {
 
 	private ArrayList<WeatherTile> weatherTiles = new ArrayList<>();
+	private int weatherIndexActive = 0;
+	private double weatherIndicatorGap = 125 * Ratio.WEATHER_TILE.ratio();
+	private Circle weatherIndicator = null;
 
 	public WeatherTileController() {
 
 		createWeatherTilesSummer();
-		weatherTiles.shuffle();
+		this.weatherTiles.shuffle();
 		relocateWeatherTiles();
+		createWeatherIndicator();
+		relocateWeatherIndicator();
 
 	}
 
@@ -129,12 +137,32 @@ public class WeatherTileController {
 			weatherTile.toBack();
 
 			if (index == 0)
-				x += Dimensions.WEATHER_TILE_GAME.x()
-						+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
+				x += Dimensions.WEATHER_TILE_GAME.x();
 
 			index++;
 
 		}
+
+	}
+
+	private void createWeatherIndicator() {
+
+		this.weatherIndicator = new Circle(
+				Dimensions.WEATHER_INDICATOR_GAME.x() / 2);
+		this.weatherIndicator.setFill(Color.BLACK);
+
+	}
+
+	private void relocateWeatherIndicator() {
+
+		double x = Coordinates.WEATHER_TILES.x()
+				+ Coordinates.WEATHER_INDICATOR.x();
+		double y = Coordinates.WEATHER_TILES.y()
+				+ Coordinates.WEATHER_INDICATOR.y();
+
+		x += this.weatherIndexActive * this.weatherIndicatorGap;
+
+		this.weatherIndicator.relocate(x, y);
 
 	}
 

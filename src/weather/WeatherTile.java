@@ -10,15 +10,15 @@ import enums.Dimensions;
 public class WeatherTile implements EventHandlerAble {
 
 	private ImageView imageView = null;
-	private ArrayList<Weather> arrayList = new ArrayList<>();
+	private ArrayList<Weather> weatherTile = new ArrayList<>();
 
 	public WeatherTile(String path, Weather first, Weather second, Weather third) {
 
 		createImage(path);
 
-		this.arrayList.add(first);
-		this.arrayList.add(second);
-		this.arrayList.add(third);
+		this.weatherTile.add(first);
+		this.weatherTile.add(second);
+		this.weatherTile.add(third);
 
 	}
 
@@ -38,6 +38,10 @@ public class WeatherTile implements EventHandlerAble {
 		this.imageView.toBack();
 	}
 
+	public Weather getWeather(int index) {
+		return this.weatherTile.get(index);
+	}
+
 	@Override
 	public void handleMouseButtonPressedPrimary() {
 
@@ -45,7 +49,7 @@ public class WeatherTile implements EventHandlerAble {
 
 		Logger.logNewLine("/*");
 
-		for (Weather weather : this.arrayList) {
+		for (Weather weather : this.weatherTile) {
 
 			weatherIndex++;
 
