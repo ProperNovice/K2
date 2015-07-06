@@ -3,7 +3,7 @@ package controller;
 import instances.Instances;
 import maps.Map;
 import maps.MapEasy;
-import model.Deck;
+import model.CardController;
 import utils.Executor;
 import enums.GameStateEnum;
 
@@ -13,7 +13,7 @@ public class Controller {
 	private TextController textController = null;
 	private Map map = null;
 	private MountaineerController mountaineerController = null;
-	private Deck deck = null;
+	private CardController cardController = null;
 	private RiskTokenController riskTokenController = null;
 	private WeatherTileController weatherTileController = null;
 
@@ -34,7 +34,7 @@ public class Controller {
 		this.map = new MapEasy();
 		this.mountaineerController = new MountaineerController(
 				this.map.getStartingSpace());
-		this.deck = new Deck();
+		this.cardController = new CardController();
 		this.riskTokenController = new RiskTokenController();
 		this.weatherTileController = new WeatherTileController();
 
@@ -56,8 +56,8 @@ public class Controller {
 		return this.mountaineerController;
 	}
 
-	public Deck deck() {
-		return this.deck;
+	public CardController cardController() {
+		return this.cardController;
 	}
 
 	public RiskTokenController riskTokenController() {

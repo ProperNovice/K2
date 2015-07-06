@@ -8,12 +8,12 @@ import utils.ArrayList;
 import enums.Coordinates;
 import enums.Dimensions;
 
-public class Deck {
+public class CardController {
 
 	private ArrayList<Card> deckOriginal = new ArrayList<>();
 	private ArrayList<Card> deck = null;
 
-	public Deck() {
+	public CardController() {
 
 		createDeck();
 		relocateDeck();
