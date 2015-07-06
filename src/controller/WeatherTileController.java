@@ -156,9 +156,9 @@ public class WeatherTileController {
 	private void relocateWeatherIndicator() {
 
 		double x = Coordinates.WEATHER_TILES.x()
-				+ Coordinates.WEATHER_INDICATOR.x();
+				+ Coordinates.WEATHER_INDICATOR_GAME.x();
 		double y = Coordinates.WEATHER_TILES.y()
-				+ Coordinates.WEATHER_INDICATOR.y();
+				+ Coordinates.WEATHER_INDICATOR_GAME.y();
 
 		x += this.weatherIndexActive * this.weatherIndicatorGap;
 

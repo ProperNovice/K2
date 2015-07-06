@@ -45,10 +45,12 @@ public class AcclimatizationIndicator {
 
 		circle = new Circle(this.circleRadius);
 		circle.setFill(Color.RED);
+		circle.setStroke(Color.RED);
 		this.indicators.put(mountaineerI, circle);
 
 		circle = new Circle(this.circleRadius);
 		circle.setFill(Color.RED);
+		circle.setStroke(Color.RED);
 		this.indicators.put(mountaineerII, circle);
 
 	}
