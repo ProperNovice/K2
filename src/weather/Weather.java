@@ -71,6 +71,40 @@ public class Weather {
 
 	}
 
+	public void print() {
+
+		boolean isClear = true;
+
+		for (AltitudeZoneModifiers altitudeZoneModifiers : this.altitudeZoneModifiers) {
+
+			int movement = altitudeZoneModifiers.getMovement();
+			int acclimatization = altitudeZoneModifiers.getAcclimatization();
+
+			if (movement == 0 && acclimatization == 0)
+				continue;
+
+			System.out.println(altitudeZoneModifiers.getAltitudeZone());
+
+			if (movement != 0) {
+				isClear = false;
+				Logger.log("movement " + altitudeZoneModifiers.getMovement());
+			}
+
+			if (acclimatization != 0) {
+				isClear = false;
+				Logger.log("acclimatization "
+						+ altitudeZoneModifiers.getAcclimatization());
+			}
+
+			Logger.newLine();
+
+		}
+
+		if (isClear)
+			Logger.logNewLine("clear");
+
+	}
+
 	private class AltitudeZoneModifiers {
 
 		private AltitudeZone altitudeZone = null;
