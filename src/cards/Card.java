@@ -1,5 +1,7 @@
 package cards;
 
+import utils.Animation;
+import utils.Animation.AnimationSynch;
 import utils.EventHandler;
 import utils.EventHandler.EventHandlerAble;
 import utils.ImageView;
@@ -24,6 +26,11 @@ public class Card implements EventHandlerAble {
 
 	public void relocate(double x, double y) {
 		this.imageView.relocate(x, y);
+	}
+
+	public void animateSynchronous(double endingX, double endingY) {
+		Animation.animate(this.imageView, endingX, endingY,
+				AnimationSynch.SYNCHRONOUS);
 	}
 
 }
