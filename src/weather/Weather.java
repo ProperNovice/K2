@@ -83,7 +83,7 @@ public class Weather {
 			if (movement == 0 && acclimatization == 0)
 				continue;
 
-			System.out.println(altitudeZoneModifiers.getAltitudeZone());
+			Logger.logNewLine(altitudeZoneModifiers.getAltitudeZone());
 
 			if (movement != 0) {
 				isClear = false;
