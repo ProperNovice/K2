@@ -9,7 +9,8 @@ import enums.Dimensions;
 
 public class RiskTokenController {
 
-	private ArrayList<RiskToken> arrayList = new ArrayList<>();
+	private ArrayList<RiskToken> deck = new ArrayList<>();
+	private ArrayList<RiskToken> play = new ArrayList<>();
 
 	public RiskTokenController() {
 
@@ -29,7 +30,7 @@ public class RiskTokenController {
 	private void addRiskTokensToList(int value, int times) {
 
 		for (int counter = 1; counter <= times; counter++)
-			this.arrayList.add(new RiskToken(value));
+			this.deck.add(new RiskToken(value));
 
 	}
 
@@ -41,17 +42,19 @@ public class RiskTokenController {
 		double x = Coordinates.RISK_TOKEN_PILE.x();
 		double y = Coordinates.RISK_TOKEN_PILE.y();
 
-		for (RiskToken riskToken : this.arrayList) {
+		for (RiskToken riskToken : this.deck) {
 
 			riskToken.relocate(x, y);
 
 			tokensRelocated++;
 
-			x += Dimensions.RISK_TOKEN_GAME.x()
-					+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
+			if (tokensRelocated < tokensEachRow) {
 
-			if (tokensRelocated < tokensEachRow)
+				x += Dimensions.RISK_TOKEN_GAME.x()
+						+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
 				continue;
+
+			}
 
 			tokensRelocated = 0;
 
@@ -60,6 +63,15 @@ public class RiskTokenController {
 					+ Dimensions.GAP_BETWEEN_COMPONENTS.y();
 
 		}
+
+	}
+
+	public void addTokensFromDeckToPlayRearrangeSynchronous() {
+
+		int numberOfTokensToAdd = 1;
+
+		if (this.play.isEmpty())
+			numberOfTokensToAdd = 3;
 
 	}
 

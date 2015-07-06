@@ -8,11 +8,12 @@ public class StartNewRound extends GameState {
 	public void handleGameStateChange() {
 
 		super.controller.cardController()
-				.addThreeCardsFromDeckToHandRearrangeSynchronous();
+				.addCardsFromDeckToHandRearrangeSynchronous(6);
+
+		super.controller.riskTokenController()
+				.addTokensFromDeckToPlayRearrangeSynchronous();
 
 		Lock.lock();
-
-		System.out.println("yay");
 
 	}
 

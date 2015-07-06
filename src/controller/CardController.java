@@ -48,11 +48,11 @@ public class CardController {
 
 	private void relocateDeck() {
 
-		int cardsEachRow = 9;
-		int cardsRelocated = 0;
-
 		double x = Coordinates.DECK.x();
 		double y = Coordinates.DECK.y();
+
+		int cardsEachRow = 9;
+		int cardsRelocated = 0;
 
 		for (Card card : this.deck) {
 
@@ -60,11 +60,13 @@ public class CardController {
 
 			cardsRelocated++;
 
-			x += Dimensions.CARD_GAME.x()
-					+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
+			if (cardsRelocated < cardsEachRow) {
 
-			if (cardsRelocated < cardsEachRow)
+				x += Dimensions.CARD_GAME.x()
+						+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
 				continue;
+
+			}
 
 			cardsRelocated = 0;
 
@@ -76,12 +78,12 @@ public class CardController {
 
 	}
 
-	public void addThreeCardsFromDeckToHandRearrangeSynchronous() {
+	public void addCardsFromDeckToHandRearrangeSynchronous(int numberOfCards) {
 
 		ArrayList<Card> handTemp = new ArrayList<>(this.hand);
 		this.hand.clear();
 
-		for (int counter = 1; counter <= 3; counter++)
+		for (int counter = 1; counter <= numberOfCards; counter++)
 			handTemp.add(this.deck.removeRandom());
 
 		for (Card card : this.cardSequenceDefault)
@@ -95,11 +97,11 @@ public class CardController {
 
 	private void rearrangeDeckSynchronous() {
 
-		int cardsEachRow = 9;
-		int cardsAnimated = 0;
-
 		double x = Coordinates.DECK.x();
 		double y = Coordinates.DECK.y();
+
+		int cardsEachRow = 9;
+		int cardsAnimated = 0;
 
 		for (Card card : this.deck) {
 
@@ -107,11 +109,13 @@ public class CardController {
 
 			cardsAnimated++;
 
-			x += Dimensions.CARD_GAME.x()
-					+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
+			if (cardsAnimated < cardsEachRow) {
 
-			if (cardsAnimated < cardsEachRow)
+				x += Dimensions.CARD_GAME.x()
+						+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
 				continue;
+
+			}
 
 			cardsAnimated = 0;
 
@@ -128,12 +132,28 @@ public class CardController {
 		double x = Coordinates.HAND.x();
 		double y = Coordinates.HAND.y();
 
+		int cardsEachRow = 3;
+		int cardsAnimated = 0;
+
 		for (Card card : this.hand) {
 
 			card.animateSynchronous(x, y);
 
-			x += Dimensions.CARD_GAME.x()
-					+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
+			cardsAnimated++;
+
+			if (cardsAnimated < cardsEachRow) {
+
+				x += Dimensions.CARD_GAME.x()
+						+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
+				continue;
+
+			}
+			
+			cardsAnimated = 0;
+
+			x = Coordinates.HAND.x();
+			y += Dimensions.CARD_GAME.y()
+					+ Dimensions.GAP_BETWEEN_COMPONENTS.y();
 
 		}
 
