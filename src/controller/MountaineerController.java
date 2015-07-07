@@ -43,11 +43,8 @@ public class MountaineerController {
 
 	private void relocateTents() {
 
-		double x = Coordinates.MAP.x()
-				+ Coordinates.TENT_STARTING_LOCATION_BOTTOM_LEFT_GAME.x();
-		double y = Coordinates.MAP.y()
-				+ Coordinates.TENT_STARTING_LOCATION_BOTTOM_LEFT_GAME.y()
-				- Dimensions.TENT_GAME.y();
+		double x = Coordinates.TENT_STARTING_LOCATION.x();
+		double y = Coordinates.TENT_STARTING_LOCATION.y();
 
 		this.mountaineerI.relocateTent(x, y);
 
