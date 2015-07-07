@@ -13,8 +13,9 @@ public class ChooseCardsToPlay extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
-		super.controller.textController()
-				.showText(TextEnum.CHOOSE_CARDSTO_PLAY);
+		if (this.cardLeftToChoose > 0)
+			super.controller.textController().showText(
+					TextEnum.CHOOSE_CARDSTO_PLAY);
 
 	}
 
