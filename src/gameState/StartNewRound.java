@@ -9,7 +9,7 @@ public class StartNewRound extends GameState {
 	public void handleGameStateChange() {
 
 		super.controller.cardController()
-				.addCardsFromDeckToHandRearrangeSynchronous(6);
+				.addCardsFromDeckToHandRearrangeSynchronous();
 
 		super.controller.riskTokenController()
 				.addTokensFromDeckToPlayRearrangeSynchronous();

@@ -5,6 +5,7 @@ import enums.GameStateEnum;
 import enums.TextEnum;
 import gameState.Animating;
 import gameState.ChooseCardsToPlay;
+import gameState.ChooseMountaineerToApplyCard;
 import gameState.GameState;
 import gameState.StartGame;
 import gameState.StartNewRound;
@@ -18,6 +19,7 @@ public class GameStateController {
 	private GameState animating = new Animating();
 	private GameState startNewRound = new StartNewRound();
 	private GameState chooseCardsToPlay = new ChooseCardsToPlay();
+	private GameState chooseMountaineerToApplyCard = new ChooseMountaineerToApplyCard();
 
 	public GameStateController() {
 
@@ -41,6 +43,10 @@ public class GameStateController {
 
 		case CHOOSE_CARDS_TO_PLAY:
 			this.currentGameState = this.chooseCardsToPlay;
+			break;
+
+		case CHOOSE_MOUNTAINEER_TO_APPLY_CARD:
+			this.currentGameState = this.chooseMountaineerToApplyCard;
 			break;
 
 		}

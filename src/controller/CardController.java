@@ -75,7 +75,9 @@ public class CardController {
 
 	}
 
-	public void addCardsFromDeckToHandRearrangeSynchronous(int numberOfCards) {
+	public void addCardsFromDeckToHandRearrangeSynchronous() {
+
+		int numberOfCards = 6 - this.hand.size();
 
 		for (int counter = 1; counter <= numberOfCards; counter++)
 			this.hand.add(this.deck.removeRandom());
