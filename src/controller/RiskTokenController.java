@@ -1,6 +1,9 @@
 package controller;
 
 import utils.ArrayList;
+import utils.Coordinate;
+import utils.CoordinatesRelocate;
+import utils.CoordinatesRelocateBuilder;
 
 import components.RiskToken;
 
@@ -36,31 +39,22 @@ public class RiskTokenController {
 
 	private void relocateRiskTokens() {
 
-		int tokensEachRow = 10;
-		int tokensRelocated = 0;
+		double topLeftX = Coordinates.RISK_TOKEN_PILE.x();
+		double topLeftY = Coordinates.RISK_TOKEN_PILE.y();
+		double width = Dimensions.RISK_TOKEN_GAME.x();
+		double height = Dimensions.RISK_TOKEN_GAME.y();
+		double gapBetweenNodes = Dimensions.GAP_BETWEEN_COMPONENTS.x();
+		int nodesPerRow = 10;
 
-		double x = Coordinates.RISK_TOKEN_PILE.x();
-		double y = Coordinates.RISK_TOKEN_PILE.y();
+		CoordinatesRelocate coordinatesRelocate = new CoordinatesRelocateBuilder()
+				.topLeftX(topLeftX).topLeftY(topLeftY).width(width)
+				.height(height).gapBetweenNodes(gapBetweenNodes)
+				.nodesPerRow(nodesPerRow).create();
 
 		for (RiskToken riskToken : this.deck) {
 
-			riskToken.relocate(x, y);
-
-			tokensRelocated++;
-
-			if (tokensRelocated < tokensEachRow) {
-
-				x += Dimensions.RISK_TOKEN_GAME.x()
-						+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
-				continue;
-
-			}
-
-			tokensRelocated = 0;
-
-			x = Coordinates.RISK_TOKEN_PILE.x();
-			y += Dimensions.RISK_TOKEN_GAME.y()
-					+ Dimensions.GAP_BETWEEN_COMPONENTS.y();
+			Coordinate coordinate = coordinatesRelocate.removeFirst();
+			riskToken.relocate(coordinate.getX(), coordinate.getY());
 
 		}
 

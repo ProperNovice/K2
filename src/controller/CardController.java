@@ -1,6 +1,9 @@
 package controller;
 
 import utils.ArrayList;
+import utils.Coordinate;
+import utils.CoordinatesRelocate;
+import utils.CoordinatesRelocateBuilder;
 import cards.Card;
 import cards.CardAcclimatization;
 import cards.CardMovement;
@@ -48,31 +51,23 @@ public class CardController {
 
 	private void relocateDeck() {
 
-		double x = Coordinates.DECK.x();
-		double y = Coordinates.DECK.y();
+		double topLeftX = Coordinates.DECK.x();
+		double topLeftY = Coordinates.DECK.y();
+		double width = Dimensions.CARD_GAME.x();
+		double height = Dimensions.CARD_GAME.y();
+		double gapBetweenNodes = Dimensions.GAP_BETWEEN_COMPONENTS.x();
+		int nodesPerRow = 9;
 
-		int cardsEachRow = 9;
-		int cardsRelocated = 0;
+		CoordinatesRelocate coordinatesRelocate = new CoordinatesRelocateBuilder()
+				.topLeftX(topLeftX).topLeftY(topLeftY).width(width)
+				.height(height).gapBetweenNodes(gapBetweenNodes)
+				.nodesPerRow(nodesPerRow).create();
 
 		for (Card card : this.deck) {
 
-			card.relocate(x, y);
+			Coordinate coordinate = coordinatesRelocate.removeFirst();
 
-			cardsRelocated++;
-
-			if (cardsRelocated < cardsEachRow) {
-
-				x += Dimensions.CARD_GAME.x()
-						+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
-				continue;
-
-			}
-
-			cardsRelocated = 0;
-
-			x = Coordinates.DECK.x();
-			y += Dimensions.CARD_GAME.y()
-					+ Dimensions.GAP_BETWEEN_COMPONENTS.y();
+			card.relocate(coordinate.getX(), coordinate.getY());
 
 		}
 
@@ -97,31 +92,22 @@ public class CardController {
 
 	private void rearrangeDeckSynchronous() {
 
-		double x = Coordinates.DECK.x();
-		double y = Coordinates.DECK.y();
+		double topLeftX = Coordinates.DECK.x();
+		double topLeftY = Coordinates.DECK.y();
+		double width = Dimensions.CARD_GAME.x();
+		double height = Dimensions.CARD_GAME.y();
+		double gapBetweenNodes = Dimensions.GAP_BETWEEN_COMPONENTS.x();
+		int nodesPerRow = 9;
 
-		int cardsEachRow = 9;
-		int cardsAnimated = 0;
+		CoordinatesRelocate coordinatesRelocate = new CoordinatesRelocateBuilder()
+				.topLeftX(topLeftX).topLeftY(topLeftY).width(width)
+				.height(height).gapBetweenNodes(gapBetweenNodes)
+				.nodesPerRow(nodesPerRow).create();
 
 		for (Card card : this.deck) {
 
-			card.animateSynchronous(x, y);
-
-			cardsAnimated++;
-
-			if (cardsAnimated < cardsEachRow) {
-
-				x += Dimensions.CARD_GAME.x()
-						+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
-				continue;
-
-			}
-
-			cardsAnimated = 0;
-
-			x = Coordinates.DECK.x();
-			y += Dimensions.CARD_GAME.y()
-					+ Dimensions.GAP_BETWEEN_COMPONENTS.y();
+			Coordinate coordinate = coordinatesRelocate.removeFirst();
+			card.animateSynchronous(coordinate.getX(), coordinate.getY());
 
 		}
 
@@ -129,31 +115,22 @@ public class CardController {
 
 	private void rearrangeHandSynchronous() {
 
-		double x = Coordinates.HAND.x();
-		double y = Coordinates.HAND.y();
+		double topLeftX = Coordinates.HAND.x();
+		double topLeftY = Coordinates.HAND.y();
+		double width = Dimensions.CARD_GAME.x();
+		double height = Dimensions.CARD_GAME.y();
+		double gapBetweenNodes = Dimensions.GAP_BETWEEN_COMPONENTS.x();
+		int nodesPerRow = 3;
 
-		int cardsEachRow = 3;
-		int cardsAnimated = 0;
+		CoordinatesRelocate coordinatesRelocate = new CoordinatesRelocateBuilder()
+				.topLeftX(topLeftX).topLeftY(topLeftY).width(width)
+				.height(height).gapBetweenNodes(gapBetweenNodes)
+				.nodesPerRow(nodesPerRow).create();
 
 		for (Card card : this.hand) {
 
-			card.animateSynchronous(x, y);
-
-			cardsAnimated++;
-
-			if (cardsAnimated < cardsEachRow) {
-
-				x += Dimensions.CARD_GAME.x()
-						+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
-				continue;
-
-			}
-			
-			cardsAnimated = 0;
-
-			x = Coordinates.HAND.x();
-			y += Dimensions.CARD_GAME.y()
-					+ Dimensions.GAP_BETWEEN_COMPONENTS.y();
+			Coordinate coordinate = coordinatesRelocate.removeFirst();
+			card.animateSynchronous(coordinate.getX(), coordinate.getY());
 
 		}
 
