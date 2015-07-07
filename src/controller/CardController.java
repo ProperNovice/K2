@@ -77,15 +77,8 @@ public class CardController {
 
 	public void addCardsFromDeckToHandRearrangeSynchronous(int numberOfCards) {
 
-		ArrayList<Card> handTemp = new ArrayList<>(this.hand);
-		this.hand.clear();
-
 		for (int counter = 1; counter <= numberOfCards; counter++)
-			handTemp.add(this.deck.removeRandom());
-
-		for (Card card : this.cardSequenceDefault)
-			if (handTemp.contains(card))
-				this.hand.add(card);
+			this.hand.add(this.deck.removeRandom());
 
 		rearrangeDeckSynchronous();
 		rearrangeHandSynchronous();
@@ -129,6 +122,13 @@ public class CardController {
 				.topLeftX(topLeftX).topLeftY(topLeftY).width(width)
 				.height(height).gapBetweenNodes(gapBetweenNodes)
 				.nodesPerRow(nodesPerRow).create();
+
+		ArrayList<Card> handTemp = new ArrayList<>(this.hand);
+		this.hand.clear();
+
+		for (Card card : this.cardSequenceDefault)
+			if (handTemp.contains(card))
+				this.hand.add(card);
 
 		for (Card card : this.hand) {
 
