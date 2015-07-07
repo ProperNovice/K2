@@ -2,7 +2,6 @@ package enums;
 
 public enum Coordinates {
 
-	TEXT_PANEL(50, 50),
 	MAP(Dimensions.GAP_BETWEEN_BORDERS.x(), Dimensions.GAP_BETWEEN_BORDERS.y()),
 	ACCLIMATIZATION_INDICATOR(MAP.x() + Dimensions.MAP_GAME.x() + Dimensions.GAP_BETWEEN_COMPONENTS.x(), Dimensions.FRAME.y() - Dimensions.GAP_BETWEEN_BORDERS.y() - Dimensions.ACCLIMATIZATION_INDICATOR_GAME.y()),
 	WEATHER_TILES(ACCLIMATIZATION_INDICATOR.x(), Dimensions.GAP_BETWEEN_BORDERS.y()),
@@ -12,6 +11,8 @@ public enum Coordinates {
 	HAND(ACCLIMATIZATION_INDICATOR.x(), ACCLIMATIZATION_INDICATOR.y() - 2 * (Dimensions.GAP_BETWEEN_COMPONENTS.y() + Dimensions.CARD_GAME.y())),
 	RISK_TOKEN_PLAY(HAND.x(), HAND.y() - Dimensions.GAP_BETWEEN_COMPONENTS.y() - Dimensions.RISK_TOKEN_ORIGINAL.y() * Ratio.RISK_TOKEN.ratio()),
 	TENT_STARTING_LOCATION(RISK_TOKEN_PLAY.x(), RISK_TOKEN_PLAY.y() - Dimensions.GAP_BETWEEN_COMPONENTS.y() - Dimensions.TENT_ORIGINAL.y() * Dimensions.MOUNTAINEER_GAME.x() / Dimensions.TENT_ORIGINAL.x()),
+	TEXT_PANEL(HAND.x() + 3 * (Dimensions.CARD_GAME.x() + Dimensions.GAP_BETWEEN_COMPONENTS.x()), HAND.y()),
+	DISCARD_PILE(MAP.x() + 997 * Ratio.MAP.ratio() + (148 * Ratio.MAP.ratio() - Dimensions.CARD_GAME.x()) / 2, MAP.y() + 1090 * Ratio.MAP.ratio()),
 	
 	;
 

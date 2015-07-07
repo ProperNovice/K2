@@ -1,7 +1,8 @@
 package gameState;
 
-import model.Space;
 import instances.Instances;
+import model.Space;
+import cards.Card;
 import controller.Controller;
 import enums.TextEnum;
 
@@ -19,6 +20,17 @@ public class GameState {
 
 	public void handleSpacePressed(Space space) {
 
+	}
+
+	public final void handleCardPressed(Card card) {
+
+		if (this.controller.cardController().handContains(card))
+			handleCardHandPressed(card);
+		
+	}
+	
+	protected void handleCardHandPressed(Card card) {
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import utils.Animation.AnimationSynch;
 import utils.ArrayList;
 import utils.Coordinate;
 import utils.CoordinatesRelocate;
@@ -14,8 +15,9 @@ import enums.Dimensions;
 public class CardController {
 
 	private ArrayList<Card> cardSequenceDefault = new ArrayList<>();
-	private ArrayList<Card> deck = null;
+	private ArrayList<Card> deck = new ArrayList<>();
 	private ArrayList<Card> hand = new ArrayList<>();
+	private ArrayList<Card> discard = new ArrayList<>();
 
 	public CardController() {
 
@@ -45,7 +47,7 @@ public class CardController {
 		this.cardSequenceDefault.add(new CardAcclimatization(1));
 		this.cardSequenceDefault.add(new CardAcclimatization(0));
 
-		this.deck = this.cardSequenceDefault.clone();
+		this.deck.addAll(this.cardSequenceDefault);
 
 	}
 
@@ -107,13 +109,14 @@ public class CardController {
 		for (Card card : this.deck) {
 
 			Coordinate coordinate = coordinatesRelocate.removeFirst();
-			card.animateSynchronous(coordinate.getX(), coordinate.getY());
+			card.animate(coordinate.getX(), coordinate.getY(),
+					AnimationSynch.SYNCHRONOUS);
 
 		}
 
 	}
 
-	private void rearrangeHandSynchronous() {
+	public void rearrangeHandSynchronous() {
 
 		double topLeftX = Coordinates.HAND.x();
 		double topLeftY = Coordinates.HAND.y();
@@ -130,9 +133,25 @@ public class CardController {
 		for (Card card : this.hand) {
 
 			Coordinate coordinate = coordinatesRelocate.removeFirst();
-			card.animateSynchronous(coordinate.getX(), coordinate.getY());
+			card.animate(coordinate.getX(), coordinate.getY(),
+					AnimationSynch.SYNCHRONOUS);
 
 		}
+
+	}
+
+	public boolean handContains(Card card) {
+		return this.hand.contains(card);
+	}
+
+	public void addCardFromHandToDiscardAnimate(Card card,
+			AnimationSynch animationSynch) {
+
+		this.hand.remove(card);
+		this.discard.add(card);
+
+		card.animate(Coordinates.DISCARD_PILE.x(),
+				Coordinates.DISCARD_PILE.y(), animationSynch);
 
 	}
 

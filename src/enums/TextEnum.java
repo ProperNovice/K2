@@ -1,6 +1,8 @@
 package enums;
 
 public enum TextEnum {
+	
+	CHOOSE_CARDSTO_PLAY("Choose cards\nto play", TextTypeEnum.INDICATOR),
 
 	;
 

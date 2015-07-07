@@ -1,5 +1,7 @@
 package cards;
 
+import instances.Instances;
+import utils.Executor;
 import utils.Logger;
 
 public class CardAcclimatization extends Card {
@@ -18,6 +20,9 @@ public class CardAcclimatization extends Card {
 	public void handleMouseButtonPressedPrimary() {
 
 		Logger.logNewLine("acclimatization " + this.acclimatization);
+
+		Executor.runLater(() -> Instances.getControllerInstance()
+				.gameStateController().handleCardPressed(this));
 
 	}
 

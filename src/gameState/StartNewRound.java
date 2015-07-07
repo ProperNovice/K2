@@ -1,5 +1,6 @@
 package gameState;
 
+import enums.GameStateEnum;
 import utils.Lock;
 
 public class StartNewRound extends GameState {
@@ -14,6 +15,8 @@ public class StartNewRound extends GameState {
 				.addTokensFromDeckToPlayRearrangeSynchronous();
 
 		Lock.lock();
+		
+		super.controller.gameStateController().setGameState(GameStateEnum.CHOOSE_CARDS_TO_PLAY);
 
 	}
 

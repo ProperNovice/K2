@@ -1,5 +1,7 @@
 package cards;
 
+import instances.Instances;
+import utils.Executor;
 import utils.Logger;
 
 public class CardRope extends Card {
@@ -20,6 +22,9 @@ public class CardRope extends Card {
 	public void handleMouseButtonPressedPrimary() {
 
 		Logger.logNewLine("rope " + this.movementUp + "/" + this.movementDown);
+
+		Executor.runLater(() -> Instances.getControllerInstance()
+				.gameStateController().handleCardPressed(this));
 
 	}
 

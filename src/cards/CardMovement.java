@@ -1,5 +1,7 @@
 package cards;
 
+import instances.Instances;
+import utils.Executor;
 import utils.Logger;
 
 public class CardMovement extends Card {
@@ -22,6 +24,9 @@ public class CardMovement extends Card {
 	public void handleMouseButtonPressedPrimary() {
 
 		Logger.logNewLine("movement " + this.movement);
+
+		Executor.runLater(() -> Instances.getControllerInstance()
+				.gameStateController().handleCardPressed(this));
 
 	}
 
