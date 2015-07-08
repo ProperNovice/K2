@@ -15,13 +15,13 @@ public class ChooseCardToPlay extends GameState {
 	public void handleGameStateChange() {
 
 		if (this.cardLeftToChoose > 0)
-			super.controller.textController().showText(TextEnum.CHOOSE_A_CARD);
+			super.controller.textController().showText(
+					TextEnum.CHOOSE_CARD_TO_PLAY);
 
 		else if (this.cardLeftToChoose == 0) {
 
 			this.cardLeftToChoose = 3;
-			super.controller.cardController().rearrangeHand(
-					AnimationSynch.ASYNCHRONOUS);
+
 			super.controller.gameStateController().setGameState(
 					GameStateEnum.CHOOSE_RISK_TOKEN);
 

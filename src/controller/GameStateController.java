@@ -1,11 +1,11 @@
 package controller;
 
 import components.RiskToken;
-
 import cards.Card;
 import enums.GameStateEnum;
 import enums.TextEnum;
 import gameState.Animating;
+import gameState.ApplyRiskToken;
 import gameState.ChooseCardToPlay;
 import gameState.ChooseMountaineerToApplyCard;
 import gameState.ChooseRiskToken;
@@ -26,6 +26,7 @@ public class GameStateController {
 	private GameState chooseMountaineerToApplyCard = new ChooseMountaineerToApplyCard();
 	private GameState chooseRopeDirection = new ChooseRopeDirection();
 	private GameState chooseRiskToken = new ChooseRiskToken();
+	private GameState applyRiskToken = new ApplyRiskToken();
 
 	public GameStateController() {
 
@@ -61,6 +62,11 @@ public class GameStateController {
 
 		case CHOOSE_RISK_TOKEN:
 			this.currentGameState = this.chooseRiskToken;
+			break;
+			
+		case APPLY_RISK_TOKEN:
+			this.currentGameState = this.applyRiskToken;
+			break;
 
 		}
 

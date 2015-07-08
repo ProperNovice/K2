@@ -1,7 +1,7 @@
 package gameState;
 
-import utils.Animation.AnimationSynch;
 import components.RiskToken;
+import enums.GameStateEnum;
 import enums.TextEnum;
 
 public class ChooseRiskToken extends GameState {
@@ -21,8 +21,11 @@ public class ChooseRiskToken extends GameState {
 		super.controller.riskTokenController()
 				.addRiskTokenFromPlayToDiscardAnimateAsynchronous(riskToken);
 
-		super.controller.riskTokenController()
-				.addTokensFromDeckToPlayRearrange(AnimationSynch.ASYNCHRONOUS);
+		int value = riskToken.getValue();
+
+		if (value > 0)
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.APPLY_RISK_TOKEN);
 
 	}
 

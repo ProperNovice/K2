@@ -9,12 +9,11 @@ public class StartNewRound extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
+		super.controller.riskTokenController()
+				.addTokensFromDeckToPlayRearrange(AnimationSynch.SYNCHRONOUS);
+
 		super.controller.cardController()
 				.addCardsFromDeckToHandRearrangeSynchronous();
-
-		super.controller.riskTokenController()
-				.addTokensFromDeckToPlayRearrange(
-						AnimationSynch.SYNCHRONOUS);
 
 		Lock.lock();
 
