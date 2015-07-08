@@ -11,6 +11,7 @@ import cards.CardMovement;
 import cards.CardRope;
 import enums.Coordinates;
 import enums.Dimensions;
+import enums.RopeMovement;
 
 public class CardController {
 
@@ -18,6 +19,7 @@ public class CardController {
 	private ArrayList<Card> deck = new ArrayList<>();
 	private ArrayList<Card> hand = new ArrayList<>();
 	private ArrayList<Card> discard = new ArrayList<>();
+	private RopeMovement ropePlayedAs = null;
 
 	public CardController() {
 
@@ -159,6 +161,14 @@ public class CardController {
 
 	public Card getLastCardPlayed() {
 		return this.discard.getLast();
+	}
+
+	public void setRopePlayAs(RopeMovement ropeMovement) {
+		this.ropePlayedAs = ropeMovement;
+	}
+
+	public RopeMovement getRopePlayedAs() {
+		return this.ropePlayedAs;
 	}
 
 }

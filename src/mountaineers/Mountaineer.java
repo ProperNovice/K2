@@ -90,8 +90,6 @@ public class Mountaineer {
 
 		this.movement += movement;
 		this.panelMovement.setMovement(this.movement);
-		
-		System.out.println(this.movement);
 
 	}
 
