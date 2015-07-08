@@ -17,6 +17,16 @@ public class ChooseCardToPlay extends GameState {
 		if (this.cardLeftToChoose > 0)
 			super.controller.textController().showText(TextEnum.CHOOSE_A_CARD);
 
+		else if (this.cardLeftToChoose == 0) {
+
+			this.cardLeftToChoose = 3;
+			super.controller.cardController().rearrangeHand(
+					AnimationSynch.ASYNCHRONOUS);
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.CHOOSE_RISK_TOKEN);
+
+		}
+
 	}
 
 	@Override

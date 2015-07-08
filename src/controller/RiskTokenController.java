@@ -1,5 +1,6 @@
 package controller;
 
+import utils.Animation.AnimationSynch;
 import utils.ArrayList;
 import utils.Coordinate;
 import utils.CoordinatesRelocate;
@@ -14,6 +15,7 @@ public class RiskTokenController {
 
 	private ArrayList<RiskToken> deck = new ArrayList<>();
 	private ArrayList<RiskToken> play = new ArrayList<>();
+	private ArrayList<RiskToken> discard = new ArrayList<>();
 
 	public RiskTokenController() {
 
@@ -60,45 +62,19 @@ public class RiskTokenController {
 
 	}
 
-	public void addTokensFromDeckToPlayRearrangeSynchronous() {
+	public void addTokensFromDeckToPlayRearrange(AnimationSynch animationSynch) {
 
 		int tokensToAdd = 3 - this.play.size();
 
-		ArrayList<RiskToken> playTemp = null;
-		this.play.clear();
+		for (int counter = 1; counter <= tokensToAdd; counter++)
+			this.play.add(this.deck.removeRandom());
 
-		for (int counter = 1; counter <= tokensToAdd; counter++) {
-
-			RiskToken riskTokenToAdd = this.deck.removeRandom();
-			int riskTokenToAddValue = riskTokenToAdd.getValue();
-
-			playTemp = new ArrayList<>(this.play);
-
-			for (RiskToken token : playTemp) {
-
-				int tokenValue = token.getValue();
-
-				if (tokenValue >= riskTokenToAddValue)
-					continue;
-
-				int index = this.play.indexOf(token);
-				this.play.add(index, riskTokenToAdd);
-
-				break;
-
-			}
-
-			if (!this.play.contains(riskTokenToAdd))
-				this.play.add(riskTokenToAdd);
-
-		}
-
-		rearrangeRiskTokensDeck();
-		rearrangeRiskTokensPlay();
+		rearrangeRiskTokensDeck(animationSynch);
+		rearrangeRiskTokensPlay(animationSynch);
 
 	}
 
-	private void rearrangeRiskTokensDeck() {
+	private void rearrangeRiskTokensDeck(AnimationSynch animationSynch) {
 
 		double topLeftX = Coordinates.RISK_TOKEN_DECK.x();
 		double topLeftY = Coordinates.RISK_TOKEN_DECK.y();
@@ -115,13 +91,42 @@ public class RiskTokenController {
 		for (RiskToken riskToken : this.deck) {
 
 			Coordinate coordinate = coordinatesRelocate.removeFirst();
-			riskToken.animateSynchronous(coordinate.getX(), coordinate.getY());
+			riskToken.animate(coordinate.getX(), coordinate.getY(),
+					animationSynch);
 
 		}
 
 	}
 
-	private void rearrangeRiskTokensPlay() {
+	private void rearrangeRiskTokensPlay(AnimationSynch animationSynch) {
+
+		ArrayList<RiskToken> playTemp = new ArrayList<>(this.play);
+		this.play.clear();
+
+		while (!playTemp.isEmpty()) {
+
+			RiskToken riskTokenToAdd = playTemp.removeFirst();
+			int riskTokenToAddValue = riskTokenToAdd.getValue();
+			int indexToAdd = -1;
+
+			for (RiskToken tokenTemp : this.play) {
+
+				int tokenValue = tokenTemp.getValue();
+
+				if (tokenValue >= riskTokenToAddValue)
+					continue;
+
+				indexToAdd = this.play.indexOf(tokenTemp);
+				break;
+
+			}
+
+			if (indexToAdd == -1)
+				this.play.add(riskTokenToAdd);
+			else
+				this.play.add(indexToAdd, riskTokenToAdd);
+
+		}
 
 		double topLeftX = Coordinates.RISK_TOKEN_PLAY.x();
 		double topLeftY = Coordinates.RISK_TOKEN_PLAY.y();
@@ -138,9 +143,25 @@ public class RiskTokenController {
 		for (RiskToken riskToken : this.play) {
 
 			Coordinate coordinate = coordinatesRelocate.removeFirst();
-			riskToken.animateSynchronous(coordinate.getX(), coordinate.getY());
+			riskToken.animate(coordinate.getX(), coordinate.getY(),
+					animationSynch);
 
 		}
+
+	}
+
+	public boolean playContains(RiskToken riskToken) {
+		return this.play.contains(riskToken);
+	}
+
+	public void addRiskTokenFromPlayToDiscardAnimateAsynchronous(
+			RiskToken riskToken) {
+
+		this.play.remove(riskToken);
+		this.discard.add(riskToken);
+		riskToken.animate(Coordinates.RISK_TOKEN_DISCARD_PILE.x(),
+				Coordinates.RISK_TOKEN_DISCARD_PILE.y(),
+				AnimationSynch.ASYNCHRONOUS);
 
 	}
 

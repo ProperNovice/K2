@@ -8,6 +8,7 @@ public enum GameStateEnum {
 	CHOOSE_CARD_TO_PLAY("choose card to play"),
 	CHOOSE_MOUNTAINEER_TO_APPLY_CARD("choose mountaineer"),
 	CHOOSE_ROPE_DIRECTION("choose rope direction"),
+	CHOOSE_RISK_TOKEN("choose risk token"),
 
 	;
 

@@ -7,6 +7,7 @@ public enum TextEnum {
 	MOUNTAINEER_II("M. II", TextTypeEnum.OPTION),
 	UP("Up", TextTypeEnum.OPTION),
 	DOWN("Down", TextTypeEnum.OPTION),
+	CHOOSE_RISK_TOKEN("Choose\nrisk token", TextTypeEnum.INDICATOR),
 
 	;
 

@@ -1,5 +1,7 @@
 package gameState;
 
+import components.RiskToken;
+
 import instances.Instances;
 import model.Space;
 import cards.Card;
@@ -26,11 +28,22 @@ public class GameState {
 
 		if (this.controller.cardController().handContains(card))
 			handleCardHandPressed(card);
-		
+
 	}
-	
+
 	protected void handleCardHandPressed(Card card) {
-		
+
+	}
+
+	public final void handleRiskTokenPressed(RiskToken riskToken) {
+
+		if (this.controller.riskTokenController().playContains(riskToken))
+			handleRiskTokenPlayPressed(riskToken);
+
+	}
+
+	protected void handleRiskTokenPlayPressed(RiskToken riskToken) {
+
 	}
 
 }

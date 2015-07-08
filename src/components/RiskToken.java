@@ -1,9 +1,11 @@
 package components;
 
+import instances.Instances;
 import utils.Animation;
 import utils.Animation.AnimationSynch;
 import utils.EventHandler;
 import utils.EventHandler.EventHandlerAble;
+import utils.Executor;
 import utils.ImageView;
 import utils.Logger;
 import enums.Dimensions;
@@ -34,15 +36,18 @@ public class RiskToken implements EventHandlerAble {
 
 		Logger.logNewLine("risk token " + this.value);
 
+		Executor.runLater(() -> Instances.getControllerInstance()
+				.gameStateController().handleRiskTokenPressed(this));
+
 	}
 
 	public void relocate(double x, double y) {
 		this.imageView.relocate(x, y);
 	}
 
-	public void animateSynchronous(double endingX, double endingY) {
-		Animation.animate(this.imageView, endingX, endingY,
-				AnimationSynch.SYNCHRONOUS);
+	public void animate(double endingX, double endingY,
+			AnimationSynch animationSynch) {
+		Animation.animate(this.imageView, endingX, endingY, animationSynch);
 	}
 
 	public int getValue() {
