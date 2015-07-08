@@ -2,6 +2,7 @@ package gameState;
 
 import cards.Card;
 import cards.CardAcclimatization;
+import enums.GameStateEnum;
 import enums.MountaineerEnum;
 import enums.TextEnum;
 
@@ -52,8 +53,11 @@ public class ChooseMountaineerToApplyCard extends GameState {
 		int acclimatization = cardAcclimatization.getAcclimatization();
 
 		super.controller.mountaineerController()
-				.addAcclimatizationToMountaineerAnimateAsynchronous(mountaineerEnum,
-						acclimatization);
+				.addAcclimatizationToMountaineerAnimateAsynchronous(
+						mountaineerEnum, acclimatization);
+
+		super.controller.gameStateController().setGameState(
+				GameStateEnum.CHOOSE_CARD_TO_PLAY);
 
 	}
 

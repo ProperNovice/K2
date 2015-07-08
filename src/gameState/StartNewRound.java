@@ -16,7 +16,7 @@ public class StartNewRound extends GameState {
 
 		Lock.lock();
 		
-		super.controller.gameStateController().setGameState(GameStateEnum.CHOOSE_CARDS_TO_PLAY);
+		super.controller.gameStateController().setGameState(GameStateEnum.CHOOSE_CARD_TO_PLAY);
 
 	}
 

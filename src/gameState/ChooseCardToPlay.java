@@ -2,11 +2,12 @@ package gameState;
 
 import utils.Animation.AnimationSynch;
 import cards.Card;
+import cards.CardAcclimatization;
 import cards.CardRope;
 import enums.GameStateEnum;
 import enums.TextEnum;
 
-public class ChooseCardsToPlay extends GameState {
+public class ChooseCardToPlay extends GameState {
 
 	private int cardLeftToChoose = 3;
 
@@ -15,7 +16,7 @@ public class ChooseCardsToPlay extends GameState {
 
 		if (this.cardLeftToChoose > 0)
 			super.controller.textController().showText(
-					TextEnum.CHOOSE_CARDSTO_PLAY);
+					TextEnum.CHOOSE_A_CARD);
 
 	}
 
@@ -29,6 +30,12 @@ public class ChooseCardsToPlay extends GameState {
 				AnimationSynch.ASYNCHRONOUS);
 
 		if (card instanceof CardRope) {
+
+		} else if (card instanceof CardAcclimatization
+				&& ((CardAcclimatization) card).getAcclimatization() == 0) {
+
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.CHOOSE_CARD_TO_PLAY);
 
 		} else
 			super.controller.gameStateController().setGameState(

@@ -72,19 +72,6 @@ public class AcclimatizationIndicator {
 					+ this.zeroX + this.distanceBetweenNumbers,
 					Coordinates.ACCLIMATIZATION_INDICATOR.y() + circleY);
 
-			System.out.println(Coordinates.ACCLIMATIZATION_INDICATOR.x()
-					+ this.zeroX + this.distanceBetweenNumbers);
-			System.out.println(Coordinates.ACCLIMATIZATION_INDICATOR.y()
-					+ circleY);
-			System.out.println();
-			
-			System.out.println(circle.getLayoutX());
-			System.out.println(circle.getLayoutY());
-			System.out.println();
-			
-			System.out.println(this.circleRadius);
-			System.out.println();
-
 		}
 
 	}

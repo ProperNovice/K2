@@ -67,7 +67,10 @@ public class Mountaineer {
 	}
 
 	public void addAcclimatization(int acclimatization) {
+
 		this.acclimatization += acclimatization;
+		this.acclimatization = (int) Math.min(10, this.acclimatization);
+
 	}
 
 	public int getAcclimatization() {

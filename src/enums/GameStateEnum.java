@@ -5,7 +5,7 @@ public enum GameStateEnum {
 	START_GAME("start game"),
 	ANIMATING("animating"),
 	START_NEW_ROUND("start new round"),
-	CHOOSE_CARDS_TO_PLAY("choose cards to play"),
+	CHOOSE_CARD_TO_PLAY("choose card to play"),
 	CHOOSE_MOUNTAINEER_TO_APPLY_CARD("choose mountaineer"),
 
 	;
