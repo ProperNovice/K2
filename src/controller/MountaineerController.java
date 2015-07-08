@@ -94,7 +94,6 @@ public class MountaineerController {
 			int movement) {
 
 		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
-		mountaineer.panelMovementSetVisible(true);
 		mountaineer.addMovementPanelMovementUpdate(movement);
 
 	}
@@ -103,7 +102,6 @@ public class MountaineerController {
 			int movement) {
 
 		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
-		mountaineer.panelMovementSetVisible(true);
 		mountaineer.addMovementRopeUpPanelMovementUpdate(movement);
 
 	}
@@ -112,7 +110,6 @@ public class MountaineerController {
 			MountaineerEnum mountaineerEnum, int movement) {
 
 		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
-		mountaineer.panelMovementSetVisible(true);
 		mountaineer.addMovementRopeDownPanelMovementUpdate(movement);
 
 	}

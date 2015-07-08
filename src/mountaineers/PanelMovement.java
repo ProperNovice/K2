@@ -1,5 +1,6 @@
 package mountaineers;
 
+import utils.Executor;
 import utils.Text;
 import enums.Coordinates;
 import enums.Credentials;
@@ -17,7 +18,7 @@ public class PanelMovement {
 	public PanelMovement(MountaineerEnum mountaineerEnum) {
 
 		createTexts(mountaineerEnum);
-		setVisible(false);
+		setVisibleFalse();
 
 	}
 
@@ -62,22 +63,69 @@ public class PanelMovement {
 
 	public void setMovement(int movement) {
 		this.movement.setText("move: " + movement);
+		this.movement.setVisible(true);
+		relocateTexts();
 	}
 
 	public void setMovementRopeUp(int movement) {
 		this.movementRopeUp.setText("up: " + movement);
+		this.movementRopeUp.setVisible(true);
+		relocateTexts();
 	}
 
 	public void setMovementRopeDown(int movement) {
 		this.movementRopeDown.setText("down: " + movement);
+		this.movementRopeDown.setVisible(true);
+		relocateTexts();
 	}
 
-	public void setVisible(boolean value) {
+	private void relocateTexts() {
 
-		this.mountaineer.setVisible(value);
-		this.movement.setVisible(value);
-		this.movementRopeUp.setVisible(value);
-		this.movementRopeDown.setVisible(value);
+		Executor.sleep(2);
+
+		System.out.println("st");
+
+		this.mountaineer.setVisible(true);
+
+		double y = this.yFirst;
+
+		System.out.println(this.movement.isVisible());
+
+		if (this.movement.isVisible()) {
+
+			System.out.println("1");
+
+			this.movement.relocate(this.x, y);
+			y = this.ySecond;
+
+		}
+
+		if (this.movementRopeUp.isVisible()) {
+
+			System.out.println("2");
+
+			this.movementRopeUp.relocate(this.x, y);
+
+			if (y == this.yFirst)
+				y = this.ySecond;
+			else if (y == this.ySecond)
+				y = this.yThird;
+
+		}
+
+		if (this.movementRopeDown.isVisible()) {
+			System.out.println("3");
+			this.movementRopeUp.relocate(this.x, y);
+		}
+
+	}
+
+	public void setVisibleFalse() {
+
+		this.mountaineer.setVisible(false);
+		this.movement.setVisible(false);
+		this.movementRopeUp.setVisible(false);
+		this.movementRopeDown.setVisible(false);
 
 	}
 

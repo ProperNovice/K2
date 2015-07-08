@@ -107,8 +107,8 @@ public class Mountaineer {
 
 	}
 
-	public void panelMovementSetVisible(boolean value) {
-		this.panelMovement.setVisible(value);
+	public void panelMovementSetVisible() {
+		this.panelMovement.setVisibleFalse();
 	}
 
 	public void panelMovementReset() {
