@@ -1,7 +1,7 @@
 package controller;
 
-import model.AcclimatizationIndicator;
 import model.Space;
+import mountaineers.AcclimatizationIndicator;
 import mountaineers.Mountaineer;
 import enums.Coordinates;
 import enums.Dimensions;

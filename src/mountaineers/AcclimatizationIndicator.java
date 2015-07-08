@@ -1,10 +1,9 @@
-package model;
+package mountaineers;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import javafx.scene.paint.Color;
-import mountaineers.Mountaineer;
 import utils.Animation;
 import utils.Animation.AnimationSynch;
 import utils.Circle;
