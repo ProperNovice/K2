@@ -2,6 +2,7 @@ package gameState;
 
 import cards.Card;
 import cards.CardAcclimatization;
+import cards.CardMovement;
 import enums.GameStateEnum;
 import enums.MountaineerEnum;
 import enums.TextEnum;
@@ -42,19 +43,36 @@ public class ChooseMountaineerToApplyCard extends GameState {
 				.getLastCardPlayed();
 
 		if (cardLastPlayed instanceof CardAcclimatization)
-			addAcclimatizationToMountaineer(mountaineerEnum, cardLastPlayed);
+			addAcclimatizationToMountaineer(mountaineerEnum,
+					(CardAcclimatization) cardLastPlayed);
+
+		else if (cardLastPlayed instanceof CardMovement)
+			handleCardMovement(mountaineerEnum, (CardMovement) cardLastPlayed);
 
 	}
 
 	private void addAcclimatizationToMountaineer(
-			MountaineerEnum mountaineerEnum, Card cardLastPlayed) {
+			MountaineerEnum mountaineerEnum,
+			CardAcclimatization cardAcclimatization) {
 
-		CardAcclimatization cardAcclimatization = (CardAcclimatization) cardLastPlayed;
 		int acclimatization = cardAcclimatization.getAcclimatization();
 
 		super.controller.mountaineerController()
 				.addAcclimatizationToMountaineerAnimateAsynchronous(
 						mountaineerEnum, acclimatization);
+
+		super.controller.gameStateController().setGameState(
+				GameStateEnum.CHOOSE_CARD_TO_PLAY);
+
+	}
+
+	private void handleCardMovement(MountaineerEnum mountaineerEnum,
+			CardMovement cardMovement) {
+
+		int movement = cardMovement.getMovement();
+
+		super.controller.mountaineerController().addMovementToMountaineer(
+				mountaineerEnum, movement);
 
 		super.controller.gameStateController().setGameState(
 				GameStateEnum.CHOOSE_CARD_TO_PLAY);

@@ -11,6 +11,10 @@ public class Mountaineer {
 	private ImageView mountaineerMap = null, tent = null;
 	private Space mountaineerSpace = null;
 	private int acclimatization = 1;
+	private int movement = 0;
+	private int movementRopeUp = 0;
+	private int movementRopeDown = 0;
+	private PanelMovement panelMovement = null;
 
 	public Mountaineer(MountaineerEnum mountaineerEnum) {
 
@@ -18,6 +22,7 @@ public class Mountaineer {
 
 		createTent();
 		createMountaineer();
+		createPanelMovement();
 
 	}
 
@@ -40,6 +45,10 @@ public class Mountaineer {
 		this.tent = new ImageView(path);
 		this.tent.setWidth(Dimensions.TENT_GAME.x());
 
+	}
+
+	private void createPanelMovement() {
+		this.panelMovement = new PanelMovement(this.mountaineerEnum);
 	}
 
 	public MountaineerEnum getMountaineerEnum() {
@@ -75,6 +84,33 @@ public class Mountaineer {
 
 	public int getAcclimatization() {
 		return this.acclimatization;
+	}
+
+	public void addMovementPanelMovementUpdate(int movement) {
+
+		this.movement += movement;
+		this.panelMovement.setMovement(this.movement);
+		
+		System.out.println(this.movement);
+
+	}
+
+	public void addMovementRopeUpPanelMovementUpdate(int movement) {
+
+		this.movementRopeUp += movement;
+		this.panelMovement.setMovementRopeUp(this.movementRopeUp);
+
+	}
+
+	public void addMovementRopeDownPanelMovementUpdate(int movement) {
+
+		this.movementRopeDown += movement;
+		this.panelMovement.setMovementRopeDown(this.movementRopeDown);
+
+	}
+
+	public void panelMovementSetVisible(boolean value) {
+		this.panelMovement.setVisible(value);
 	}
 
 }

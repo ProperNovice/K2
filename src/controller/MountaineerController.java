@@ -59,8 +59,7 @@ public class MountaineerController {
 				this.mountaineerI, this.mountaineerII);
 	}
 
-	public void addAcclimatizationToMountaineerAnimateAsynchronous(
-			MountaineerEnum mountaineerEnum, int acclimatization) {
+	private Mountaineer getMountaineer(MountaineerEnum mountaineerEnum) {
 
 		Mountaineer mountaineer = null;
 
@@ -76,9 +75,45 @@ public class MountaineerController {
 
 		}
 
+		return mountaineer;
+
+	}
+
+	public void addAcclimatizationToMountaineerAnimateAsynchronous(
+			MountaineerEnum mountaineerEnum, int acclimatization) {
+
+		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
+
 		mountaineer.addAcclimatization(acclimatization);
 		this.acclimatizationIndicator
 				.animateTotalAcclimatizationAsynchronous(mountaineer);
+
+	}
+
+	public void addMovementToMountaineer(MountaineerEnum mountaineerEnum,
+			int movement) {
+
+		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
+		mountaineer.panelMovementSetVisible(true);
+		mountaineer.addMovementPanelMovementUpdate(movement);
+
+	}
+
+	public void addMovementRopeUpToMountaineer(MountaineerEnum mountaineerEnum,
+			int movement) {
+
+		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
+		mountaineer.panelMovementSetVisible(true);
+		mountaineer.addMovementRopeUpPanelMovementUpdate(movement);
+
+	}
+
+	public void addMovementRopeDownToMountaineer(
+			MountaineerEnum mountaineerEnum, int movement) {
+
+		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
+		mountaineer.panelMovementSetVisible(true);
+		mountaineer.addMovementRopeDownPanelMovementUpdate(movement);
 
 	}
 

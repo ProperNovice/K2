@@ -13,6 +13,8 @@ public enum Coordinates {
 	TENT_STARTING_LOCATION(RISK_TOKEN_PLAY.x(), RISK_TOKEN_PLAY.y() - Dimensions.GAP_BETWEEN_COMPONENTS.y() - Dimensions.TENT_ORIGINAL.y() * Dimensions.MOUNTAINEER_GAME.x() / Dimensions.TENT_ORIGINAL.x()),
 	TEXT_PANEL(HAND.x() + 3 * (Dimensions.CARD_GAME.x() + Dimensions.GAP_BETWEEN_COMPONENTS.x()), HAND.y()),
 	DISCARD_PILE(MAP.x() + 997 * Ratio.MAP.ratio() + (148 * Ratio.MAP.ratio() - Dimensions.CARD_GAME.x()) / 2, MAP.y() + 1090 * Ratio.MAP.ratio()),
+	PANEL_MOVEMENT_MOUNTAINEER_I(1230, RISK_TOKEN_PLAY.y() - 40),
+	PANEL_MOVEMENT_MOUNTAINEER_II(PANEL_MOVEMENT_MOUNTAINEER_I.x(), PANEL_MOVEMENT_MOUNTAINEER_I.y() + 130),
 	
 	;
 
