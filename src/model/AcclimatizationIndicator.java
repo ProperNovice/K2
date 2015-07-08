@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javafx.scene.paint.Color;
 import mountaineers.Mountaineer;
+import utils.Animation;
+import utils.Animation.AnimationSynch;
 import utils.Circle;
 import utils.ImageView;
 import enums.Coordinates;
@@ -69,6 +71,46 @@ public class AcclimatizationIndicator {
 			circle.relocate(Coordinates.ACCLIMATIZATION_INDICATOR.x()
 					+ this.zeroX + this.distanceBetweenNumbers,
 					Coordinates.ACCLIMATIZATION_INDICATOR.y() + circleY);
+
+			System.out.println(Coordinates.ACCLIMATIZATION_INDICATOR.x()
+					+ this.zeroX + this.distanceBetweenNumbers);
+			System.out.println(Coordinates.ACCLIMATIZATION_INDICATOR.y()
+					+ circleY);
+			System.out.println();
+			
+			System.out.println(circle.getLayoutX());
+			System.out.println(circle.getLayoutY());
+			System.out.println();
+			
+			System.out.println(this.circleRadius);
+			System.out.println();
+
+		}
+
+	}
+
+	public void animateTotalAcclimatizationAsynchronous(Mountaineer mountaineer) {
+
+		for (Map.Entry<Mountaineer, Circle> entry : this.indicators.entrySet()) {
+
+			Mountaineer mountaineerTemp = entry.getKey();
+
+			if (!mountaineer.equals(mountaineerTemp))
+				continue;
+
+			Circle circle = entry.getValue();
+
+			double circleY = mountaineer.getMountaineerEnum()
+					.acclimatizationIndicatorY();
+			circleY *= Ratio.ACCLIMATIZATION_INDICATOR.ratio();
+
+			int acclimatization = mountaineer.getAcclimatization();
+
+			Animation.animate(circle, Coordinates.ACCLIMATIZATION_INDICATOR.x()
+					+ this.zeroX + this.distanceBetweenNumbers
+					* acclimatization,
+					Coordinates.ACCLIMATIZATION_INDICATOR.y() + circleY,
+					AnimationSynch.ASYNCHRONOUS);
 
 		}
 

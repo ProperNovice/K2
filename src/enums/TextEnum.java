@@ -3,6 +3,8 @@ package enums;
 public enum TextEnum {
 	
 	CHOOSE_CARDSTO_PLAY("Choose cards\nto play", TextTypeEnum.INDICATOR),
+	MOUNTAINEER_I("Mountaineer I", TextTypeEnum.OPTION),
+	MOUNTAINEER_II("Mountaineer II", TextTypeEnum.OPTION),
 
 	;
 

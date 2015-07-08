@@ -157,4 +157,8 @@ public class CardController {
 
 	}
 
+	public Card getLastCardPlayed() {
+		return this.discard.getLast();
+	}
+
 }

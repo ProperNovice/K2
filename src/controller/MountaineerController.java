@@ -59,4 +59,27 @@ public class MountaineerController {
 				this.mountaineerI, this.mountaineerII);
 	}
 
+	public void addAcclimatizationToMountaineerAnimateAsynchronous(
+			MountaineerEnum mountaineerEnum, int acclimatization) {
+
+		Mountaineer mountaineer = null;
+
+		switch (mountaineerEnum) {
+
+		case I:
+			mountaineer = this.mountaineerI;
+			break;
+
+		case II:
+			mountaineer = this.mountaineerII;
+			break;
+
+		}
+
+		mountaineer.addAcclimatization(acclimatization);
+		this.acclimatizationIndicator
+				.animateTotalAcclimatizationAsynchronous(mountaineer);
+
+	}
+
 }

@@ -1,6 +1,9 @@
 package gameState;
 
+import utils.Animation.AnimationSynch;
 import cards.Card;
+import cards.CardRope;
+import enums.GameStateEnum;
 import enums.TextEnum;
 
 public class ChooseCardsToPlay extends GameState {
@@ -21,6 +24,15 @@ public class ChooseCardsToPlay extends GameState {
 
 		this.cardLeftToChoose--;
 		super.controller.textController().concealText();
+
+		super.controller.cardController().addCardFromHandToDiscardAnimate(card,
+				AnimationSynch.ASYNCHRONOUS);
+
+		if (card instanceof CardRope) {
+
+		} else
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.CHOOSE_MOUNTAINEER_TO_APPLY_CARD);
 
 	}
 

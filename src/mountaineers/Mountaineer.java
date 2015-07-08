@@ -10,6 +10,7 @@ public class Mountaineer {
 	private MountaineerEnum mountaineerEnum = null;
 	private ImageView mountaineerMap = null, tent = null;
 	private Space mountaineerSpace = null;
+	private int acclimatization = 1;
 
 	public Mountaineer(MountaineerEnum mountaineerEnum) {
 
@@ -63,6 +64,14 @@ public class Mountaineer {
 
 	public ImageView getTent() {
 		return this.tent;
+	}
+
+	public void addAcclimatization(int acclimatization) {
+		this.acclimatization += acclimatization;
+	}
+
+	public int getAcclimatization() {
+		return this.acclimatization;
 	}
 
 }
