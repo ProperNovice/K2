@@ -5,6 +5,8 @@ public enum TextEnum {
 	CHOOSE_A_CARD("Choose card", TextTypeEnum.INDICATOR),
 	MOUNTAINEER_I("M. I", TextTypeEnum.OPTION),
 	MOUNTAINEER_II("M. II", TextTypeEnum.OPTION),
+	UP("Up", TextTypeEnum.OPTION),
+	DOWN("Down", TextTypeEnum.OPTION),
 
 	;
 

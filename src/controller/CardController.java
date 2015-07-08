@@ -163,11 +163,11 @@ public class CardController {
 		return this.discard.getLast();
 	}
 
-	public void setRopePlayAs(RopeMovement ropeMovement) {
+	public void setRopeMovementPlayAs(RopeMovement ropeMovement) {
 		this.ropePlayedAs = ropeMovement;
 	}
 
-	public RopeMovement getRopePlayedAs() {
+	public RopeMovement getRopeMovementPlayedAs() {
 		return this.ropePlayedAs;
 	}
 

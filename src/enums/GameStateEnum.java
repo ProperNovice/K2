@@ -7,6 +7,7 @@ public enum GameStateEnum {
 	START_NEW_ROUND("start new round"),
 	CHOOSE_CARD_TO_PLAY("choose card to play"),
 	CHOOSE_MOUNTAINEER_TO_APPLY_CARD("choose mountaineer"),
+	CHOOSE_ROPE_DIRECTION("choose rope direction"),
 
 	;
 

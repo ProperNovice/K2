@@ -111,4 +111,8 @@ public class Mountaineer {
 		this.panelMovement.setVisible(value);
 	}
 
+	public void panelMovementReset() {
+		this.panelMovement.reset();
+	}
+
 }

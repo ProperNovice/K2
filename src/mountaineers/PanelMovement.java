@@ -12,6 +12,7 @@ public class PanelMovement {
 	private Text movementRopeUp = null;
 	private Text movement = null;
 	private Text movementRopeDown = null;
+	private double x, yFirst, ySecond, yThird;
 
 	public PanelMovement(MountaineerEnum mountaineerEnum) {
 
@@ -44,17 +45,18 @@ public class PanelMovement {
 
 		this.mountaineer.relocate(coordinates.x(), coordinates.y());
 
-		this.movement.relocate(
-				this.mountaineer.getLayoutX() + this.mountaineer.getWidth()
-						+ Dimensions.GAP_BETWEEN_COMPONENTS.x(),
-				coordinates.y());
+		this.x = this.mountaineer.getLayoutX() + this.mountaineer.getWidth()
+				+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
 
-		this.movementRopeUp.relocate(this.movement.getLayoutX(),
-				coordinates.y() + Credentials.TEXT_HEIGHT.credential() - 12);
+		this.yFirst = coordinates.y();
+		this.ySecond = coordinates.y() + Credentials.TEXT_HEIGHT.credential()
+				- 12;
+		this.yThird = coordinates.y() + 2
+				* Credentials.TEXT_HEIGHT.credential() - 22;
 
-		this.movementRopeDown
-				.relocate(this.movementRopeUp.getLayoutX(), coordinates.y() + 2
-						* Credentials.TEXT_HEIGHT.credential() - 22);
+		this.movement.relocate(this.x, this.yFirst);
+		this.movementRopeUp.relocate(this.x, this.ySecond);
+		this.movementRopeDown.relocate(this.x, this.yThird);
 
 	}
 
@@ -76,6 +78,14 @@ public class PanelMovement {
 		this.movement.setVisible(value);
 		this.movementRopeUp.setVisible(value);
 		this.movementRopeDown.setVisible(value);
+
+	}
+
+	public void reset() {
+
+		this.movement.setText("move: 0");
+		this.movementRopeUp.setText("up: 0");
+		this.movementRopeDown.setText("down: 0");
 
 	}
 

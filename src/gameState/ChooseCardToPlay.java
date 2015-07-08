@@ -15,8 +15,7 @@ public class ChooseCardToPlay extends GameState {
 	public void handleGameStateChange() {
 
 		if (this.cardLeftToChoose > 0)
-			super.controller.textController().showText(
-					TextEnum.CHOOSE_A_CARD);
+			super.controller.textController().showText(TextEnum.CHOOSE_A_CARD);
 
 	}
 
@@ -29,15 +28,16 @@ public class ChooseCardToPlay extends GameState {
 		super.controller.cardController().addCardFromHandToDiscardAnimate(card,
 				AnimationSynch.ASYNCHRONOUS);
 
-		if (card instanceof CardRope) {
+		if (card instanceof CardRope)
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.CHOOSE_ROPE_DIRECTION);
 
-		} else if (card instanceof CardAcclimatization
-				&& ((CardAcclimatization) card).getAcclimatization() == 0) {
-
+		else if (card instanceof CardAcclimatization
+				&& ((CardAcclimatization) card).getAcclimatization() == 0)
 			super.controller.gameStateController().setGameState(
 					GameStateEnum.CHOOSE_CARD_TO_PLAY);
 
-		} else
+		else
 			super.controller.gameStateController().setGameState(
 					GameStateEnum.CHOOSE_MOUNTAINEER_TO_APPLY_CARD);
 
