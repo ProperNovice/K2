@@ -48,7 +48,7 @@ public class Mountaineer {
 	}
 
 	private void createPanelMovement() {
-		this.panelMovement = new PanelMovement(this.mountaineerEnum);
+		this.panelMovement = new PanelMovement(this);
 	}
 
 	public MountaineerEnum getMountaineerEnum() {
@@ -112,7 +112,7 @@ public class Mountaineer {
 	}
 
 	public void panelMovementReset() {
-		this.panelMovement.setVisibleStatusFalse();
+		this.panelMovement.resetPanel();
 	}
 
 	public void setMinusButtonVisible(boolean value) {

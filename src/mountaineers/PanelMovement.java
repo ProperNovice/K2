@@ -1,6 +1,8 @@
 package mountaineers;
 
 import utils.ArrayList;
+import utils.EventHandler.EventHandlerAble;
+import utils.Executor;
 import utils.ImageView;
 import utils.Text;
 import enums.Coordinates;
@@ -10,16 +12,19 @@ import enums.MountaineerEnum;
 
 public class PanelMovement {
 
-	private Text mountaineer = null;
+	private Mountaineer mountaineer = null;
+	private Text mountaineerText = null;
 	private Text movementRopeUp = null;
 	private Text movement = null;
 	private Text movementRopeDown = null;
 	private double x, yFirst, ySecond, yThird;
 	private ArrayList<TextVisibility> textVisibility = new ArrayList<>();
 
-	public PanelMovement(MountaineerEnum mountaineerEnum) {
+	public PanelMovement(Mountaineer mountaineer) {
 
-		createTexts(mountaineerEnum);
+		this.mountaineer = mountaineer;
+
+		createTexts(mountaineer.getMountaineerEnum());
 		createTextVisibility();
 		setVisibleFalse();
 
@@ -32,8 +37,8 @@ public class PanelMovement {
 		if (mountaineerNumber.length() == 1)
 			mountaineerNumber = " " + mountaineerNumber;
 
-		this.mountaineer = new Text(mountaineerNumber + "  ");
-		this.mountaineer.setHeight(Credentials.TEXT_HEIGHT.credential());
+		this.mountaineerText = new Text(mountaineerNumber + "  ");
+		this.mountaineerText.setHeight(Credentials.TEXT_HEIGHT.credential());
 
 		this.movement = new Text("move: 0");
 		this.movement.setHeight(Credentials.TEXT_HEIGHT.credential());
@@ -47,9 +52,10 @@ public class PanelMovement {
 		Coordinates coordinates = mountaineerEnum
 				.coordinatesPanelMovementMountaineer();
 
-		this.mountaineer.relocate(coordinates.x(), coordinates.y());
+		this.mountaineerText.relocate(coordinates.x(), coordinates.y());
 
-		this.x = this.mountaineer.getLayoutX() + this.mountaineer.getWidth()
+		this.x = this.mountaineerText.getLayoutX()
+				+ this.mountaineerText.getWidth()
 				+ Dimensions.GAP_BETWEEN_COMPONENTS.x();
 
 		this.yFirst = coordinates.y();
@@ -62,42 +68,70 @@ public class PanelMovement {
 
 	private void createTextVisibility() {
 
-		this.textVisibility.add(new TextVisibility(this.mountaineer));
-		this.textVisibility.add(new TextVisibility(this.movement));
-		this.textVisibility.add(new TextVisibility(this.movementRopeUp));
-		this.textVisibility.add(new TextVisibility(this.movementRopeDown));
+		this.textVisibility.add(new TextVisibility(this.movement,
+				() -> this.mountaineer.addMovementPanelMovementUpdate(-1)));
+
+		this.textVisibility
+				.add(new TextVisibility(this.movementRopeUp,
+						() -> this.mountaineer
+								.addMovementRopeUpPanelMovementUpdate(-1)));
+
+		this.textVisibility.add(new TextVisibility(this.movementRopeDown,
+				() -> this.mountaineer
+						.addMovementRopeDownPanelMovementUpdate(-1)));
 
 	}
 
 	public void setMovement(int movement) {
-		this.movement.setText("move: " + movement);
-		setTextVisibleStatusTrue(this.movement);
+
+		if (movement > 0) {
+
+			this.movement.setText("move: " + movement);
+			setTextVisibleStatus(this.movement, true);
+
+		} else {
+
+			this.movement.setVisible(false);
+
+			for (TextVisibility textVisibility : this.textVisibility)
+				if (textVisibility.getText().equals(this.movement)) {
+
+					textVisibility.setMinusButtonVisible(false);
+					textVisibility.setVisibleStatus(false);
+
+				}
+
+		}
+
 		relocateTexts();
+
 	}
 
 	public void setMovementRopeUp(int movement) {
+
 		this.movementRopeUp.setText("up: " + movement);
-		setTextVisibleStatusTrue(this.movementRopeUp);
+		setTextVisibleStatus(this.movementRopeUp, true);
 		relocateTexts();
+
 	}
 
 	public void setMovementRopeDown(int movement) {
+
 		this.movementRopeDown.setText("down: " + movement);
-		setTextVisibleStatusTrue(this.movementRopeDown);
+		setTextVisibleStatus(this.movementRopeDown, true);
 		relocateTexts();
+
 	}
 
-	private void setTextVisibleStatusTrue(Text text) {
+	private void setTextVisibleStatus(Text text, boolean value) {
 
 		for (TextVisibility textVisibility : this.textVisibility)
 			if (textVisibility.getText().equals(text))
-				textVisibility.setVisibleStatus(true);
+				textVisibility.setVisibleStatus(value);
 
 	}
 
 	private void relocateTexts() {
-
-		this.mountaineer.setVisible(true);
 
 		double y = this.yFirst;
 
@@ -115,13 +149,21 @@ public class PanelMovement {
 
 		}
 
+		boolean ateastOneIsVisible = false;
+
 		for (TextVisibility textVisibility : this.textVisibility)
-			if (textVisibility.isVisible())
+			if (textVisibility.isVisible()) {
+				ateastOneIsVisible = true;
 				textVisibility.setVisible(true);
+			}
+
+		this.mountaineerText.setVisible(ateastOneIsVisible);
 
 	}
 
 	public void setVisibleFalse() {
+
+		this.mountaineerText.setVisible(false);
 
 		for (TextVisibility textVisibility : this.textVisibility)
 			textVisibility.setVisible(false);
@@ -136,26 +178,39 @@ public class PanelMovement {
 
 	}
 
-	public void setVisibleStatusFalse() {
+	public void resetPanel() {
 
-		for (TextVisibility textVisibility : this.textVisibility)
+		for (TextVisibility textVisibility : this.textVisibility) {
+
 			textVisibility.setVisibleStatus(false);
+			textVisibility.setVisible(false);
+
+		}
 
 	}
 
-	private class TextVisibility {
+	private class TextVisibility implements EventHandlerAble {
 
 		private Text text = null;
 		private boolean isVisible = false;
 		private ImageView minus = null;
+		private Runnable runnable = null;
 
-		public TextVisibility(Text text) {
+		public TextVisibility(Text text, Runnable runnable) {
 
 			this.text = text;
+			this.runnable = runnable;
 			this.minus = new ImageView("-.png");
 			this.minus.setHeight(Credentials.TEXT_HEIGHT.credential() / 2);
 			this.minus.setVisible(false);
 
+			this.minus.setEventHandler(new utils.EventHandler(this));
+
+		}
+
+		@Override
+		public void handleMouseButtonPressedPrimary() {
+			Executor.runLater(this.runnable);
 		}
 
 		public void relocate(double x, double y) {
