@@ -112,7 +112,11 @@ public class Mountaineer {
 	}
 
 	public void panelMovementReset() {
-		this.panelMovement.reset();
+		this.panelMovement.setVisibleStatusFalse();
+	}
+
+	public void setMinusButtonVisible(boolean value) {
+		this.panelMovement.setMinusButtonVisible(value);
 	}
 
 }

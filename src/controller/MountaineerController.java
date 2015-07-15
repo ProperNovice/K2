@@ -114,4 +114,11 @@ public class MountaineerController {
 
 	}
 
+	public void setMinusButtonVisible(boolean value) {
+
+		this.mountaineerI.setMinusButtonVisible(value);
+		this.mountaineerII.setMinusButtonVisible(value);
+
+	}
+
 }

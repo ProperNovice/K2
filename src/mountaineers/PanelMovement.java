@@ -1,6 +1,7 @@
 package mountaineers;
 
 import utils.ArrayList;
+import utils.ImageView;
 import utils.Text;
 import enums.Coordinates;
 import enums.Credentials;
@@ -19,8 +20,8 @@ public class PanelMovement {
 	public PanelMovement(MountaineerEnum mountaineerEnum) {
 
 		createTexts(mountaineerEnum);
-		setVisibleFalse();
 		createTextVisibility();
+		setVisibleFalse();
 
 	}
 
@@ -57,10 +58,6 @@ public class PanelMovement {
 		this.yThird = coordinates.y() + 2
 				* Credentials.TEXT_HEIGHT.credential() - 22;
 
-		this.movement.relocate(this.x, this.yFirst);
-		this.movementRopeUp.relocate(this.x, this.ySecond);
-		this.movementRopeDown.relocate(this.x, this.yThird);
-
 	}
 
 	private void createTextVisibility() {
@@ -74,27 +71,27 @@ public class PanelMovement {
 
 	public void setMovement(int movement) {
 		this.movement.setText("move: " + movement);
-		setTextVisibilityTrue(this.movement);
+		setTextVisibleStatusTrue(this.movement);
 		relocateTexts();
 	}
 
 	public void setMovementRopeUp(int movement) {
 		this.movementRopeUp.setText("up: " + movement);
-		setTextVisibilityTrue(this.movementRopeUp);
+		setTextVisibleStatusTrue(this.movementRopeUp);
 		relocateTexts();
 	}
 
 	public void setMovementRopeDown(int movement) {
 		this.movementRopeDown.setText("down: " + movement);
-		setTextVisibilityTrue(this.movementRopeDown);
+		setTextVisibleStatusTrue(this.movementRopeDown);
 		relocateTexts();
 	}
 
-	private void setTextVisibilityTrue(Text text) {
+	private void setTextVisibleStatusTrue(Text text) {
 
 		for (TextVisibility textVisibility : this.textVisibility)
 			if (textVisibility.getText().equals(text))
-				textVisibility.setVisible(true);
+				textVisibility.setVisibleStatus(true);
 
 	}
 
@@ -109,10 +106,7 @@ public class PanelMovement {
 			if (!textVisibility.isVisible())
 				continue;
 
-			Text text = textVisibility.getText();
-
-			text.relocate(this.x, y);
-			text.setVisible(true);
+			textVisibility.relocate(this.x, y);
 
 			if (y == this.yFirst)
 				y = this.ySecond;
@@ -121,25 +115,31 @@ public class PanelMovement {
 
 		}
 
+		for (TextVisibility textVisibility : this.textVisibility)
+			if (textVisibility.isVisible())
+				textVisibility.setVisible(true);
+
 	}
 
 	public void setVisibleFalse() {
 
-		this.mountaineer.setVisible(false);
-		this.movement.setVisible(false);
-		this.movementRopeUp.setVisible(false);
-		this.movementRopeDown.setVisible(false);
+		for (TextVisibility textVisibility : this.textVisibility)
+			textVisibility.setVisible(false);
 
 	}
 
-	public void reset() {
-
-		this.movement.setText("move: 0");
-		this.movementRopeUp.setText("up: 0");
-		this.movementRopeDown.setText("down: 0");
+	public void setMinusButtonVisible(boolean value) {
 
 		for (TextVisibility textVisibility : this.textVisibility)
-			textVisibility.setVisible(false);
+			if (textVisibility.isVisible())
+				textVisibility.setMinusButtonVisible(value);
+
+	}
+
+	public void setVisibleStatusFalse() {
+
+		for (TextVisibility textVisibility : this.textVisibility)
+			textVisibility.setVisibleStatus(false);
 
 	}
 
@@ -147,13 +147,35 @@ public class PanelMovement {
 
 		private Text text = null;
 		private boolean isVisible = false;
+		private ImageView minus = null;
 
 		public TextVisibility(Text text) {
+
 			this.text = text;
+			this.minus = new ImageView("-.png");
+			this.minus.setHeight(Credentials.TEXT_HEIGHT.credential() / 2);
+			this.minus.setVisible(false);
+
+		}
+
+		public void relocate(double x, double y) {
+
+			this.text.relocate(x, y);
+			this.minus.relocate(x + this.text.getWidth(), y
+					+ Credentials.TEXT_HEIGHT.credential() / 3);
+
+		}
+
+		public void setMinusButtonVisible(boolean value) {
+			this.minus.setVisible(value);
+		}
+
+		public void setVisibleStatus(boolean value) {
+			this.isVisible = value;
 		}
 
 		public void setVisible(boolean value) {
-			this.isVisible = value;
+			this.text.setVisible(value);
 		}
 
 		public boolean isVisible() {
