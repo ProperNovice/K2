@@ -1,11 +1,11 @@
 package gameState;
 
 import components.RiskToken;
-
 import instances.Instances;
 import model.Space;
 import cards.Card;
 import controller.Controller;
+import enums.MountaineerEnum;
 import enums.TextEnum;
 
 public class GameState {
@@ -44,6 +44,14 @@ public class GameState {
 
 	protected void handleRiskTokenPlayPressed(RiskToken riskToken) {
 
+	}
+
+	public void handleMinusButtonPressed(Runnable runnable) {
+
+	}
+	
+	public void handleAcclimatizationIndicatorPressed(MountaineerEnum mountaineerEnum) {
+		
 	}
 
 }

@@ -165,4 +165,8 @@ public class RiskTokenController {
 
 	}
 
+	public int getLastRiskTokenPlayedValue() {
+		return this.discard.getLast().getValue();
+	}
+
 }

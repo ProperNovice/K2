@@ -1,5 +1,7 @@
 package mountaineers;
 
+import instances.Instances;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,9 +9,13 @@ import javafx.scene.paint.Color;
 import utils.Animation;
 import utils.Animation.AnimationSynch;
 import utils.Circle;
+import utils.EventHandler;
+import utils.EventHandler.EventHandlerAble;
+import utils.Executor;
 import utils.ImageView;
 import enums.Coordinates;
 import enums.Dimensions;
+import enums.MountaineerEnum;
 import enums.Ratio;
 
 public class AcclimatizationIndicator {
@@ -49,10 +55,37 @@ public class AcclimatizationIndicator {
 		circle.setStroke(Color.RED);
 		this.indicators.put(mountaineerI, circle);
 
+		circle.setOnMousePressed(new EventHandler(new EventHandlerAble() {
+
+			@Override
+			public void handleMouseButtonPressedPrimary() {
+				handleAcclimatizationIndicatorPressed(MountaineerEnum.I);
+			}
+
+		}));
+
 		circle = new Circle(this.circleRadius);
 		circle.setFill(Color.RED);
 		circle.setStroke(Color.RED);
 		this.indicators.put(mountaineerII, circle);
+
+		circle.setOnMousePressed(new EventHandler(new EventHandlerAble() {
+
+			@Override
+			public void handleMouseButtonPressedPrimary() {
+				handleAcclimatizationIndicatorPressed(MountaineerEnum.II);
+			}
+
+		}));
+
+	}
+
+	public void handleAcclimatizationIndicatorPressed(
+			MountaineerEnum mountaineerEnum) {
+
+		Executor.runLater(() -> Instances.getControllerInstance()
+				.gameStateController()
+				.handleAcclimatizationIndicatorPressed(mountaineerEnum));
 
 	}
 

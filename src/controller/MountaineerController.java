@@ -121,4 +121,12 @@ public class MountaineerController {
 
 	}
 
+	public boolean mountaineerAcclimatizationIsZero(
+			MountaineerEnum mountaineerEnum) {
+
+		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
+		return (mountaineer.getAcclimatization() == 0);
+
+	}
+
 }

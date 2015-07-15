@@ -3,6 +3,7 @@ package controller;
 import components.RiskToken;
 import cards.Card;
 import enums.GameStateEnum;
+import enums.MountaineerEnum;
 import enums.TextEnum;
 import gameState.Animating;
 import gameState.ApplyRiskToken;
@@ -63,7 +64,7 @@ public class GameStateController {
 		case CHOOSE_RISK_TOKEN:
 			this.currentGameState = this.chooseRiskToken;
 			break;
-			
+
 		case APPLY_RISK_TOKEN:
 			this.currentGameState = this.applyRiskToken;
 			break;
@@ -91,6 +92,16 @@ public class GameStateController {
 
 	public final void handleRiskTokenPressed(RiskToken riskToken) {
 		this.currentGameState.handleRiskTokenPressed(riskToken);
+	}
+
+	public void handleMinusButtonPressed(Runnable runnable) {
+		this.currentGameState.handleMinusButtonPressed(runnable);
+	}
+
+	public void handleAcclimatizationIndicatorPressed(
+			MountaineerEnum mountaineerEnum) {
+		this.currentGameState
+				.handleAcclimatizationIndicatorPressed(mountaineerEnum);
 	}
 
 }

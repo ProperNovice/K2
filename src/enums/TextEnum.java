@@ -8,6 +8,7 @@ public enum TextEnum {
 	UP("Up", TextTypeEnum.OPTION),
 	DOWN("Down", TextTypeEnum.OPTION),
 	CHOOSE_RISK_TOKEN("Choose\nrisk token", TextTypeEnum.INDICATOR),
+	APPLY_RISK_TOKEN("Apply\nrisk token", TextTypeEnum.INDICATOR),
 
 	;
 

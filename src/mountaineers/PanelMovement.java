@@ -1,6 +1,8 @@
 package mountaineers;
 
+import instances.Instances;
 import utils.ArrayList;
+import utils.EventHandler;
 import utils.EventHandler.EventHandlerAble;
 import utils.Executor;
 import utils.ImageView;
@@ -109,16 +111,50 @@ public class PanelMovement {
 
 	public void setMovementRopeUp(int movement) {
 
-		this.movementRopeUp.setText("up: " + movement);
-		setTextVisibleStatus(this.movementRopeUp, true);
+		if (movement > 0) {
+
+			this.movementRopeUp.setText("up: " + movement);
+			setTextVisibleStatus(this.movementRopeUp, true);
+
+		} else {
+
+			this.movementRopeUp.setVisible(false);
+
+			for (TextVisibility textVisibility : this.textVisibility)
+				if (textVisibility.getText().equals(this.movementRopeUp)) {
+
+					textVisibility.setMinusButtonVisible(false);
+					textVisibility.setVisibleStatus(false);
+
+				}
+
+		}
+
 		relocateTexts();
 
 	}
 
 	public void setMovementRopeDown(int movement) {
 
-		this.movementRopeDown.setText("down: " + movement);
-		setTextVisibleStatus(this.movementRopeDown, true);
+		if (movement > 0) {
+
+			this.movementRopeDown.setText("down: " + movement);
+			setTextVisibleStatus(this.movementRopeDown, true);
+
+		} else {
+
+			this.movementRopeDown.setVisible(false);
+
+			for (TextVisibility textVisibility : this.textVisibility)
+				if (textVisibility.getText().equals(this.movementRopeDown)) {
+
+					textVisibility.setMinusButtonVisible(false);
+					textVisibility.setVisibleStatus(false);
+
+				}
+
+		}
+
 		relocateTexts();
 
 	}
@@ -170,7 +206,7 @@ public class PanelMovement {
 
 	}
 
-	public void setMinusButtonVisible(boolean value) {
+	public void setAllMinusButtonsVisible(boolean value) {
 
 		for (TextVisibility textVisibility : this.textVisibility)
 			if (textVisibility.isVisible())
@@ -204,13 +240,17 @@ public class PanelMovement {
 			this.minus.setHeight(Credentials.TEXT_HEIGHT.credential() / 2);
 			this.minus.setVisible(false);
 
-			this.minus.setEventHandler(new utils.EventHandler(this));
+			this.minus.setEventHandler(new EventHandler(this));
 
 		}
 
 		@Override
 		public void handleMouseButtonPressedPrimary() {
-			Executor.runLater(this.runnable);
+
+			Executor.runLater(() -> Instances.getControllerInstance()
+					.gameStateController()
+					.handleMinusButtonPressed(this.runnable));
+
 		}
 
 		public void relocate(double x, double y) {
