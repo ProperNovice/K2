@@ -167,8 +167,13 @@ public class WeatherTileController {
 	}
 
 	public int getMovementToEnterSpaceWithAltitude(AltitudeZone altitudeZone) {
-		return this.weatherTiles.getFirst().getWeather(0)
+		return this.weatherTiles.getFirst().getWeather(this.weatherIndexActive)
 				.getMovement(altitudeZone);
+	}
+
+	public int getAcclimatizationWithAltitude(AltitudeZone altitudeZone) {
+		return this.weatherTiles.getFirst().getWeather(this.weatherIndexActive)
+				.getAcclimatization(altitudeZone);
 	}
 
 }

@@ -43,7 +43,7 @@ public class MountaineerController {
 
 	}
 
-	public void relocateMountaineer(Mountaineer mountaineer, Space space) {
+	public void animateMountaineerToSpace(Mountaineer mountaineer, Space space) {
 
 		if (this.mountaineerI.getMountaineerSpace().equals(space)
 				|| this.mountaineerII.getMountaineerSpace().equals(space))
@@ -56,12 +56,14 @@ public class MountaineerController {
 			space.animateMountaineerAsynchronous(mountaineer,
 					SpaceMountaineerLocationEnum.TOP_LEFT);
 
-			this.mountaineerI.getMountaineerSpace()
-					.animateMountaineerAsynchronous(this.mountaineerI,
-							SpaceMountaineerLocationEnum.TOP_LEFT);
-			this.mountaineerII.getMountaineerSpace()
-					.animateMountaineerAsynchronous(this.mountaineerII,
-							SpaceMountaineerLocationEnum.TOP_LEFT);
+			if (mountaineer.equals(this.mountaineerI))
+				this.mountaineerII.getMountaineerSpace()
+						.animateMountaineerAsynchronous(this.mountaineerII,
+								SpaceMountaineerLocationEnum.TOP_LEFT);
+			else if (mountaineer.equals(this.mountaineerII))
+				this.mountaineerI.getMountaineerSpace()
+						.animateMountaineerAsynchronous(this.mountaineerI,
+								SpaceMountaineerLocationEnum.TOP_LEFT);
 
 		}
 

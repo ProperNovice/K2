@@ -86,6 +86,7 @@ public class Mountaineer {
 
 		this.acclimatization += acclimatization;
 		this.acclimatization = (int) Math.min(10, this.acclimatization);
+		this.acclimatization = (int) Math.max(0, this.acclimatization);
 
 	}
 
