@@ -11,6 +11,8 @@ import gameState.ChooseCardToPlay;
 import gameState.ChooseMountaineerToApplyCard;
 import gameState.ChooseRiskToken;
 import gameState.ChooseRopeDirection;
+import gameState.EndTurn;
+import gameState.MountaineerMovement;
 import gameState.GameState;
 import gameState.StartGame;
 import gameState.StartNewRound;
@@ -28,6 +30,8 @@ public class GameStateController {
 	private GameState chooseRopeDirection = new ChooseRopeDirection();
 	private GameState chooseRiskToken = new ChooseRiskToken();
 	private GameState applyRiskToken = new ApplyRiskToken();
+	private GameState mountaineerMovement = new MountaineerMovement();
+	private GameState endTurn = new EndTurn();
 
 	public GameStateController() {
 
@@ -67,6 +71,14 @@ public class GameStateController {
 
 		case APPLY_RISK_TOKEN:
 			this.currentGameState = this.applyRiskToken;
+			break;
+			
+		case MOUNTAINEER_MOVEMENT:
+			this.currentGameState = this.mountaineerMovement;
+			break;
+			
+		case END_TURN:
+			this.currentGameState = this.endTurn;
 			break;
 
 		}

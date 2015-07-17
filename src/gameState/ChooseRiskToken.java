@@ -26,6 +26,17 @@ public class ChooseRiskToken extends GameState {
 		if (value > 0)
 			super.controller.gameStateController().setGameState(
 					GameStateEnum.APPLY_RISK_TOKEN);
+		else {
+
+			if (super.controller.mountaineerController()
+					.atLeastOneMountaineerHasMovementPoint())
+				super.controller.gameStateController().setGameState(
+						GameStateEnum.MOUNTAINEER_MOVEMENT);
+			else
+				super.controller.gameStateController().setGameState(
+						GameStateEnum.END_TURN);
+
+		}
 
 	}
 

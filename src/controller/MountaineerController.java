@@ -3,6 +3,7 @@ package controller;
 import model.Space;
 import mountaineers.AcclimatizationIndicator;
 import mountaineers.Mountaineer;
+import utils.ArrayList;
 import enums.Coordinates;
 import enums.Dimensions;
 import enums.MountaineerEnum;
@@ -12,6 +13,7 @@ public class MountaineerController {
 
 	private Mountaineer mountaineerI = null, mountaineerII = null;
 	private AcclimatizationIndicator acclimatizationIndicator = null;
+	private ArrayList<MountaineerEnum> dealtCardThisTurn = new ArrayList<>();
 
 	public MountaineerController(Space spaceStarting) {
 
@@ -41,6 +43,30 @@ public class MountaineerController {
 
 	}
 
+	public void relocateMountaineer(Mountaineer mountaineer, Space space) {
+
+		if (this.mountaineerI.getMountaineerSpace().equals(space)
+				|| this.mountaineerII.getMountaineerSpace().equals(space))
+
+			space.animateMountaineerAsynchronous(mountaineer,
+					SpaceMountaineerLocationEnum.BOTTOM_RIGHT);
+
+		else {
+
+			space.animateMountaineerAsynchronous(mountaineer,
+					SpaceMountaineerLocationEnum.TOP_LEFT);
+
+			this.mountaineerI.getMountaineerSpace()
+					.animateMountaineerAsynchronous(this.mountaineerI,
+							SpaceMountaineerLocationEnum.TOP_LEFT);
+			this.mountaineerII.getMountaineerSpace()
+					.animateMountaineerAsynchronous(this.mountaineerII,
+							SpaceMountaineerLocationEnum.TOP_LEFT);
+
+		}
+
+	}
+
 	private void relocateTents() {
 
 		double x = Coordinates.TENT_STARTING_LOCATION.x();
@@ -59,7 +85,7 @@ public class MountaineerController {
 				this.mountaineerI, this.mountaineerII);
 	}
 
-	private Mountaineer getMountaineer(MountaineerEnum mountaineerEnum) {
+	public Mountaineer getMountaineer(MountaineerEnum mountaineerEnum) {
 
 		Mountaineer mountaineer = null;
 
@@ -126,6 +152,40 @@ public class MountaineerController {
 
 		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
 		return (mountaineer.getAcclimatization() == 0);
+
+	}
+
+	public void setDealtCardThisTurn(MountaineerEnum mountaineerEnum) {
+
+		if (this.dealtCardThisTurn.contains(mountaineerEnum))
+			return;
+
+		this.dealtCardThisTurn.add(mountaineerEnum);
+
+	}
+
+	public boolean wasDealtCardThisTurn(MountaineerEnum mountaineerEnum) {
+		return this.dealtCardThisTurn.contains(mountaineerEnum);
+	}
+
+	public boolean atLeastOneMountaineerHasMovementPoint() {
+
+		if (this.mountaineerI.hasAtLeastOneMovementPoint())
+			return true;
+
+		if (this.mountaineerII.hasAtLeastOneMovementPoint())
+			return true;
+
+		return false;
+
+	}
+
+	public Mountaineer getMountaineerMoving() {
+
+		if (this.mountaineerI.hasAtLeastOneMovementPoint())
+			return this.mountaineerI;
+		else
+			return this.mountaineerII;
 
 	}
 

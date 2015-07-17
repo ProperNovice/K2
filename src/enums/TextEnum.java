@@ -9,6 +9,9 @@ public enum TextEnum {
 	DOWN("Down", TextTypeEnum.OPTION),
 	CHOOSE_RISK_TOKEN("Choose\nrisk token", TextTypeEnum.INDICATOR),
 	APPLY_RISK_TOKEN("Apply\nrisk token", TextTypeEnum.INDICATOR),
+	MOVE_MOUNTAINEER_I("Move m. I", TextTypeEnum.INDICATOR),
+	MOVE_MOUNTAINEER_II("Move m. II", TextTypeEnum.INDICATOR),
+	CONTINUE("Continue", TextTypeEnum.OPTION),
 
 	;
 

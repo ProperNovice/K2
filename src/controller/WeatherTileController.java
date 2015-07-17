@@ -166,4 +166,9 @@ public class WeatherTileController {
 
 	}
 
+	public int getMovementToEnterSpaceWithAltitude(AltitudeZone altitudeZone) {
+		return this.weatherTiles.getFirst().getWeather(0)
+				.getMovement(altitudeZone);
+	}
+
 }

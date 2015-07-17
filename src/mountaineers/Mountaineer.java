@@ -1,6 +1,8 @@
 package mountaineers;
 
 import model.Space;
+import utils.Animation;
+import utils.Animation.AnimationSynch;
 import utils.ImageView;
 import enums.Dimensions;
 import enums.MountaineerEnum;
@@ -59,6 +61,11 @@ public class Mountaineer {
 		this.mountaineerMap.relocate(x, y);
 	}
 
+	public void animateMountaineerAsynchronous(double endingX, double endingY) {
+		Animation.animate(this.mountaineerMap, endingX, endingY,
+				AnimationSynch.ASYNCHRONOUS);
+	}
+
 	public void setMountaineerSpace(Space space) {
 		this.mountaineerSpace = space;
 	}
@@ -107,6 +114,33 @@ public class Mountaineer {
 
 	}
 
+	public int getMovement() {
+		return this.movement;
+	}
+
+	public int getMovementRopeUp() {
+		return this.movementRopeUp;
+	}
+
+	public int getMovementRopeDown() {
+		return this.movementRopeDown;
+	}
+
+	public boolean hasAtLeastOneMovementPoint() {
+
+		if (this.movement > 0)
+			return true;
+
+		if (this.movementRopeUp > 0)
+			return true;
+
+		if (this.movementRopeDown > 0)
+			return true;
+
+		return false;
+
+	}
+
 	public void panelMovementSetVisible() {
 		this.panelMovement.setVisibleFalse();
 	}
@@ -117,6 +151,18 @@ public class Mountaineer {
 
 	public void setMinusButtonVisible(boolean value) {
 		this.panelMovement.setAllMinusButtonsVisible(value);
+	}
+
+	public void resetMovement() {
+
+		this.movement = 0;
+		this.movementRopeUp = 0;
+		this.movementRopeDown = 0;
+
+		this.panelMovement.setMovement(this.movement);
+		this.panelMovement.setMovementRopeUp(this.movementRopeUp);
+		this.panelMovement.setMovementRopeDown(this.movementRopeDown);
+
 	}
 
 }

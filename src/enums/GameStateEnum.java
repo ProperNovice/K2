@@ -10,6 +10,8 @@ public enum GameStateEnum {
 	CHOOSE_ROPE_DIRECTION("choose rope direction"),
 	CHOOSE_RISK_TOKEN("choose risk token"),
 	APPLY_RISK_TOKEN("apply risk token"),
+	MOUNTAINEER_MOVEMENT("climber movement"),
+	END_TURN("end turn"),
 
 	;
 

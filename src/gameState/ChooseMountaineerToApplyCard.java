@@ -40,6 +40,8 @@ public class ChooseMountaineerToApplyCard extends GameState {
 			break;
 
 		}
+		
+		super.controller.mountaineerController().setDealtCardThisTurn(mountaineerEnum);
 
 		Card cardLastPlayed = super.controller.cardController()
 				.getLastCardPlayed();

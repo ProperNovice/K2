@@ -67,6 +67,14 @@ public class Space {
 		this.adjacentDown.add(space);
 	}
 
+	public boolean isAdjacentUp(Space space) {
+		return this.adjacentUp.contains(space);
+	}
+
+	public boolean isAdjacentDown(Space space) {
+		return this.adjacentDown.contains(space);
+	}
+
 	public int getMovementCost() {
 		return this.movementCost;
 	}
@@ -137,6 +145,34 @@ public class Space {
 		}
 
 		mountaineer.relocateMountaineer(x, y);
+
+	}
+
+	public void animateMountaineerAsynchronous(Mountaineer mountaineer,
+			SpaceMountaineerLocationEnum spaceMountaineerLocationEnum) {
+
+		double mountaineerWidth = Dimensions.MOUNTAINEER_GAME.x();
+		double mountaineerHeight = Dimensions.MOUNTAINEER_GAME.y();
+
+		double radius = this.circle.getRadius();
+
+		double x = 0, y = 0;
+
+		if (spaceMountaineerLocationEnum
+				.equals(SpaceMountaineerLocationEnum.TOP_LEFT)) {
+
+			x = this.topLeftX + radius - mountaineerWidth;
+			y = this.topLeftY + radius - mountaineerHeight;
+
+		} else if (spaceMountaineerLocationEnum
+				.equals(SpaceMountaineerLocationEnum.BOTTOM_RIGHT)) {
+
+			x = this.topLeftX + radius;
+			y = this.topLeftY + radius;
+
+		}
+
+		mountaineer.animateMountaineerAsynchronous(x, y);
 
 	}
 

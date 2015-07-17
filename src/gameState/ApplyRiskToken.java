@@ -1,5 +1,6 @@
 package gameState;
 
+import enums.GameStateEnum;
 import enums.MountaineerEnum;
 import enums.TextEnum;
 
@@ -32,6 +33,10 @@ public class ApplyRiskToken extends GameState {
 	public void handleAcclimatizationIndicatorPressed(
 			MountaineerEnum mountaineerEnum) {
 
+		if (!super.controller.mountaineerController().wasDealtCardThisTurn(
+				mountaineerEnum))
+			return;
+
 		if (super.controller.mountaineerController()
 				.mountaineerAcclimatizationIsZero(mountaineerEnum))
 			return;
@@ -55,6 +60,15 @@ public class ApplyRiskToken extends GameState {
 
 		super.controller.mountaineerController().setAllMinusButtonsVisible(
 				false);
+
+		if (!super.controller.mountaineerController()
+				.atLeastOneMountaineerHasMovementPoint())
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.END_TURN);
+
+		else
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.MOUNTAINEER_MOVEMENT);
 
 	}
 
