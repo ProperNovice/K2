@@ -1,5 +1,7 @@
 package weather;
 
+import utils.Animation;
+import utils.Animation.AnimationSynch;
 import utils.ArrayList;
 import utils.EventHandler;
 import utils.EventHandler.EventHandlerAble;
@@ -64,6 +66,11 @@ public class WeatherTile implements EventHandlerAble {
 
 		Logger.logNewLine("*/");
 
+	}
+
+	public void animateAsynchronous(double endingX, double endingY) {
+		Animation.animate(this.imageView, endingX, endingY,
+				AnimationSynch.ASYNCHRONOUS);
 	}
 
 }

@@ -1,6 +1,8 @@
 package controller;
 
 import javafx.scene.paint.Color;
+import utils.Animation;
+import utils.Animation.AnimationSynch;
 import utils.ArrayList;
 import utils.Circle;
 import weather.Weather;
@@ -166,6 +168,20 @@ public class WeatherTileController {
 
 	}
 
+	private void animateWeatherIndicator() {
+
+		double x = Coordinates.WEATHER_TILES.x()
+				+ Coordinates.WEATHER_INDICATOR_GAME.x();
+		double y = Coordinates.WEATHER_TILES.y()
+				+ Coordinates.WEATHER_INDICATOR_GAME.y();
+
+		x += this.weatherIndexActive * this.weatherIndicatorGap;
+
+		Animation.animate(this.weatherIndicator, x, y,
+				AnimationSynch.ASYNCHRONOUS);
+
+	}
+
 	public int getMovementToEnterSpaceWithAltitude(AltitudeZone altitudeZone) {
 		return this.weatherTiles.getFirst().getWeather(this.weatherIndexActive)
 				.getMovement(altitudeZone);
@@ -174,6 +190,24 @@ public class WeatherTileController {
 	public int getAcclimatizationWithAltitude(AltitudeZone altitudeZone) {
 		return this.weatherTiles.getFirst().getWeather(this.weatherIndexActive)
 				.getAcclimatization(altitudeZone);
+	}
+
+	public void proceedToNextTurnAnimateAsynchronous() {
+
+		this.weatherIndexActive++;
+
+		if (this.weatherIndexActive == 3) {
+
+			this.weatherIndexActive = 0;
+			this.weatherTiles.removeFirst();
+			this.weatherTiles.getFirst().animateAsynchronous(
+					Coordinates.WEATHER_TILES.x(),
+					Coordinates.WEATHER_TILES.y());
+
+		}
+
+		animateWeatherIndicator();
+
 	}
 
 }
