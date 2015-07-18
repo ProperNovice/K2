@@ -203,6 +203,7 @@ public class WeatherTileController {
 		if (this.weatherIndexActive == 3) {
 
 			this.weatherIndexActive = 0;
+			this.weatherTiles.getFirst().setVisibleFalse();
 			this.weatherTiles.removeFirst();
 			this.weatherTiles.getFirst().animateSynchronous(
 					Coordinates.WEATHER_TILES.x(),

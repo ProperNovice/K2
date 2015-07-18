@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.Platform;
 import interfaces.SaveAble;
 import model.Space;
 import mountaineers.AcclimatizationIndicator;
@@ -122,24 +123,42 @@ public class MountaineerController implements SaveAble {
 	public void addMovementToMountaineer(MountaineerEnum mountaineerEnum,
 			int movement) {
 
-		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
-		mountaineer.addMovementPanelMovementUpdate(movement);
+		Platform.runLater(new Runnable() {
+
+			@Override
+			public void run() {
+				Mountaineer mountaineer = getMountaineer(mountaineerEnum);
+				mountaineer.addMovementPanelMovementUpdate(movement);
+			}
+		});
 
 	}
 
 	public void addMovementRopeUpToMountaineer(MountaineerEnum mountaineerEnum,
 			int movement) {
 
-		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
-		mountaineer.addMovementRopeUpPanelMovementUpdate(movement);
+		Platform.runLater(new Runnable() {
+
+			@Override
+			public void run() {
+				Mountaineer mountaineer = getMountaineer(mountaineerEnum);
+				mountaineer.addMovementRopeUpPanelMovementUpdate(movement);
+			}
+		});
 
 	}
 
 	public void addMovementRopeDownToMountaineer(
 			MountaineerEnum mountaineerEnum, int movement) {
 
-		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
-		mountaineer.addMovementRopeDownPanelMovementUpdate(movement);
+		Platform.runLater(new Runnable() {
+
+			@Override
+			public void run() {
+				Mountaineer mountaineer = getMountaineer(mountaineerEnum);
+				mountaineer.addMovementRopeDownPanelMovementUpdate(movement);
+			}
+		});
 
 	}
 

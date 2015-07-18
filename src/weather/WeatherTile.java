@@ -81,4 +81,8 @@ public class WeatherTile implements EventHandlerAble {
 				AnimationSynch.SYNCHRONOUS);
 	}
 
+	public void setVisibleFalse() {
+		this.imageView.setVisible(false);
+	}
+
 }
