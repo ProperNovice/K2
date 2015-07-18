@@ -29,9 +29,7 @@ public class StartNewRound extends GameState {
 	}
 
 	private void reset() {
-
 		super.controller.mountaineerController().clearWasDealtCardThisTurn();
-
 	}
 
 	private void handleCards() {

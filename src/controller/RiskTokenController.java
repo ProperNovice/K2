@@ -68,7 +68,9 @@ public class RiskTokenController {
 		for (int counter = 1; counter <= tokensToAdd; counter++)
 			this.play.add(this.deck.removeRandom());
 
-		rearrangeRiskTokensDeck();
+		if (!this.deck.isEmpty())
+			rearrangeRiskTokensDeck();
+
 		rearrangeRiskTokensPlay();
 
 	}
