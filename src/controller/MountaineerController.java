@@ -107,14 +107,14 @@ public class MountaineerController {
 
 	}
 
-	public void addAcclimatizationToMountaineerAnimateAsynchronous(
+	public void addAcclimatizationToMountaineerAnimateSynchronous(
 			MountaineerEnum mountaineerEnum, int acclimatization) {
 
 		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
 
 		mountaineer.addAcclimatization(acclimatization);
 		this.acclimatizationIndicator
-				.animateTotalAcclimatizationAsynchronous(mountaineer);
+				.animateTotalAcclimatizationSynchronous(mountaineer);
 
 	}
 

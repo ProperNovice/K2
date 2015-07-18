@@ -42,7 +42,7 @@ public class ApplyRiskToken extends GameState {
 			return;
 
 		super.controller.mountaineerController()
-				.addAcclimatizationToMountaineerAnimateAsynchronous(
+				.addAcclimatizationToMountaineerAnimateSynchronous(
 						mountaineerEnum, -1);
 
 		handleValueDecreased();

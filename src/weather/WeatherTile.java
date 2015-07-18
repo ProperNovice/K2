@@ -68,9 +68,9 @@ public class WeatherTile implements EventHandlerAble {
 
 	}
 
-	public void animateAsynchronous(double endingX, double endingY) {
+	public void animateSynchronous(double endingX, double endingY) {
 		Animation.animate(this.imageView, endingX, endingY,
-				AnimationSynch.ASYNCHRONOUS);
+				AnimationSynch.SYNCHRONOUS);
 	}
 
 }

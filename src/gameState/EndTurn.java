@@ -33,7 +33,7 @@ public class EndTurn extends GameState {
 				+ acclimatizationIndicatorAltitudeZone;
 
 		super.controller.mountaineerController()
-				.addAcclimatizationToMountaineerAnimateAsynchronous(
+				.addAcclimatizationToMountaineerAnimateSynchronous(
 						mountaineerEnum, totalAcclimatization);
 
 	}

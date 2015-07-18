@@ -1,6 +1,5 @@
 package gameState;
 
-import utils.Animation.AnimationSynch;
 import utils.Lock;
 import enums.GameStateEnum;
 
@@ -14,14 +13,14 @@ public class StartNewRound extends GameState {
 		this.currentRound++;
 
 		super.controller.riskTokenController()
-				.addTokensFromDeckToPlayRearrange(AnimationSynch.SYNCHRONOUS);
+				.addTokensFromDeckToPlayRearrangeSynchronous();
 
 		super.controller.cardController()
 				.addCardsFromDeckToHandRearrangeSynchronous();
 
 		if (this.currentRound > 1)
 			super.controller.weatherTileController()
-					.proceedToNextTurnAnimateAsynchronous();
+					.proceedToNextTurnAnimateSynchronous();
 
 		Lock.lock();
 

@@ -61,9 +61,9 @@ public class Mountaineer {
 		this.mountaineerMap.relocate(x, y);
 	}
 
-	public void animateMountaineerAsynchronous(double endingX, double endingY) {
+	public void animateMountaineerSynchronous(double endingX, double endingY) {
 		Animation.animate(this.mountaineerMap, endingX, endingY,
-				AnimationSynch.ASYNCHRONOUS);
+				AnimationSynch.SYNCHRONOUS);
 	}
 
 	public void setMountaineerSpace(Space space) {

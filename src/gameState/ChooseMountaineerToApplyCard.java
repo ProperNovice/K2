@@ -1,5 +1,6 @@
 package gameState;
 
+import utils.Lock;
 import cards.Card;
 import cards.CardAcclimatization;
 import cards.CardMovement;
@@ -40,8 +41,9 @@ public class ChooseMountaineerToApplyCard extends GameState {
 			break;
 
 		}
-		
-		super.controller.mountaineerController().setDealtCardThisTurn(mountaineerEnum);
+
+		super.controller.mountaineerController().setDealtCardThisTurn(
+				mountaineerEnum);
 
 		Card cardLastPlayed = super.controller.cardController()
 				.getLastCardPlayed();
@@ -65,8 +67,10 @@ public class ChooseMountaineerToApplyCard extends GameState {
 		int acclimatization = cardAcclimatization.getAcclimatization();
 
 		super.controller.mountaineerController()
-				.addAcclimatizationToMountaineerAnimateAsynchronous(
+				.addAcclimatizationToMountaineerAnimateSynchronous(
 						mountaineerEnum, acclimatization);
+
+		Lock.lock();
 
 		super.controller.gameStateController().setGameState(
 				GameStateEnum.CHOOSE_CARD_TO_PLAY);

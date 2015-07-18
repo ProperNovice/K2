@@ -1,6 +1,6 @@
 package gameState;
 
-import utils.Animation.AnimationSynch;
+import utils.Lock;
 import cards.Card;
 import cards.CardAcclimatization;
 import cards.CardRope;
@@ -35,8 +35,10 @@ public class ChooseCardToPlay extends GameState {
 		this.cardLeftToChoose--;
 		super.controller.textController().concealText();
 
-		super.controller.cardController().addCardFromHandToDiscardAnimate(card,
-				AnimationSynch.ASYNCHRONOUS);
+		super.controller.cardController()
+				.addCardFromHandToDiscardAnimateSynchronous(card);
+
+		Lock.lock();
 
 		if (card instanceof CardRope)
 			super.controller.gameStateController().setGameState(

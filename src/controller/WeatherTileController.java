@@ -168,7 +168,7 @@ public class WeatherTileController {
 
 	}
 
-	private void animateWeatherIndicator() {
+	private void animateWeatherIndicatorSynchronous() {
 
 		double x = Coordinates.WEATHER_TILES.x()
 				+ Coordinates.WEATHER_INDICATOR_GAME.x();
@@ -178,7 +178,7 @@ public class WeatherTileController {
 		x += this.weatherIndexActive * this.weatherIndicatorGap;
 
 		Animation.animate(this.weatherIndicator, x, y,
-				AnimationSynch.ASYNCHRONOUS);
+				AnimationSynch.SYNCHRONOUS);
 
 	}
 
@@ -192,7 +192,7 @@ public class WeatherTileController {
 				.getAcclimatization(altitudeZone);
 	}
 
-	public void proceedToNextTurnAnimateAsynchronous() {
+	public void proceedToNextTurnAnimateSynchronous() {
 
 		this.weatherIndexActive++;
 
@@ -200,13 +200,13 @@ public class WeatherTileController {
 
 			this.weatherIndexActive = 0;
 			this.weatherTiles.removeFirst();
-			this.weatherTiles.getFirst().animateAsynchronous(
+			this.weatherTiles.getFirst().animateSynchronous(
 					Coordinates.WEATHER_TILES.x(),
 					Coordinates.WEATHER_TILES.y());
 
 		}
 
-		animateWeatherIndicator();
+		animateWeatherIndicatorSynchronous();
 
 	}
 

@@ -172,7 +172,7 @@ public class Space {
 
 		}
 
-		mountaineer.animateMountaineerAsynchronous(x, y);
+		mountaineer.animateMountaineerSynchronous(x, y);
 
 	}
 

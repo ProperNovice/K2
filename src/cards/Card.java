@@ -28,10 +28,10 @@ public class Card implements EventHandlerAble {
 		this.imageView.relocate(x, y);
 	}
 
-	public void animate(double endingX, double endingY,
-			AnimationSynch animationSynch) {
+	public void animateSynchronous(double endingX, double endingY) {
 
-		Animation.animate(this.imageView, endingX, endingY, animationSynch);
+		Animation.animate(this.imageView, endingX, endingY,
+				AnimationSynch.SYNCHRONOUS);
 
 	}
 

@@ -1,5 +1,6 @@
 package gameState;
 
+import utils.Lock;
 import components.RiskToken;
 import enums.GameStateEnum;
 import enums.TextEnum;
@@ -19,7 +20,9 @@ public class ChooseRiskToken extends GameState {
 		super.controller.textController().concealText();
 
 		super.controller.riskTokenController()
-				.addRiskTokenFromPlayToDiscardAnimateAsynchronous(riskToken);
+				.addRiskTokenFromPlayToDiscardAnimateSynchronous(riskToken);
+		
+		Lock.lock();
 
 		int value = riskToken.getValue();
 

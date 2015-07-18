@@ -108,7 +108,7 @@ public class AcclimatizationIndicator {
 
 	}
 
-	public void animateTotalAcclimatizationAsynchronous(Mountaineer mountaineer) {
+	public void animateTotalAcclimatizationSynchronous(Mountaineer mountaineer) {
 
 		for (Map.Entry<Mountaineer, Circle> entry : this.indicators.entrySet()) {
 
@@ -129,7 +129,7 @@ public class AcclimatizationIndicator {
 					+ this.zeroX + this.distanceBetweenNumbers
 					* acclimatization,
 					Coordinates.ACCLIMATIZATION_INDICATOR.y() + circleY,
-					AnimationSynch.ASYNCHRONOUS);
+					AnimationSynch.SYNCHRONOUS);
 
 		}
 

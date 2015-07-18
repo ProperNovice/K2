@@ -1,6 +1,5 @@
 package controller;
 
-import utils.Animation.AnimationSynch;
 import utils.ArrayList;
 import utils.Coordinate;
 import utils.CoordinatesRelocate;
@@ -85,7 +84,7 @@ public class CardController {
 			this.hand.add(this.deck.removeRandom());
 
 		rearrangeDeckSynchronous();
-		rearrangeHand(AnimationSynch.SYNCHRONOUS);
+		rearrangeHand();
 
 	}
 
@@ -106,14 +105,13 @@ public class CardController {
 		for (Card card : this.deck) {
 
 			Coordinate coordinate = coordinatesRelocate.removeFirst();
-			card.animate(coordinate.getX(), coordinate.getY(),
-					AnimationSynch.SYNCHRONOUS);
+			card.animateSynchronous(coordinate.getX(), coordinate.getY());
 
 		}
 
 	}
 
-	public void rearrangeHand(AnimationSynch animationSynch) {
+	public void rearrangeHand() {
 
 		double topLeftX = Coordinates.HAND.x();
 		double topLeftY = Coordinates.HAND.y();
@@ -137,7 +135,7 @@ public class CardController {
 		for (Card card : this.hand) {
 
 			Coordinate coordinate = coordinatesRelocate.removeFirst();
-			card.animate(coordinate.getX(), coordinate.getY(), animationSynch);
+			card.animateSynchronous(coordinate.getX(), coordinate.getY());
 
 		}
 
@@ -147,14 +145,13 @@ public class CardController {
 		return this.hand.contains(card);
 	}
 
-	public void addCardFromHandToDiscardAnimate(Card card,
-			AnimationSynch animationSynch) {
+	public void addCardFromHandToDiscardAnimateSynchronous(Card card) {
 
 		this.hand.remove(card);
 		this.discard.add(card);
 
-		card.animate(Coordinates.CARD_DISCARD_PILE.x(),
-				Coordinates.CARD_DISCARD_PILE.y(), animationSynch);
+		card.animateSynchronous(Coordinates.CARD_DISCARD_PILE.x(),
+				Coordinates.CARD_DISCARD_PILE.y());
 
 	}
 

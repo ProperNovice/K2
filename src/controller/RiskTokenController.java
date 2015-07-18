@@ -1,6 +1,5 @@
 package controller;
 
-import utils.Animation.AnimationSynch;
 import utils.ArrayList;
 import utils.Coordinate;
 import utils.CoordinatesRelocate;
@@ -62,19 +61,19 @@ public class RiskTokenController {
 
 	}
 
-	public void addTokensFromDeckToPlayRearrange(AnimationSynch animationSynch) {
+	public void addTokensFromDeckToPlayRearrangeSynchronous() {
 
 		int tokensToAdd = 3 - this.play.size();
 
 		for (int counter = 1; counter <= tokensToAdd; counter++)
 			this.play.add(this.deck.removeRandom());
 
-		rearrangeRiskTokensDeck(animationSynch);
-		rearrangeRiskTokensPlay(animationSynch);
+		rearrangeRiskTokensDeck();
+		rearrangeRiskTokensPlay();
 
 	}
 
-	private void rearrangeRiskTokensDeck(AnimationSynch animationSynch) {
+	private void rearrangeRiskTokensDeck() {
 
 		double topLeftX = Coordinates.RISK_TOKEN_DECK.x();
 		double topLeftY = Coordinates.RISK_TOKEN_DECK.y();
@@ -91,14 +90,13 @@ public class RiskTokenController {
 		for (RiskToken riskToken : this.deck) {
 
 			Coordinate coordinate = coordinatesRelocate.removeFirst();
-			riskToken.animate(coordinate.getX(), coordinate.getY(),
-					animationSynch);
+			riskToken.animateSynchronous(coordinate.getX(), coordinate.getY());
 
 		}
 
 	}
 
-	private void rearrangeRiskTokensPlay(AnimationSynch animationSynch) {
+	private void rearrangeRiskTokensPlay() {
 
 		ArrayList<RiskToken> playTemp = new ArrayList<>(this.play);
 		this.play.clear();
@@ -143,8 +141,7 @@ public class RiskTokenController {
 		for (RiskToken riskToken : this.play) {
 
 			Coordinate coordinate = coordinatesRelocate.removeFirst();
-			riskToken.animate(coordinate.getX(), coordinate.getY(),
-					animationSynch);
+			riskToken.animateSynchronous(coordinate.getX(), coordinate.getY());
 
 		}
 
@@ -154,14 +151,13 @@ public class RiskTokenController {
 		return this.play.contains(riskToken);
 	}
 
-	public void addRiskTokenFromPlayToDiscardAnimateAsynchronous(
+	public void addRiskTokenFromPlayToDiscardAnimateSynchronous(
 			RiskToken riskToken) {
 
 		this.play.remove(riskToken);
 		this.discard.add(riskToken);
-		riskToken.animate(Coordinates.RISK_TOKEN_DISCARD_PILE.x(),
-				Coordinates.RISK_TOKEN_DISCARD_PILE.y(),
-				AnimationSynch.ASYNCHRONOUS);
+		riskToken.animateSynchronous(Coordinates.RISK_TOKEN_DISCARD_PILE.x(),
+				Coordinates.RISK_TOKEN_DISCARD_PILE.y());
 
 	}
 
