@@ -35,6 +35,9 @@ public class ChooseCardToPlay extends GameState {
 		this.cardLeftToChoose--;
 		super.controller.textController().concealText();
 
+		super.controller.gameStateController().setGameState(
+				GameStateEnum.ANIMATING);
+
 		super.controller.cardController()
 				.addCardFromHandToDiscardAnimateSynchronous(card);
 

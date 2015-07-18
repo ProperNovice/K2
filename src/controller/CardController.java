@@ -84,7 +84,7 @@ public class CardController {
 			this.hand.add(this.deck.removeRandom());
 
 		rearrangeDeckSynchronous();
-		rearrangeHand();
+		rearrangeHandSynchronous();
 
 	}
 
@@ -111,7 +111,7 @@ public class CardController {
 
 	}
 
-	public void rearrangeHand() {
+	public void rearrangeHandSynchronous() {
 
 		double topLeftX = Coordinates.HAND.x();
 		double topLeftY = Coordinates.HAND.y();
@@ -165,6 +165,22 @@ public class CardController {
 
 	public RopeMovement getRopeMovementPlayedAs() {
 		return this.ropePlayedAs;
+	}
+
+	public boolean deckIsEmpty() {
+		return this.deck.isEmpty();
+	}
+
+	public boolean handIsEmpty() {
+		return this.hand.isEmpty();
+	}
+
+	public void addCardsFromDiscardToDeckAnimateSynchronous() {
+
+		this.discard.clear();
+		this.deck.addAll(this.cardSequenceDefault);
+		rearrangeDeckSynchronous();
+
 	}
 
 }

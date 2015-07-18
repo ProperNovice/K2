@@ -64,6 +64,9 @@ public class ChooseMountaineerToApplyCard extends GameState {
 			MountaineerEnum mountaineerEnum,
 			CardAcclimatization cardAcclimatization) {
 
+		super.controller.gameStateController().setGameState(
+				GameStateEnum.ANIMATING);
+
 		int acclimatization = cardAcclimatization.getAcclimatization();
 
 		super.controller.mountaineerController()

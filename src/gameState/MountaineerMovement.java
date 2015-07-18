@@ -2,6 +2,7 @@ package gameState;
 
 import model.Space;
 import mountaineers.Mountaineer;
+import utils.Lock;
 import enums.AltitudeZone;
 import enums.GameStateEnum;
 import enums.MountaineerEnum;
@@ -65,6 +66,9 @@ public class MountaineerMovement extends GameState {
 				return;
 			}
 
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.ANIMATING);
+
 			super.controller.mountaineerController().animateMountaineerToSpace(
 					this.mountaineerMoving, space);
 
@@ -85,6 +89,8 @@ public class MountaineerMovement extends GameState {
 
 			}
 
+			Lock.lock();
+
 			setNewGameState();
 
 		} else if (space.isAdjacentUp(mountaineerCurrentSpace)) {
@@ -102,6 +108,9 @@ public class MountaineerMovement extends GameState {
 				setNewGameState();
 				return;
 			}
+
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.ANIMATING);
 
 			super.controller.mountaineerController().animateMountaineerToSpace(
 					this.mountaineerMoving, space);
@@ -123,9 +132,13 @@ public class MountaineerMovement extends GameState {
 
 			}
 
+			Lock.lock();
+
 			setNewGameState();
 
-		}
+		} else
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.MOUNTAINEER_MOVEMENT);
 
 	}
 

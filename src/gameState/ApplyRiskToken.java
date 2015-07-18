@@ -1,5 +1,6 @@
 package gameState;
 
+import utils.Lock;
 import enums.GameStateEnum;
 import enums.MountaineerEnum;
 import enums.TextEnum;
@@ -7,22 +8,29 @@ import enums.TextEnum;
 public class ApplyRiskToken extends GameState {
 
 	private int valueLeftToApply;
+	private boolean firstTimeRunning = true;
 
 	@Override
 	public void handleGameStateChange() {
 
 		super.controller.textController().showText(TextEnum.APPLY_RISK_TOKEN);
 
-		this.valueLeftToApply = super.controller.riskTokenController()
-				.getLastRiskTokenPlayedValue();
-
 		super.controller.mountaineerController()
 				.setAllMinusButtonsVisible(true);
+
+		if (!this.firstTimeRunning)
+			return;
+
+		this.firstTimeRunning = false;
+		this.valueLeftToApply = super.controller.riskTokenController()
+				.getLastRiskTokenPlayedValue();
 
 	}
 
 	@Override
 	public void handleMinusButtonPressed(Runnable runnable) {
+
+		super.controller.textController().concealText();
 
 		runnable.run();
 		handleValueDecreased();
@@ -41,9 +49,16 @@ public class ApplyRiskToken extends GameState {
 				.mountaineerAcclimatizationIsZero(mountaineerEnum))
 			return;
 
+		super.controller.textController().concealText();
+
+		super.controller.gameStateController().setGameState(
+				GameStateEnum.ANIMATING);
+
 		super.controller.mountaineerController()
 				.addAcclimatizationToMountaineerAnimateSynchronous(
 						mountaineerEnum, -1);
+
+		Lock.lock();
 
 		handleValueDecreased();
 
@@ -53,10 +68,15 @@ public class ApplyRiskToken extends GameState {
 
 		this.valueLeftToApply--;
 
-		if (this.valueLeftToApply > 0)
+		if (this.valueLeftToApply > 0) {
+
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.APPLY_RISK_TOKEN);
 			return;
 
-		super.controller.textController().concealText();
+		}
+
+		this.firstTimeRunning = true;
 
 		super.controller.mountaineerController().setAllMinusButtonsVisible(
 				false);

@@ -19,6 +19,9 @@ public class ChooseRiskToken extends GameState {
 
 		super.controller.textController().concealText();
 
+		super.controller.gameStateController().setGameState(
+				GameStateEnum.ANIMATING);
+
 		super.controller.riskTokenController()
 				.addRiskTokenFromPlayToDiscardAnimateSynchronous(riskToken);
 		
