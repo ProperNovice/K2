@@ -17,6 +17,7 @@ public class Mountaineer {
 	private int movementRopeUp = 0;
 	private int movementRopeDown = 0;
 	private PanelMovement panelMovement = null;
+	private boolean hasPlacedHisTent = false;
 
 	public Mountaineer(MountaineerEnum mountaineerEnum) {
 
@@ -78,7 +79,8 @@ public class Mountaineer {
 		this.tent.relocate(x, y);
 	}
 
-	public ImageView getTent() {
+	public ImageView getTentAndSetHasBeenPlaced() {
+		this.hasPlacedHisTent = true;
 		return this.tent;
 	}
 
@@ -164,6 +166,10 @@ public class Mountaineer {
 		this.panelMovement.setMovementRopeUp(this.movementRopeUp);
 		this.panelMovement.setMovementRopeDown(this.movementRopeDown);
 
+	}
+
+	public boolean hasPlacedHisTent() {
+		return this.hasPlacedHisTent;
 	}
 
 }

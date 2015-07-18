@@ -29,6 +29,10 @@ public class MountaineerMovement extends GameState {
 			textEnum = TextEnum.MOVE_MOUNTAINEER_II;
 
 		super.controller.textController().showText(textEnum);
+
+		if (tentCanBePlaced())
+			super.controller.textController().showText(TextEnum.PLACE_TENT);
+
 		super.controller.textController().showText(TextEnum.CONTINUE);
 
 	}
@@ -38,7 +42,22 @@ public class MountaineerMovement extends GameState {
 
 		super.controller.textController().concealText();
 
-		this.mountaineerMoving.resetMovement();
+		switch (textEnum) {
+
+		case CONTINUE:
+			this.mountaineerMoving.resetMovement();
+			break;
+
+		case PLACE_TENT:
+			handlePlaceTentAnimateSynchronous();
+			Lock.lock();
+			break;
+
+		default:
+			break;
+
+		}
+
 		setNewGameState();
 
 	}
@@ -152,6 +171,65 @@ public class MountaineerMovement extends GameState {
 		else
 			super.controller.gameStateController().setGameState(
 					GameStateEnum.MOUNTAINEER_MOVEMENT);
+
+	}
+
+	private boolean tentCanBePlaced() {
+
+		Space mountaineerSpace = this.mountaineerMoving.getMountaineerSpace();
+
+		if (this.mountaineerMoving.hasPlacedHisTent())
+			return false;
+
+		if (mountaineerSpace.containsTent())
+			return false;
+
+		int movementMountaineer = this.mountaineerMoving.getMovement()
+				+ this.mountaineerMoving.getMovementRopeUp();
+
+		AltitudeZone altitudeZoneSpace = mountaineerSpace.getAltitudeZone();
+
+		int tentCost = mountaineerSpace.getMovementCost()
+				+ super.controller.weatherTileController()
+						.getMovementToEnterSpaceWithAltitude(altitudeZoneSpace);
+
+		if (movementMountaineer < tentCost)
+			return false;
+
+		return true;
+
+	}
+
+	private void handlePlaceTentAnimateSynchronous() {
+
+		Space mountaineerSpace = this.mountaineerMoving.getMountaineerSpace();
+		mountaineerSpace.addTentAnimateSynchronous(this.mountaineerMoving
+				.getTentAndSetHasBeenPlaced());
+
+		int movementRopeUp = this.mountaineerMoving.getMovementRopeUp();
+
+		AltitudeZone altitudeZone = mountaineerSpace.getAltitudeZone();
+
+		int tentCost = mountaineerSpace.getMovementCost()
+				+ super.controller.weatherTileController()
+						.getMovementToEnterSpaceWithAltitude(altitudeZone);
+
+		super.controller.gameStateController().setGameState(
+				GameStateEnum.ANIMATING);
+
+		if (movementRopeUp >= tentCost)
+			this.mountaineerMoving
+					.addMovementRopeUpPanelMovementUpdate(-tentCost);
+
+		else {
+
+			tentCost -= movementRopeUp;
+			this.mountaineerMoving
+					.addMovementRopeUpPanelMovementUpdate(-this.mountaineerMoving
+							.getMovementRopeUp());
+			this.mountaineerMoving.addMovementPanelMovementUpdate(-tentCost);
+
+		}
 
 	}
 

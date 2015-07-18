@@ -12,6 +12,7 @@ public enum TextEnum {
 	MOVE_MOUNTAINEER_I("Move m. I", TextTypeEnum.INDICATOR),
 	MOVE_MOUNTAINEER_II("Move m. II", TextTypeEnum.INDICATOR),
 	CONTINUE("Continue", TextTypeEnum.OPTION),
+	PLACE_TENT("Place tent", TextTypeEnum.OPTION),
 
 	;
 

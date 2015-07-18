@@ -170,6 +170,10 @@ public class MountaineerController {
 		return this.dealtCardThisTurn.contains(mountaineerEnum);
 	}
 
+	public void clearWasDealtCardThisTurn() {
+		this.dealtCardThisTurn.clear();
+	}
+
 	public boolean atLeastOneMountaineerHasMovementPoint() {
 
 		if (this.mountaineerI.hasAtLeastOneMovementPoint())

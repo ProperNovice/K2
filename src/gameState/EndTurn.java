@@ -17,10 +17,13 @@ public class EndTurn extends GameState {
 		handleMountaineerAcclimatization(MountaineerEnum.I);
 		handleMountaineerAcclimatization(MountaineerEnum.II);
 
-		if (this.animationExecuted)
+		if (this.animationExecuted) {
+
+			this.animationExecuted = false;
 			Lock.lock();
 
-		this.animationExecuted = false;
+		}
+
 		super.controller.gameStateController().setGameState(
 				GameStateEnum.START_NEW_ROUND);
 
@@ -31,6 +34,10 @@ public class EndTurn extends GameState {
 
 		Mountaineer mountaineer = super.controller.mountaineerController()
 				.getMountaineer(mountaineerEnum);
+
+		int startingMountaineerAcclimatization = mountaineer
+				.getAcclimatization();
+		int endingMountaineerAcclimatization = mountaineer.getAcclimatization();
 
 		Space space = mountaineer.getMountaineerSpace();
 		AltitudeZone altitudeZone = space.getAltitudeZone();
@@ -43,14 +50,28 @@ public class EndTurn extends GameState {
 		int totalAcclimatization = acclimatizationIndicatorSpace
 				+ acclimatizationIndicatorAltitudeZone;
 
-		if (totalAcclimatization == 0)
+		if (space.containsTent())
+			totalAcclimatization++;
+
+		endingMountaineerAcclimatization += totalAcclimatization;
+
+		endingMountaineerAcclimatization = (int) Math.min(
+				endingMountaineerAcclimatization, 6);
+
+		endingMountaineerAcclimatization = (int) Math.max(
+				endingMountaineerAcclimatization, 0);
+
+		if (startingMountaineerAcclimatization == endingMountaineerAcclimatization)
 			return;
 
 		this.animationExecuted = true;
 
+		int acclimatizationToAdd = endingMountaineerAcclimatization
+				- startingMountaineerAcclimatization;
+
 		super.controller.mountaineerController()
 				.addAcclimatizationToMountaineerAnimateSynchronous(
-						mountaineerEnum, totalAcclimatization);
+						mountaineerEnum, acclimatizationToAdd);
 
 	}
 

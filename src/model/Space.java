@@ -6,6 +6,10 @@ import mountaineers.Mountaineer;
 import utils.Animation;
 import utils.Animation.AnimationSynch;
 import utils.Circle;
+import utils.EventHandler;
+import utils.EventHandler.EventHandlerAble;
+import utils.Timer;
+import utils.Timer.TimerInterface;
 import utils.ImageView;
 import utils.Logger;
 import enums.AltitudeZone;
@@ -15,7 +19,7 @@ import enums.Ratio;
 import enums.SpaceMountaineerLocationEnum;
 import enums.SpaceSize;
 
-public class Space {
+public class Space implements TimerInterface {
 
 	private int movementCost, acclimatizationIndicator, victoryPoints;
 	private AltitudeZone altitudeZone = null;
@@ -25,6 +29,8 @@ public class Space {
 	private ArrayList<Space> adjacentUp = new ArrayList<>();
 	private ArrayList<Space> adjacentDown = new ArrayList<>();
 	private boolean containsTent = false;
+	private ImageView tent = null;
+	private Timer timer = new Timer(2000, this);
 
 	public Space(int movementCost, int acclimatizationIndicator,
 			int victoryPoints, AltitudeZone altitudeZone, double topLeftX,
@@ -179,6 +185,7 @@ public class Space {
 	public void addTentAnimateSynchronous(ImageView imageView) {
 
 		this.containsTent = true;
+		this.tent = imageView;
 
 		double tentHeight = Dimensions.TENT_GAME.y();
 
@@ -186,15 +193,37 @@ public class Space {
 
 		double x = 0, y = 0;
 
-		x = this.topLeftX + radius + 23;
-		y = this.topLeftY + radius - tentHeight - 4;
+		x = this.topLeftX + radius + 2;
+		y = this.topLeftY + radius - tentHeight;
 
-		Animation.animate(imageView, x, y, AnimationSynch.SYNCHRONOUS);
+		Animation.animate(this.tent, x, y, AnimationSynch.SYNCHRONOUS);
+
+		addTentEventHandler(this.tent);
 
 	}
 
 	public boolean containsTent() {
 		return this.containsTent;
+	}
+
+	private void addTentEventHandler(ImageView imageView) {
+
+		imageView.setEventHandler(new EventHandler(new EventHandlerAble() {
+
+			@Override
+			public void handleMouseEntered() {
+				tent.setVisible(false);
+				timer.startTimer();
+			}
+
+		}));
+
+	}
+
+	@Override
+	public void fireEvent() {
+		this.timer.stopTimer();
+		this.tent.setVisible(true);
 	}
 
 }
