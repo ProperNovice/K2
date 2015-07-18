@@ -12,12 +12,17 @@ public class Mountaineer {
 	private MountaineerEnum mountaineerEnum = null;
 	private ImageView mountaineerMap = null, tent = null;
 	private Space mountaineerSpace = null;
+	private Space mountaineerSpaceStarting = null;
 	private int acclimatization = 1;
+	private int acclimatizationStarting = 1;
 	private int movement = 0;
 	private int movementRopeUp = 0;
 	private int movementRopeDown = 0;
 	private PanelMovement panelMovement = null;
+	private double tentStartingX, tentStartingY;
 	private boolean hasPlacedHisTent = false;
+	private boolean hasPlacedHisTentThisRound = false;
+	private Space tentSpace = null;
 
 	public Mountaineer(MountaineerEnum mountaineerEnum) {
 
@@ -76,11 +81,18 @@ public class Mountaineer {
 	}
 
 	public void relocateTent(double x, double y) {
+
+		this.tentStartingX = x;
+		this.tentStartingY = y;
+
 		this.tent.relocate(x, y);
+
 	}
 
-	public ImageView getTentAndSetHasBeenPlaced() {
+	public ImageView getTentAndSetHasBeenPlaced(Space space) {
+		this.tentSpace = space;
 		this.hasPlacedHisTent = true;
+		this.hasPlacedHisTentThisRound = true;
 		return this.tent;
 	}
 
@@ -170,6 +182,41 @@ public class Mountaineer {
 
 	public boolean hasPlacedHisTent() {
 		return this.hasPlacedHisTent;
+	}
+
+	public void resetStartingSpace() {
+		this.mountaineerSpaceStarting = this.mountaineerSpace;
+	}
+
+	public void resetStartingAcclimatization() {
+		this.acclimatizationStarting = this.acclimatization;
+	}
+
+	public void resetToStartingSpace() {
+		this.mountaineerSpace = this.mountaineerSpaceStarting;
+	}
+
+	public int getAcclimatizationDifferenceFromStrarting() {
+		return this.acclimatizationStarting - this.acclimatization;
+	}
+
+	public boolean hasPlayedHisTentThisRound() {
+		return this.hasPlacedHisTentThisRound;
+	}
+
+	public void setHasPlayedHisTentThisRoundFalse() {
+		this.hasPlacedHisTentThisRound = false;
+	}
+
+	public void resetTent() {
+
+		this.hasPlacedHisTent = false;
+		this.hasPlacedHisTentThisRound = false;
+		this.tentSpace.setContainsTentFalse();
+
+		Animation.animate(this.tent, this.tentStartingX, this.tentStartingY,
+				AnimationSynch.SYNCHRONOUS);
+
 	}
 
 }

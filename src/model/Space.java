@@ -154,7 +154,7 @@ public class Space implements TimerInterface {
 
 	}
 
-	public void animateMountaineerAsynchronous(Mountaineer mountaineer,
+	public void animateMountaineerSynchronous(Mountaineer mountaineer,
 			SpaceMountaineerLocationEnum spaceMountaineerLocationEnum) {
 
 		double mountaineerWidth = Dimensions.MOUNTAINEER_GAME.x();
@@ -204,6 +204,10 @@ public class Space implements TimerInterface {
 
 	public boolean containsTent() {
 		return this.containsTent;
+	}
+
+	public void setContainsTentFalse() {
+		this.containsTent = false;
 	}
 
 	private void addTentEventHandler(ImageView imageView) {

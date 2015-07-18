@@ -1,20 +1,21 @@
 package controller;
 
+import interfaces.SaveAble;
 import utils.ArrayList;
 import utils.Coordinate;
 import utils.CoordinatesRelocate;
 import utils.CoordinatesRelocateBuilder;
-
 import components.RiskToken;
-
 import enums.Coordinates;
 import enums.Dimensions;
 
-public class RiskTokenController {
+public class RiskTokenController implements SaveAble {
 
 	private ArrayList<RiskToken> deck = new ArrayList<>();
 	private ArrayList<RiskToken> play = new ArrayList<>();
+	private ArrayList<RiskToken> playSave = new ArrayList<>();
 	private ArrayList<RiskToken> discard = new ArrayList<>();
+	private ArrayList<RiskToken> discardSave = new ArrayList<>();
 
 	public RiskTokenController() {
 
@@ -169,6 +170,28 @@ public class RiskTokenController {
 
 	public int getLastRiskTokenPlayedValue() {
 		return this.discard.getLast().getValue();
+	}
+
+	@Override
+	public void saveState() {
+
+		this.playSave.clear();
+		this.playSave.addAll(this.play);
+		this.discardSave.clear();
+		this.discardSave.addAll(this.discard);
+
+	}
+
+	@Override
+	public void loadState() {
+
+		this.play.clear();
+		this.play.addAll(this.playSave);
+		this.discard.clear();
+		this.discard.addAll(this.discardSave);
+
+		rearrangeRiskTokensPlay();
+
 	}
 
 }

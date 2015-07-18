@@ -1,5 +1,6 @@
 package controller;
 
+import interfaces.SaveAble;
 import utils.ArrayList;
 import utils.Coordinate;
 import utils.CoordinatesRelocate;
@@ -12,12 +13,14 @@ import enums.Coordinates;
 import enums.Dimensions;
 import enums.RopeMovement;
 
-public class CardController {
+public class CardController implements SaveAble {
 
 	private ArrayList<Card> cardSequenceDefault = new ArrayList<>();
 	private ArrayList<Card> deck = new ArrayList<>();
 	private ArrayList<Card> hand = new ArrayList<>();
+	private ArrayList<Card> handSave = new ArrayList<>();
 	private ArrayList<Card> discard = new ArrayList<>();
+	private ArrayList<Card> discardSave = new ArrayList<>();
 	private RopeMovement ropePlayedAs = null;
 
 	public CardController() {
@@ -180,6 +183,28 @@ public class CardController {
 		this.discard.clear();
 		this.deck.addAll(this.cardSequenceDefault);
 		rearrangeDeckSynchronous();
+
+	}
+
+	@Override
+	public void saveState() {
+
+		this.handSave.clear();
+		this.handSave.addAll(this.hand);
+		this.discardSave.clear();
+		this.discardSave.addAll(this.hand);
+
+	}
+
+	@Override
+	public void loadState() {
+
+		this.hand.clear();
+		this.hand.addAll(this.handSave);
+		this.discard.clear();
+		this.discard.addAll(this.discardSave);
+
+		rearrangeHandSynchronous();
 
 	}
 

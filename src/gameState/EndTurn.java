@@ -6,6 +6,7 @@ import mountaineers.Mountaineer;
 import enums.AltitudeZone;
 import enums.GameStateEnum;
 import enums.MountaineerEnum;
+import enums.TextEnum;
 
 public class EndTurn extends GameState {
 
@@ -17,12 +18,52 @@ public class EndTurn extends GameState {
 		handleMountaineerAcclimatization(MountaineerEnum.I);
 		handleMountaineerAcclimatization(MountaineerEnum.II);
 
-		if (this.animationExecuted) {
-
-			this.animationExecuted = false;
+		if (this.animationExecuted)
 			Lock.lock();
 
+		super.controller.textController().showText(TextEnum.NEW_ROUND);
+		super.controller.textController().showText(TextEnum.RESTART_TURN);
+
+	}
+
+	@Override
+	public void handleTextOptionPressed(TextEnum textEnum) {
+
+		super.controller.textController().concealText();
+
+		switch (textEnum) {
+
+		case NEW_ROUND:
+			handleNewRound();
+			break;
+
+		case RESTART_TURN:
+			handleRestartTurn();
+			break;
+
+		default:
+			break;
+
 		}
+
+	}
+
+	private void handleRestartTurn() {
+
+		super.controller.saveGameController().loadTurn();
+
+		Lock.lock();
+
+		super.controller.mountaineerController().clearWasDealtCardThisTurn();
+
+		super.controller.gameStateController().setGameState(
+				GameStateEnum.CHOOSE_CARD_TO_PLAY);
+
+	}
+
+	private void handleNewRound() {
+
+		this.animationExecuted = false;
 
 		super.controller.gameStateController().setGameState(
 				GameStateEnum.START_NEW_ROUND);

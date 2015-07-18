@@ -1,5 +1,6 @@
 package controller;
 
+import interfaces.SaveAble;
 import model.Space;
 import mountaineers.AcclimatizationIndicator;
 import mountaineers.Mountaineer;
@@ -9,7 +10,7 @@ import enums.Dimensions;
 import enums.MountaineerEnum;
 import enums.SpaceMountaineerLocationEnum;
 
-public class MountaineerController {
+public class MountaineerController implements SaveAble {
 
 	private Mountaineer mountaineerI = null, mountaineerII = null;
 	private AcclimatizationIndicator acclimatizationIndicator = null;
@@ -48,21 +49,21 @@ public class MountaineerController {
 		if (this.mountaineerI.getMountaineerSpace().equals(space)
 				|| this.mountaineerII.getMountaineerSpace().equals(space))
 
-			space.animateMountaineerAsynchronous(mountaineer,
+			space.animateMountaineerSynchronous(mountaineer,
 					SpaceMountaineerLocationEnum.BOTTOM_RIGHT);
 
 		else {
 
-			space.animateMountaineerAsynchronous(mountaineer,
+			space.animateMountaineerSynchronous(mountaineer,
 					SpaceMountaineerLocationEnum.TOP_LEFT);
 
 			if (mountaineer.equals(this.mountaineerI))
 				this.mountaineerII.getMountaineerSpace()
-						.animateMountaineerAsynchronous(this.mountaineerII,
+						.animateMountaineerSynchronous(this.mountaineerII,
 								SpaceMountaineerLocationEnum.TOP_LEFT);
 			else if (mountaineer.equals(this.mountaineerII))
 				this.mountaineerI.getMountaineerSpace()
-						.animateMountaineerAsynchronous(this.mountaineerI,
+						.animateMountaineerSynchronous(this.mountaineerI,
 								SpaceMountaineerLocationEnum.TOP_LEFT);
 
 		}
@@ -192,6 +193,57 @@ public class MountaineerController {
 			return this.mountaineerI;
 		else
 			return this.mountaineerII;
+
+	}
+
+	public void setTentsHasNotBeenPlacedInThisRound() {
+		this.mountaineerI.setHasPlayedHisTentThisRoundFalse();
+		this.mountaineerII.setHasPlayedHisTentThisRoundFalse();
+	}
+
+	@Override
+	public void saveState() {
+
+		this.mountaineerI.resetStartingSpace();
+		this.mountaineerI.resetStartingAcclimatization();
+
+		this.mountaineerII.resetStartingSpace();
+		this.mountaineerII.resetStartingAcclimatization();
+
+	}
+
+	@Override
+	public void loadState() {
+
+		this.mountaineerI.resetToStartingSpace();
+		this.mountaineerII.resetToStartingSpace();
+
+		this.mountaineerI.getMountaineerSpace().animateMountaineerSynchronous(
+				this.mountaineerI, SpaceMountaineerLocationEnum.TOP_LEFT);
+
+		SpaceMountaineerLocationEnum spaceMountaineerLocationEnum = SpaceMountaineerLocationEnum.TOP_LEFT;
+
+		if (this.mountaineerI.getMountaineerSpace().equals(
+				this.mountaineerII.getMountaineerSpace()))
+			spaceMountaineerLocationEnum = SpaceMountaineerLocationEnum.BOTTOM_RIGHT;
+
+		this.mountaineerII.getMountaineerSpace().animateMountaineerSynchronous(
+				this.mountaineerII, spaceMountaineerLocationEnum);
+
+		int acclimatizationDifferenceMountaineerI = this.mountaineerI
+				.getAcclimatizationDifferenceFromStrarting();
+		addAcclimatizationToMountaineerAnimateSynchronous(MountaineerEnum.I,
+				acclimatizationDifferenceMountaineerI);
+
+		int acclimatizationDifferenceMountaineerII = this.mountaineerII
+				.getAcclimatizationDifferenceFromStrarting();
+		addAcclimatizationToMountaineerAnimateSynchronous(MountaineerEnum.II,
+				acclimatizationDifferenceMountaineerII);
+
+		if (this.mountaineerI.hasPlayedHisTentThisRound())
+			this.mountaineerI.resetTent();
+		if (this.mountaineerII.hasPlayedHisTentThisRound())
+			this.mountaineerII.resetTent();
 
 	}
 

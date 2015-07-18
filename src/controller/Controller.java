@@ -15,6 +15,7 @@ public class Controller {
 	private CardController cardController = null;
 	private RiskTokenController riskTokenController = null;
 	private WeatherTileController weatherTileController = null;
+	private SaveGameController saveGameController = null;
 
 	public Controller() {
 
@@ -36,6 +37,7 @@ public class Controller {
 		this.cardController = new CardController();
 		this.riskTokenController = new RiskTokenController();
 		this.weatherTileController = new WeatherTileController();
+		this.saveGameController = new SaveGameController();
 
 	}
 
@@ -65,6 +67,10 @@ public class Controller {
 
 	public WeatherTileController weatherTileController() {
 		return this.weatherTileController;
+	}
+
+	public SaveGameController saveGameController() {
+		return this.saveGameController;
 	}
 
 }

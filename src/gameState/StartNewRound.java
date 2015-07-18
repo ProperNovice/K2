@@ -10,7 +10,7 @@ public class StartNewRound extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
-		reset();
+		resetRound();
 
 		this.currentRound++;
 
@@ -23,13 +23,17 @@ public class StartNewRound extends GameState {
 
 		Lock.lock();
 
+		super.controller.saveGameController().saveTurn();
+
 		super.controller.gameStateController().setGameState(
 				GameStateEnum.CHOOSE_CARD_TO_PLAY);
 
 	}
 
-	private void reset() {
+	private void resetRound() {
 		super.controller.mountaineerController().clearWasDealtCardThisTurn();
+		super.controller.mountaineerController()
+				.setTentsHasNotBeenPlacedInThisRound();
 	}
 
 	private void handleCards() {
