@@ -80,7 +80,11 @@ public class RiskTokenController {
 		double width = Dimensions.RISK_TOKEN_GAME.x();
 		double height = Dimensions.RISK_TOKEN_GAME.y();
 		double gapBetweenNodes = Dimensions.GAP_BETWEEN_COMPONENTS.x();
-		int nodesPerRow = 10;
+
+		int nodesPerRow = this.deck.size() / 2;
+
+		if (this.deck.size() % 2 == 1)
+			nodesPerRow++;
 
 		CoordinatesRelocate coordinatesRelocate = new CoordinatesRelocateBuilder()
 				.topLeftX(topLeftX).topLeftY(topLeftY).width(width)
