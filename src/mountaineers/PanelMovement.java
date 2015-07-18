@@ -88,10 +88,18 @@ public class PanelMovement {
 
 		if (movement > 0) {
 
+			System.out.println("1");
+
+			this.movement.setText("");
+			System.out.println("1a");
 			this.movement.setText("move: " + movement);
+			System.out.println("1b");
 			setTextVisibleStatus(this.movement, true);
+			System.out.println("1c");
 
 		} else {
+
+			System.out.println("2");
 
 			this.movement.setVisible(false);
 
@@ -104,7 +112,7 @@ public class PanelMovement {
 				}
 
 		}
-		
+
 		relocateTexts();
 
 	}
@@ -113,10 +121,18 @@ public class PanelMovement {
 
 		if (movement > 0) {
 
+			System.out.println("3");
+
+			this.movementRopeUp.setText("");
+			System.out.println("3a");
 			this.movementRopeUp.setText("up: " + movement);
+			System.out.println("3b");
 			setTextVisibleStatus(this.movementRopeUp, true);
+			System.out.println("3c");
 
 		} else {
+
+			System.out.println("4");
 
 			this.movementRopeUp.setVisible(false);
 
@@ -138,10 +154,18 @@ public class PanelMovement {
 
 		if (movement > 0) {
 
+			System.out.println("5");
+
+			this.movementRopeDown.setText("");
+			System.out.println("5a");
 			this.movementRopeDown.setText("down: " + movement);
+			System.out.println("5b");
 			setTextVisibleStatus(this.movementRopeDown, true);
+			System.out.println("5c");
 
 		} else {
+
+			System.out.println("6");
 
 			this.movementRopeDown.setVisible(false);
 
@@ -171,29 +195,46 @@ public class PanelMovement {
 
 		double y = this.yFirst;
 
+		System.out.println("s" + this.textVisibility.size());
+
 		for (TextVisibility textVisibility : this.textVisibility) {
+
+			System.out.println("q");
 
 			if (!textVisibility.isVisible())
 				continue;
 
+			System.out.println("w");
+
 			textVisibility.relocate(this.x, y);
+
+			System.out.println("e");
 
 			if (y == this.yFirst)
 				y = this.ySecond;
 			else if (y == this.ySecond)
 				y = this.yThird;
 
+			System.out.println("r");
+
 		}
 
+		System.out.println("t");
 		boolean ateastOneIsVisible = false;
 
-		for (TextVisibility textVisibility : this.textVisibility)
+		for (TextVisibility textVisibility : this.textVisibility) {
+			System.out.println("y");
 			if (textVisibility.isVisible()) {
 				ateastOneIsVisible = true;
 				textVisibility.setVisible(true);
 			}
+		}
+
+		System.out.println("u");
 
 		this.mountaineerText.setVisible(ateastOneIsVisible);
+
+		System.out.println("i");
 
 	}
 
@@ -255,9 +296,13 @@ public class PanelMovement {
 
 		public void relocate(double x, double y) {
 
+			System.out.println("/");
+
 			this.text.relocate(x, y);
+			System.out.println(".");
 			this.minus.relocate(x + this.text.getWidth(), y
-					+ Credentials.TEXT_HEIGHT.credential() / 3);
+					+ (double) Credentials.TEXT_HEIGHT.credential() / 3);
+			System.out.println(",");
 
 		}
 

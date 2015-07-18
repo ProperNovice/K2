@@ -5,6 +5,9 @@ import utils.Animation;
 import utils.Animation.AnimationSynch;
 import utils.ArrayList;
 import utils.Circle;
+import utils.Coordinate;
+import utils.CoordinatesRelocate;
+import utils.CoordinatesRelocateBuilder;
 import weather.Weather;
 import weather.WeatherTile;
 import enums.AltitudeZone;
@@ -18,6 +21,7 @@ public class WeatherTileController {
 	private int weatherIndexActive = 0;
 	private double weatherIndicatorGap = 125 * Ratio.WEATHER_TILE.ratio();
 	private Circle weatherIndicator = null;
+	private boolean weatherTilesAreShowing = false;
 
 	public WeatherTileController() {
 
@@ -207,6 +211,43 @@ public class WeatherTileController {
 		}
 
 		animateWeatherIndicatorSynchronous();
+
+	}
+
+	public void handleWeatherTilePressed() {
+
+		if (!this.weatherTilesAreShowing) {
+
+			this.weatherTilesAreShowing = true;
+			showWeatherTiles();
+
+		} else if (this.weatherTilesAreShowing) {
+
+			this.weatherTilesAreShowing = false;
+			relocateWeatherTiles();
+
+		}
+
+	}
+
+	private void showWeatherTiles() {
+
+		CoordinatesRelocate coordinatesRelocate = new CoordinatesRelocateBuilder()
+				.topLeftX(Coordinates.WEATHER_TILES.x())
+				.topLeftY(Coordinates.WEATHER_TILES.y())
+				.width(Dimensions.WEATHER_TILE_GAME.x())
+				.height(Dimensions.WEATHER_TILE_GAME.y()).nodesPerRow(2)
+				.gapBetweenNodes(0).create();
+
+		for (WeatherTile weatherTile : this.weatherTiles) {
+
+			Coordinate coordinate = coordinatesRelocate.removeFirst();
+			weatherTile.relocate(coordinate.getX(), coordinate.getY());
+			weatherTile.toFront();
+
+		}
+
+		this.weatherIndicator.toFront();
 
 	}
 

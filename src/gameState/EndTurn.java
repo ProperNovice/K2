@@ -50,6 +50,8 @@ public class EndTurn extends GameState {
 
 	private void handleRestartTurn() {
 
+		this.animationExecuted = false;
+
 		super.controller.saveGameController().loadTurn();
 
 		Lock.lock();

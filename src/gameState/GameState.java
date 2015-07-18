@@ -49,9 +49,14 @@ public class GameState {
 	public void handleMinusButtonPressed(Runnable runnable) {
 
 	}
-	
-	public void handleAcclimatizationIndicatorPressed(MountaineerEnum mountaineerEnum) {
-		
+
+	public void handleAcclimatizationIndicatorPressed(
+			MountaineerEnum mountaineerEnum) {
+
+	}
+
+	public final void handleWeatherTilePressed() {
+		this.controller.weatherTileController().handleWeatherTilePressed();
 	}
 
 }

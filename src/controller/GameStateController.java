@@ -72,11 +72,11 @@ public class GameStateController {
 		case APPLY_RISK_TOKEN:
 			this.currentGameState = this.applyRiskToken;
 			break;
-			
+
 		case MOUNTAINEER_MOVEMENT:
 			this.currentGameState = this.mountaineerMovement;
 			break;
-			
+
 		case END_TURN:
 			this.currentGameState = this.endTurn;
 			break;
@@ -114,6 +114,10 @@ public class GameStateController {
 			MountaineerEnum mountaineerEnum) {
 		this.currentGameState
 				.handleAcclimatizationIndicatorPressed(mountaineerEnum);
+	}
+
+	public final void handleWeatherTilePressed() {
+		this.currentGameState.handleWeatherTilePressed();
 	}
 
 }

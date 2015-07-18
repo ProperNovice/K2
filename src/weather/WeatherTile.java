@@ -1,5 +1,6 @@
 package weather;
 
+import instances.Instances;
 import utils.Animation;
 import utils.Animation.AnimationSynch;
 import utils.ArrayList;
@@ -36,6 +37,10 @@ public class WeatherTile implements EventHandlerAble {
 		this.imageView.relocate(x, y);
 	}
 
+	public void toFront() {
+		this.imageView.toFront();
+	}
+
 	public void toBack() {
 		this.imageView.toBack();
 	}
@@ -65,6 +70,9 @@ public class WeatherTile implements EventHandlerAble {
 		}
 
 		Logger.logNewLine("*/");
+
+		Instances.getControllerInstance().gameStateController()
+				.handleWeatherTilePressed();
 
 	}
 
