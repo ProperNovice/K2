@@ -206,6 +206,10 @@ public class Mountaineer {
 		this.mountaineerSpace = this.mountaineerSpaceStarting;
 	}
 
+	public void resetToStartingVictoryPoints() {
+		this.victoryPoints = this.victoryPointsStarting;
+	}
+
 	public int getAcclimatizationDifferenceFromStrarting() {
 		return this.acclimatizationStarting - this.acclimatization;
 	}

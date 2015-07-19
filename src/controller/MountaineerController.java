@@ -306,6 +306,26 @@ public class MountaineerController implements SaveAble {
 		if (this.mountaineerII.hasPlayedHisTentThisRound())
 			this.mountaineerII.resetTent();
 
+		this.mountaineerI.resetToStartingVictoryPoints();
+		this.mountaineerII.resetToStartingVictoryPoints();
+
+		this.scoreIndicator.animateScoreMountaineerSynchronous(
+				this.mountaineerI, this.mountaineerI.getCurrentVictoryPoints(),
+				ScoreLocationEnum.LEFT);
+
+		ScoreLocationEnum scoreLocationEnumMountaineerII = null;
+
+		if (this.mountaineerI.getCurrentVictoryPoints() == this.mountaineerII
+				.getCurrentVictoryPoints())
+			scoreLocationEnumMountaineerII = ScoreLocationEnum.RIGHT;
+		else
+			scoreLocationEnumMountaineerII = ScoreLocationEnum.LEFT;
+
+		this.scoreIndicator.animateScoreMountaineerSynchronous(
+				this.mountaineerII,
+				this.mountaineerII.getCurrentVictoryPoints(),
+				scoreLocationEnumMountaineerII);
+
 	}
 
 	public boolean mountaineerPlacementIsLegal() {

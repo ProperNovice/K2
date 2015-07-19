@@ -1,9 +1,9 @@
 package gameState;
 
-import utils.Executor;
-import utils.Lock;
 import model.Space;
 import mountaineers.Mountaineer;
+import utils.Executor;
+import utils.Lock;
 import enums.AltitudeZone;
 import enums.GameStateEnum;
 import enums.MountaineerEnum;
@@ -35,6 +35,8 @@ public class EndTurn extends GameState {
 	@Override
 	public void handleTextOptionPressed(TextEnum textEnum) {
 
+		this.animationExecuted = false;
+
 		super.controller.textController().concealText();
 
 		switch (textEnum) {
@@ -56,8 +58,6 @@ public class EndTurn extends GameState {
 
 	private void handleRestartTurn() {
 
-		this.animationExecuted = false;
-
 		super.controller.saveGameController().loadTurn();
 
 		Lock.lock();
@@ -70,8 +70,6 @@ public class EndTurn extends GameState {
 	}
 
 	private void handleNewRound() {
-
-		this.animationExecuted = false;
 
 		super.controller.gameStateController().setGameState(
 				GameStateEnum.START_NEW_ROUND);
@@ -114,13 +112,18 @@ public class EndTurn extends GameState {
 			return;
 
 		this.animationExecuted = true;
+		
+		System.out.println("1 " + mountaineerEnum);
 
 		int acclimatizationToAdd = endingMountaineerAcclimatization
 				- startingMountaineerAcclimatization;
-
+		System.out.println("ata " + acclimatizationToAdd);
+		
 		super.controller.mountaineerController()
 				.addAcclimatizationToMountaineerAnimateSynchronous(
 						mountaineerEnum, acclimatizationToAdd);
+		
+		System.out.println("2");
 
 	}
 

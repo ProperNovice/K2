@@ -1,6 +1,7 @@
 package gameState;
 
 import javafx.application.Platform;
+import utils.Executor;
 import utils.Lock;
 import enums.GameStateEnum;
 import enums.MountaineerEnum;
@@ -92,12 +93,12 @@ public class ApplyRiskToken extends GameState {
 
 		if (!super.controller.mountaineerController()
 				.atLeastOneMountaineerHasMovementPoint())
-			super.controller.gameStateController().setGameState(
-					GameStateEnum.END_TURN);
+			Executor.runLater(() -> super.controller.gameStateController()
+					.setGameState(GameStateEnum.END_TURN));
 
 		else
-			super.controller.gameStateController().setGameState(
-					GameStateEnum.MOUNTAINEER_MOVEMENT);
+			Executor.runLater(() -> super.controller.gameStateController()
+					.setGameState(GameStateEnum.MOUNTAINEER_MOVEMENT));
 
 	}
 
