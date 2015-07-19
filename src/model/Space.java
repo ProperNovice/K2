@@ -8,10 +8,10 @@ import utils.Animation.AnimationSynch;
 import utils.Circle;
 import utils.EventHandler;
 import utils.EventHandler.EventHandlerAble;
-import utils.Timer;
-import utils.Timer.TimerInterface;
 import utils.ImageView;
 import utils.Logger;
+import utils.Timer;
+import utils.Timer.TimerInterface;
 import enums.AltitudeZone;
 import enums.Coordinates;
 import enums.Dimensions;
@@ -21,7 +21,8 @@ import enums.SpaceSize;
 
 public class Space implements TimerInterface {
 
-	private int movementCost, acclimatizationIndicator, victoryPoints;
+	private int movementCost, acclimatizationIndicator, maximumMountaineers,
+			victoryPoints;
 	private AltitudeZone altitudeZone = null;
 	private Circle circle = null;
 	private double topLeftX, topLeftY;
@@ -33,11 +34,13 @@ public class Space implements TimerInterface {
 	private Timer timer = new Timer(2000, this);
 
 	public Space(int movementCost, int acclimatizationIndicator,
-			int victoryPoints, AltitudeZone altitudeZone, double topLeftX,
-			double topLeftY, SpaceSize spaceSize) {
+			int maximumMountaineers, int victoryPoints,
+			AltitudeZone altitudeZone, double topLeftX, double topLeftY,
+			SpaceSize spaceSize) {
 
 		this.movementCost = movementCost;
 		this.acclimatizationIndicator = acclimatizationIndicator;
+		this.maximumMountaineers = maximumMountaineers;
 		this.victoryPoints = victoryPoints;
 		this.altitudeZone = altitudeZone;
 		this.spaceSize = spaceSize;
@@ -228,6 +231,10 @@ public class Space implements TimerInterface {
 	public void fireEvent() {
 		this.timer.stopTimer();
 		this.tent.setVisible(true);
+	}
+
+	public int getMaximumMountaineers() {
+		return this.maximumMountaineers;
 	}
 
 }

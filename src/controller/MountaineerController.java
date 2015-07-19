@@ -1,7 +1,7 @@
 package controller;
 
-import javafx.application.Platform;
 import interfaces.SaveAble;
+import javafx.application.Platform;
 import model.Space;
 import mountaineers.AcclimatizationIndicator;
 import mountaineers.Mountaineer;
@@ -263,6 +263,22 @@ public class MountaineerController implements SaveAble {
 			this.mountaineerI.resetTent();
 		if (this.mountaineerII.hasPlayedHisTentThisRound())
 			this.mountaineerII.resetTent();
+
+	}
+
+	public boolean mountaineerPlacementIsLegal() {
+
+		Space spaceMountaineerI = this.mountaineerI.getMountaineerSpace();
+
+		if (spaceMountaineerI.getMaximumMountaineers() == 2)
+			return true;
+
+		Space spaceMountaineerII = this.mountaineerII.getMountaineerSpace();
+
+		if (!spaceMountaineerI.equals(spaceMountaineerII))
+			return true;
+
+		return false;
 
 	}
 

@@ -5,7 +5,8 @@ import enums.SpaceSize;
 
 public class SpaceBuilder {
 
-	private int movementCost, acclimatizationIndicator, victoryPoints;
+	private int movementCost, acclimatizationIndicator, victoryPoints,
+			maximumMountaineers;
 	private AltitudeZone altitudeZone = null;
 	private double topLeftX, topLeftY;
 	private SpaceSize spaceSize = null;
@@ -45,10 +46,15 @@ public class SpaceBuilder {
 		return this;
 	}
 
+	public SpaceBuilder maximumMountaineers(int maximumMountaineers) {
+		this.maximumMountaineers = maximumMountaineers;
+		return this;
+	}
+
 	public Space create() {
 		return new Space(this.movementCost, this.acclimatizationIndicator,
-				this.victoryPoints, this.altitudeZone, this.topLeftX,
-				this.topLeftY, this.spaceSize);
+				this.maximumMountaineers, this.victoryPoints,
+				this.altitudeZone, this.topLeftX, this.topLeftY, this.spaceSize);
 	}
 
 }

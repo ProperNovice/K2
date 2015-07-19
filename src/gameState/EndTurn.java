@@ -21,7 +21,10 @@ public class EndTurn extends GameState {
 		if (this.animationExecuted)
 			Lock.lock();
 
-		super.controller.textController().showText(TextEnum.NEW_ROUND);
+		if (super.controller.mountaineerController()
+				.mountaineerPlacementIsLegal())
+			super.controller.textController().showText(TextEnum.NEW_ROUND);
+
 		super.controller.textController().showText(TextEnum.RESTART_TURN);
 
 	}
