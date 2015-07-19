@@ -27,6 +27,20 @@ public class StartNewRound extends GameState {
 
 		super.controller.saveGameController().saveTurn();
 
+		if (this.currentRound > 1)
+			if (this.currentRound % 3 == 1)
+				super.controller.weatherTileController()
+						.setWeatherTileDiscardedVisibleFalse();
+
+		printMountaineersVictoryPoints();
+
+		super.controller.gameStateController().setGameState(
+				GameStateEnum.CHOOSE_CARD_TO_PLAY);
+
+	}
+
+	private void printMountaineersVictoryPoints() {
+
 		Logger.log("M.I vp - "
 				+ super.controller.mountaineerController()
 						.getMountaineer(MountaineerEnum.I)
@@ -35,9 +49,6 @@ public class StartNewRound extends GameState {
 				+ super.controller.mountaineerController()
 						.getMountaineer(MountaineerEnum.II)
 						.getCurrentVictoryPoints());
-
-		super.controller.gameStateController().setGameState(
-				GameStateEnum.CHOOSE_CARD_TO_PLAY);
 
 	}
 

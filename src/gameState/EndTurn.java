@@ -1,7 +1,7 @@
 package gameState;
 
-import model.Space;
 import mountaineers.Mountaineer;
+import space.Space;
 import utils.Executor;
 import utils.Lock;
 import enums.AltitudeZone;

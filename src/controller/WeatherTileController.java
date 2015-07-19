@@ -22,6 +22,7 @@ public class WeatherTileController {
 	private double weatherIndicatorGap = 125 * Ratio.WEATHER_TILE.ratio();
 	private Circle weatherIndicator = null;
 	private boolean weatherTilesAreShowing = false;
+	private WeatherTile weatherTileDiscarded = null;
 
 	public WeatherTileController() {
 
@@ -323,8 +324,7 @@ public class WeatherTileController {
 		if (this.weatherIndexActive == 3) {
 
 			this.weatherIndexActive = 0;
-			this.weatherTiles.getFirst().setVisibleFalse();
-			this.weatherTiles.removeFirst();
+			this.weatherTileDiscarded = this.weatherTiles.removeFirst();
 			this.weatherTiles.getFirst().animateSynchronous(
 					Coordinates.WEATHER_TILES.x(),
 					Coordinates.WEATHER_TILES.y());
@@ -333,6 +333,10 @@ public class WeatherTileController {
 
 		animateWeatherIndicatorSynchronous();
 
+	}
+
+	public void setWeatherTileDiscardedVisibleFalse() {
+		this.weatherTileDiscarded.setVisibleFalse();
 	}
 
 	public void handleWeatherTilePressed() {

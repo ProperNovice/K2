@@ -16,7 +16,7 @@ import gameState.MountaineerMovement;
 import gameState.GameState;
 import gameState.StartGame;
 import gameState.StartNewRound;
-import model.Space;
+import space.Space;
 import utils.Logger;
 
 public class GameStateController {

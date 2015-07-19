@@ -2,10 +2,10 @@ package controller;
 
 import interfaces.SaveAble;
 import javafx.application.Platform;
-import model.Space;
 import mountaineers.AcclimatizationIndicator;
 import mountaineers.Mountaineer;
 import mountaineers.ScoreIndicator;
+import space.Space;
 import utils.ArrayList;
 import enums.Coordinates;
 import enums.Dimensions;

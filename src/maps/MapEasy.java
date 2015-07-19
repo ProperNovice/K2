@@ -1,6 +1,6 @@
 package maps;
 
-import model.SpaceBuilder;
+import space.SpaceBuilder;
 import enums.AltitudeZone;
 import enums.SpaceSize;
 

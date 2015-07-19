@@ -1,8 +1,8 @@
 package gameState;
 
+import space.Space;
 import components.RiskToken;
 import instances.Instances;
-import model.Space;
 import cards.Card;
 import controller.Controller;
 import enums.MountaineerEnum;

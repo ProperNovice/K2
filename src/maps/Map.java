@@ -4,7 +4,7 @@ import instances.Instances;
 
 import java.util.ArrayList;
 
-import model.Space;
+import space.Space;
 import utils.EventHandler;
 import utils.EventHandler.EventHandlerAble;
 import utils.Executor;

@@ -1,4 +1,4 @@
-package model;
+package space;
 
 import java.util.ArrayList;
 
@@ -31,7 +31,7 @@ public class Space implements TimerInterface {
 	private ArrayList<Space> adjacentDown = new ArrayList<>();
 	private boolean containsTent = false;
 	private ImageView tent = null;
-	private Timer timer = new Timer(2000, this);
+	private Timer timer = new Timer(1000, this);
 
 	public Space(int movementCost, int acclimatizationIndicator,
 			int maximumMountaineers, int victoryPoints,

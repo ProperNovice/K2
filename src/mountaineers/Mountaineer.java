@@ -1,6 +1,6 @@
 package mountaineers;
 
-import model.Space;
+import space.Space;
 import utils.Animation;
 import utils.Animation.AnimationSynch;
 import utils.ImageView;

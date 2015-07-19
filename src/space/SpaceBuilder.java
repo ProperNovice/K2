@@ -1,4 +1,4 @@
-package model;
+package space;
 
 import enums.AltitudeZone;
 import enums.SpaceSize;
