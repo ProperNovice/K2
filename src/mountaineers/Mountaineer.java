@@ -24,7 +24,8 @@ public class Mountaineer {
 	private boolean hasPlacedHisTent = false;
 	private boolean hasPlacedHisTentThisRound = false;
 	private Space tentSpace = null;
-	private int currentVictoryPoints = 1;
+	private int victoryPoints = 1;
+	private int victoryPointsStarting = 1;
 
 	public Mountaineer(MountaineerEnum mountaineerEnum) {
 
@@ -197,6 +198,10 @@ public class Mountaineer {
 		this.acclimatizationStarting = this.acclimatization;
 	}
 
+	public void resetStartingVictoryPoints() {
+		this.victoryPointsStarting = this.victoryPoints;
+	}
+
 	public void resetToStartingSpace() {
 		this.mountaineerSpace = this.mountaineerSpaceStarting;
 	}
@@ -229,10 +234,10 @@ public class Mountaineer {
 	}
 
 	public int getCurrentVictoryPoints() {
-		return this.currentVictoryPoints;
+		return this.victoryPoints;
 	}
 
 	public void setCurrentVictoryPoints(int victoryPoints) {
-		this.currentVictoryPoints = victoryPoints;
+		this.victoryPoints = victoryPoints;
 	}
 }

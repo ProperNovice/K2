@@ -265,9 +265,11 @@ public class MountaineerController implements SaveAble {
 
 		this.mountaineerI.resetStartingSpace();
 		this.mountaineerI.resetStartingAcclimatization();
+		this.mountaineerI.resetStartingVictoryPoints();
 
 		this.mountaineerII.resetStartingSpace();
 		this.mountaineerII.resetStartingAcclimatization();
+		this.mountaineerII.resetStartingVictoryPoints();
 
 	}
 
