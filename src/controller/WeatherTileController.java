@@ -25,7 +25,7 @@ public class WeatherTileController {
 
 	public WeatherTileController() {
 
-//		createWeatherTilesSummer();
+		// createWeatherTilesSummer();
 		createWeatherTilesWinter();
 		this.weatherTiles.shuffle();
 		relocateWeatherTiles();
@@ -146,9 +146,8 @@ public class WeatherTileController {
 		first.setAltitudeZoneAcclimatization(-1, AltitudeZone.OVER_8000);
 
 		second = new Weather();
-		second.setAltitudeZoneMovement(-1,
-				AltitudeZone.BETWEEN_7000_AND_8000);
-		second.setAltitudeZoneMovement(-1, AltitudeZone.OVER_8000);
+		second.setAltitudeZoneMovement(1, AltitudeZone.BETWEEN_7000_AND_8000);
+		second.setAltitudeZoneMovement(1, AltitudeZone.OVER_8000);
 
 		third = new Weather();
 		third.setAltitudeZoneAcclimatization(-1, AltitudeZone.OVER_8000);
@@ -193,14 +192,13 @@ public class WeatherTileController {
 
 		third = new Weather();
 
-		 this.weatherTiles
-		 .add(new WeatherTile("winter/3", first, second, third));
+		this.weatherTiles
+				.add(new WeatherTile("winter/3", first, second, third));
 
 		// 4
 
 		first = new Weather();
-		first.setAltitudeZoneMovement(-1,
-				AltitudeZone.BETWEEN_7000_AND_8000);
+		first.setAltitudeZoneMovement(1, AltitudeZone.BETWEEN_7000_AND_8000);
 
 		second = new Weather();
 		second.setAltitudeZoneAcclimatization(-1, AltitudeZone.UNDER_6000);
@@ -214,8 +212,8 @@ public class WeatherTileController {
 		third.setAltitudeZoneAcclimatization(-2,
 				AltitudeZone.BETWEEN_7000_AND_8000);
 
-		 this.weatherTiles
-		 .add(new WeatherTile("winter/4", first, second, third));
+		this.weatherTiles
+				.add(new WeatherTile("winter/4", first, second, third));
 
 		// 5
 
@@ -229,30 +227,27 @@ public class WeatherTileController {
 		second.setAltitudeZoneAcclimatization(-2, AltitudeZone.OVER_8000);
 
 		third = new Weather();
-		third.setAltitudeZoneMovement(-1, AltitudeZone.UNDER_6000);
-		third.setAltitudeZoneMovement(-1,
-				AltitudeZone.BETWEEN_6000_AND_7000);
-		third.setAltitudeZoneMovement(-1,
-				AltitudeZone.BETWEEN_7000_AND_8000);
-		third.setAltitudeZoneMovement(-1, AltitudeZone.OVER_8000);
+		third.setAltitudeZoneMovement(1, AltitudeZone.UNDER_6000);
+		third.setAltitudeZoneMovement(1, AltitudeZone.BETWEEN_6000_AND_7000);
+		third.setAltitudeZoneMovement(1, AltitudeZone.BETWEEN_7000_AND_8000);
+		third.setAltitudeZoneMovement(1, AltitudeZone.OVER_8000);
 
 		this.weatherTiles
 				.add(new WeatherTile("winter/5", first, second, third));
-		
+
 		// 6
-		
+
 		first = new Weather();
-		first.setAltitudeZoneMovement(-1,
-				AltitudeZone.BETWEEN_6000_AND_7000);
-		
+		first.setAltitudeZoneMovement(1, AltitudeZone.BETWEEN_6000_AND_7000);
+
 		second = new Weather();
-		
+
 		third = new Weather();
 		third.setAltitudeZoneAcclimatization(-2,
 				AltitudeZone.BETWEEN_6000_AND_7000);
-		
+
 		this.weatherTiles
-		.add(new WeatherTile("winter/6", first, second, third));
+				.add(new WeatherTile("winter/6", first, second, third));
 
 	}
 
