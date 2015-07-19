@@ -112,18 +112,13 @@ public class EndTurn extends GameState {
 			return;
 
 		this.animationExecuted = true;
-		
-		System.out.println("1 " + mountaineerEnum);
 
 		int acclimatizationToAdd = endingMountaineerAcclimatization
 				- startingMountaineerAcclimatization;
-		System.out.println("ata " + acclimatizationToAdd);
-		
+
 		super.controller.mountaineerController()
 				.addAcclimatizationToMountaineerAnimateSynchronous(
 						mountaineerEnum, acclimatizationToAdd);
-		
-		System.out.println("2");
 
 	}
 

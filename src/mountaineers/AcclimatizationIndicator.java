@@ -130,8 +130,6 @@ public class AcclimatizationIndicator {
 					* acclimatization,
 					Coordinates.ACCLIMATIZATION_INDICATOR.y() + circleY,
 					AnimationSynch.SYNCHRONOUS);
-			
-			System.out.println("3");
 
 		}
 

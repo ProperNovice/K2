@@ -27,11 +27,11 @@ public class StartNewRound extends GameState {
 
 		super.controller.saveGameController().saveTurn();
 
-		Logger.log("M. I vp - "
+		Logger.log("M.I vp - "
 				+ super.controller.mountaineerController()
 						.getMountaineer(MountaineerEnum.I)
 						.getCurrentVictoryPoints());
-		Logger.logNewLine("M. II vp - "
+		Logger.logNewLine("M.II vp - "
 				+ super.controller.mountaineerController()
 						.getMountaineer(MountaineerEnum.II)
 						.getCurrentVictoryPoints());
