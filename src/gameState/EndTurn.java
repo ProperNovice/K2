@@ -1,5 +1,6 @@
 package gameState;
 
+import utils.Executor;
 import utils.Lock;
 import model.Space;
 import mountaineers.Mountaineer;
@@ -14,6 +15,8 @@ public class EndTurn extends GameState {
 
 	@Override
 	public void handleGameStateChange() {
+
+		Executor.sleep(20);
 
 		handleMountaineerAcclimatization(MountaineerEnum.I);
 		handleMountaineerAcclimatization(MountaineerEnum.II);

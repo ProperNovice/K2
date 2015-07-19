@@ -98,6 +98,7 @@ public class CardController implements SaveAble {
 		double width = Dimensions.CARD_GAME.x();
 		double height = Dimensions.CARD_GAME.y();
 		double gapBetweenNodes = Dimensions.GAP_BETWEEN_COMPONENTS.x();
+
 		int nodesPerRow = 9;
 
 		CoordinatesRelocate coordinatesRelocate = new CoordinatesRelocateBuilder()

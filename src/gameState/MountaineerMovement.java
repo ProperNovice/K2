@@ -88,7 +88,7 @@ public class MountaineerMovement extends GameState {
 			super.controller.gameStateController().setGameState(
 					GameStateEnum.ANIMATING);
 
-			super.controller.mountaineerController().animateMountaineerToSpace(
+			super.controller.mountaineerController().animateMountaineerToSpaceHandleScore(
 					this.mountaineerMoving, space);
 
 			this.mountaineerMoving.setMountaineerSpace(space);
@@ -131,7 +131,7 @@ public class MountaineerMovement extends GameState {
 			super.controller.gameStateController().setGameState(
 					GameStateEnum.ANIMATING);
 
-			super.controller.mountaineerController().animateMountaineerToSpace(
+			super.controller.mountaineerController().animateMountaineerToSpaceHandleScore(
 					this.mountaineerMoving, space);
 
 			this.mountaineerMoving.setMountaineerSpace(space);

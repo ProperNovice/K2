@@ -5,16 +5,19 @@ import javafx.application.Platform;
 import model.Space;
 import mountaineers.AcclimatizationIndicator;
 import mountaineers.Mountaineer;
+import mountaineers.ScoreIndicator;
 import utils.ArrayList;
 import enums.Coordinates;
 import enums.Dimensions;
 import enums.MountaineerEnum;
+import enums.ScoreLocationEnum;
 import enums.SpaceMountaineerLocationEnum;
 
 public class MountaineerController implements SaveAble {
 
 	private Mountaineer mountaineerI = null, mountaineerII = null;
 	private AcclimatizationIndicator acclimatizationIndicator = null;
+	private ScoreIndicator scoreIndicator = new ScoreIndicator();
 	private ArrayList<MountaineerEnum> dealtCardThisTurn = new ArrayList<>();
 
 	public MountaineerController(Space spaceStarting) {
@@ -43,9 +46,18 @@ public class MountaineerController implements SaveAble {
 		space.relocateMountaineer(this.mountaineerII,
 				SpaceMountaineerLocationEnum.BOTTOM_RIGHT);
 
+		this.scoreIndicator.relocateScoreMountaineerSynchronous(
+				this.mountaineerI, this.mountaineerI.getCurrentVictoryPoints(),
+				ScoreLocationEnum.LEFT);
+		this.scoreIndicator.relocateScoreMountaineerSynchronous(
+				this.mountaineerII,
+				this.mountaineerII.getCurrentVictoryPoints(),
+				ScoreLocationEnum.RIGHT);
+
 	}
 
-	public void animateMountaineerToSpace(Mountaineer mountaineer, Space space) {
+	public void animateMountaineerToSpaceHandleScore(Mountaineer mountaineer,
+			Space space) {
 
 		if (this.mountaineerI.getMountaineerSpace().equals(space)
 				|| this.mountaineerII.getMountaineerSpace().equals(space))
@@ -66,6 +78,34 @@ public class MountaineerController implements SaveAble {
 				this.mountaineerI.getMountaineerSpace()
 						.animateMountaineerSynchronous(this.mountaineerI,
 								SpaceMountaineerLocationEnum.TOP_LEFT);
+
+		}
+
+		if (mountaineer.getCurrentVictoryPoints() >= space.getVictoryPoints())
+			return;
+
+		mountaineer.setCurrentVictoryPoints(space.getVictoryPoints());
+
+		if (this.mountaineerI.getCurrentVictoryPoints() == this.mountaineerII
+				.getCurrentVictoryPoints())
+			this.scoreIndicator.animateScoreMountaineerSynchronous(mountaineer,
+					space.getVictoryPoints(), ScoreLocationEnum.RIGHT);
+
+		else {
+
+			this.scoreIndicator.animateScoreMountaineerSynchronous(mountaineer,
+					space.getVictoryPoints(), ScoreLocationEnum.LEFT);
+
+			if (mountaineer.equals(this.mountaineerI))
+				this.scoreIndicator.animateScoreMountaineerSynchronous(
+						this.mountaineerII,
+						this.mountaineerII.getCurrentVictoryPoints(),
+						ScoreLocationEnum.LEFT);
+			else if (mountaineer.equals(this.mountaineerII))
+				this.scoreIndicator.animateScoreMountaineerSynchronous(
+						this.mountaineerI,
+						this.mountaineerI.getCurrentVictoryPoints(),
+						ScoreLocationEnum.LEFT);
 
 		}
 

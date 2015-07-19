@@ -1,7 +1,9 @@
 package gameState;
 
 import utils.Lock;
+import utils.Logger;
 import enums.GameStateEnum;
+import enums.MountaineerEnum;
 
 public class StartNewRound extends GameState {
 
@@ -24,6 +26,15 @@ public class StartNewRound extends GameState {
 		Lock.lock();
 
 		super.controller.saveGameController().saveTurn();
+
+		Logger.log("M. I vp - "
+				+ super.controller.mountaineerController()
+						.getMountaineer(MountaineerEnum.I)
+						.getCurrentVictoryPoints());
+		Logger.logNewLine("M. II vp - "
+				+ super.controller.mountaineerController()
+						.getMountaineer(MountaineerEnum.II)
+						.getCurrentVictoryPoints());
 
 		super.controller.gameStateController().setGameState(
 				GameStateEnum.CHOOSE_CARD_TO_PLAY);

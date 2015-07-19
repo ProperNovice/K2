@@ -10,7 +10,8 @@ import enums.MountaineerEnum;
 public class Mountaineer {
 
 	private MountaineerEnum mountaineerEnum = null;
-	private ImageView mountaineerMap = null, tent = null;
+	private ImageView mountaineerMap = null, mountaineerScore = null,
+			tent = null;
 	private Space mountaineerSpace = null;
 	private Space mountaineerSpaceStarting = null;
 	private int acclimatization = 1;
@@ -23,25 +24,29 @@ public class Mountaineer {
 	private boolean hasPlacedHisTent = false;
 	private boolean hasPlacedHisTentThisRound = false;
 	private Space tentSpace = null;
+	private int currentVictoryPoints = 1;
 
 	public Mountaineer(MountaineerEnum mountaineerEnum) {
 
 		this.mountaineerEnum = mountaineerEnum;
 
 		createTent();
-		createMountaineer();
+		createMountaineers();
 		createPanelMovement();
 
 	}
 
-	private void createMountaineer() {
+	private void createMountaineers() {
 
 		String path = "mountaineers/" + this.mountaineerEnum.fileName()
 				+ ".png";
 
 		this.mountaineerMap = new ImageView(path);
+		this.mountaineerScore = new ImageView(path);
 
 		this.mountaineerMap.setHeight(Dimensions.MOUNTAINEER_GAME.y());
+		this.mountaineerScore.setHeight(Dimensions.MOUNTAINEER_GAME.y());
+
 		this.mountaineerMap.relocate(50, 50);
 
 	}
@@ -219,4 +224,15 @@ public class Mountaineer {
 
 	}
 
+	public ImageView getMountaineerScore() {
+		return this.mountaineerScore;
+	}
+
+	public int getCurrentVictoryPoints() {
+		return this.currentVictoryPoints;
+	}
+
+	public void setCurrentVictoryPoints(int victoryPoints) {
+		this.currentVictoryPoints = victoryPoints;
+	}
 }
