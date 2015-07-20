@@ -15,6 +15,7 @@ public enum TextEnum {
 	PLACE_TENT("Place tent", TextTypeEnum.OPTION),
 	END_TURN("End turn", TextTypeEnum.OPTION),
 	RESTART_TURN("Restart turn", TextTypeEnum.OPTION),
+	START_GAME("Start game", TextTypeEnum.OPTION),
 
 	;
 

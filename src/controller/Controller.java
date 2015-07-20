@@ -3,7 +3,6 @@ package controller;
 import instances.Instances;
 import maps.Map;
 import maps.MapEasy;
-import utils.Executor;
 import enums.GameStateEnum;
 
 public class Controller {
@@ -20,8 +19,8 @@ public class Controller {
 	public Controller() {
 
 		createInstances();
-		Executor.runLater(() -> this.gameStateController
-				.setGameState(GameStateEnum.START_GAME));
+
+		this.gameStateController.setGameState(GameStateEnum.START_GAME);
 
 	}
 
