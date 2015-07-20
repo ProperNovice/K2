@@ -86,7 +86,9 @@ public class CardController implements SaveAble {
 		for (int counter = 1; counter <= numberOfCards; counter++)
 			this.hand.add(this.deck.removeRandom());
 
-		rearrangeDeckSynchronous();
+		if (!this.deck.isEmpty())
+			rearrangeDeckSynchronous();
+
 		rearrangeHandSynchronous();
 
 	}
@@ -99,7 +101,10 @@ public class CardController implements SaveAble {
 		double height = Dimensions.CARD_GAME.y();
 		double gapBetweenNodes = Dimensions.GAP_BETWEEN_COMPONENTS.x();
 
-		int nodesPerRow = 9;
+		int nodesPerRow = this.deck.size() / 2;
+
+		if (this.deck.size() % 2 == 1)
+			nodesPerRow++;
 
 		CoordinatesRelocate coordinatesRelocate = new CoordinatesRelocateBuilder()
 				.topLeftX(topLeftX).topLeftY(topLeftY).width(width)
