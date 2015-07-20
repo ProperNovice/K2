@@ -163,14 +163,8 @@ public class MountaineerController implements SaveAble {
 	public void addMovementToMountaineer(MountaineerEnum mountaineerEnum,
 			int movement) {
 
-		Platform.runLater(new Runnable() {
-
-			@Override
-			public void run() {
-				Mountaineer mountaineer = getMountaineer(mountaineerEnum);
-				mountaineer.addMovementPanelMovementUpdate(movement);
-			}
-		});
+		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
+		mountaineer.addMovementPanelMovementUpdate(movement);
 
 	}
 
@@ -191,14 +185,8 @@ public class MountaineerController implements SaveAble {
 	public void addMovementRopeDownToMountaineer(
 			MountaineerEnum mountaineerEnum, int movement) {
 
-		Platform.runLater(new Runnable() {
-
-			@Override
-			public void run() {
-				Mountaineer mountaineer = getMountaineer(mountaineerEnum);
-				mountaineer.addMovementRopeDownPanelMovementUpdate(movement);
-			}
-		});
+		Mountaineer mountaineer = getMountaineer(mountaineerEnum);
+		mountaineer.addMovementRopeDownPanelMovementUpdate(movement);
 
 	}
 
