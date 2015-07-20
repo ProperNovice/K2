@@ -26,7 +26,7 @@ public class EndTurn extends GameState {
 
 		if (super.controller.mountaineerController()
 				.mountaineerPlacementIsLegal())
-			super.controller.textController().showText(TextEnum.NEW_ROUND);
+			super.controller.textController().showText(TextEnum.END_TURN);
 
 		super.controller.textController().showText(TextEnum.RESTART_TURN);
 
@@ -41,7 +41,7 @@ public class EndTurn extends GameState {
 
 		switch (textEnum) {
 
-		case NEW_ROUND:
+		case END_TURN:
 			handleNewRound();
 			break;
 
@@ -62,7 +62,7 @@ public class EndTurn extends GameState {
 
 		Lock.lock();
 
-		super.controller.mountaineerController().clearWasDealtCardThisTurn();
+		super.controller.saveGameController().resetTurn();
 
 		super.controller.gameStateController().setGameState(
 				GameStateEnum.CHOOSE_CARD_TO_PLAY);

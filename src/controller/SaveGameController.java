@@ -7,6 +7,7 @@ import utils.ArrayList;
 public class SaveGameController {
 
 	private ArrayList<SaveAble> arrayList = new ArrayList<>();
+	private Controller controller = Instances.getControllerInstance();
 
 	public SaveGameController() {
 
@@ -29,6 +30,14 @@ public class SaveGameController {
 
 		for (SaveAble saveAble : this.arrayList)
 			saveAble.loadState();
+
+	}
+
+	public void resetTurn() {
+
+		this.controller.mountaineerController().clearWasDealtCardThisTurn();
+		this.controller.mountaineerController()
+				.setTentsHasNotBeenPlacedInThisRound();
 
 	}
 

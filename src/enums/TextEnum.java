@@ -13,7 +13,7 @@ public enum TextEnum {
 	MOVE_MOUNTAINEER_II("Move m. II", TextTypeEnum.INDICATOR),
 	CONTINUE("Continue", TextTypeEnum.OPTION),
 	PLACE_TENT("Place tent", TextTypeEnum.OPTION),
-	NEW_ROUND("New round", TextTypeEnum.OPTION),
+	END_TURN("End turn", TextTypeEnum.OPTION),
 	RESTART_TURN("Restart turn", TextTypeEnum.OPTION),
 
 	;

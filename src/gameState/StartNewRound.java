@@ -12,7 +12,7 @@ public class StartNewRound extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
-		resetRound();
+		super.controller.saveGameController().resetTurn();
 
 		this.currentRound++;
 
@@ -50,12 +50,6 @@ public class StartNewRound extends GameState {
 						.getMountaineer(MountaineerEnum.II)
 						.getCurrentVictoryPoints());
 
-	}
-
-	private void resetRound() {
-		super.controller.mountaineerController().clearWasDealtCardThisTurn();
-		super.controller.mountaineerController()
-				.setTentsHasNotBeenPlacedInThisRound();
 	}
 
 	private void handleCards() {
