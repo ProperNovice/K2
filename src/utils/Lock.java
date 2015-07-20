@@ -55,7 +55,7 @@ public class Lock {
 
 		Logger.log("lock");
 		Toolkit.getToolkit().enterNestedEventLoop(lockObject);
-		Logger.log("unlock");
+		Logger.logNewLine("unlock");
 
 	}
 
