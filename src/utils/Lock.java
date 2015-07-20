@@ -4,6 +4,12 @@ import com.sun.javafx.tk.Toolkit;
 
 public class Lock {
 
+	public static Object lockObject = new Object();
+
+	private Lock() {
+
+	}
+
 	// private static Semaphore semaphore = new Semaphore();
 	//
 	// private static class Semaphore {
@@ -45,22 +51,16 @@ public class Lock {
 	// semaphore.releasePermit();
 	// }
 
-	public static Object lock = new Object();
-
-	private Lock() {
-
-	}
-
 	public static void lock() {
 
 		Logger.log("lock");
-		Toolkit.getToolkit().enterNestedEventLoop(lock);
+		Toolkit.getToolkit().enterNestedEventLoop(lockObject);
 		Logger.log("unlock");
 
 	}
 
 	public static void unlock() {
-		Toolkit.getToolkit().exitNestedEventLoop(lock, lock);
+		Toolkit.getToolkit().exitNestedEventLoop(lockObject, lockObject);
 	}
 
 }
