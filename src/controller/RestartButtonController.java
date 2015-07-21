@@ -41,6 +41,7 @@ public class RestartButtonController implements EventHandlerAble {
 		this.controller.textController().concealText();
 		this.controller.mountaineerController()
 				.resetMountaineerMovementAndPanel();
+		this.controller.cardLeftToChooseController().resetCardsLeftToChoose();
 
 		this.controller.saveGameController().loadTurn();
 

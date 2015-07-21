@@ -16,6 +16,7 @@ public class Controller {
 	private WeatherTileController weatherTileController = null;
 	private SaveGameController saveGameController = null;
 	private RestartButtonController restartButtonController = null;
+	private CardLeftToChooseController cardLeftToChooseController = null;
 
 	public Controller() {
 
@@ -39,6 +40,7 @@ public class Controller {
 		this.weatherTileController = new WeatherTileController();
 		this.saveGameController = new SaveGameController();
 		this.restartButtonController = new RestartButtonController();
+		this.cardLeftToChooseController = new CardLeftToChooseController();
 
 	}
 
@@ -76,6 +78,10 @@ public class Controller {
 
 	public RestartButtonController restartButtonController() {
 		return this.restartButtonController;
+	}
+
+	public CardLeftToChooseController cardLeftToChooseController() {
+		return this.cardLeftToChooseController;
 	}
 
 }

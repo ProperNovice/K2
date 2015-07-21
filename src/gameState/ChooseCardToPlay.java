@@ -9,18 +9,20 @@ import enums.TextEnum;
 
 public class ChooseCardToPlay extends GameState {
 
-	private int cardLeftToChoose = 3;
-
 	@Override
 	public void handleGameStateChange() {
 
-		if (this.cardLeftToChoose > 0)
+		int cardLeftToChoose = super.controller.cardLeftToChooseController()
+				.getCardsLeftToChoose();
+
+		if (cardLeftToChoose > 0)
 			super.controller.textController().showText(
 					TextEnum.CHOOSE_CARD_TO_PLAY);
 
-		else if (this.cardLeftToChoose == 0) {
+		else if (cardLeftToChoose == 0) {
 
-			this.cardLeftToChoose = 3;
+			super.controller.cardLeftToChooseController()
+					.resetCardsLeftToChoose();
 
 			super.controller.gameStateController().setGameState(
 					GameStateEnum.CHOOSE_RISK_TOKEN);
@@ -32,7 +34,7 @@ public class ChooseCardToPlay extends GameState {
 	@Override
 	protected void handleCardHandPressed(Card card) {
 
-		this.cardLeftToChoose--;
+		super.controller.cardLeftToChooseController().reduceByOne();
 		super.controller.textController().concealText();
 
 		super.controller.gameStateController().setGameState(
@@ -60,8 +62,7 @@ public class ChooseCardToPlay extends GameState {
 
 	@Override
 	public void handleRestartButtonPressed() {
-		super.handleRestartButtonPressed();
-		this.cardLeftToChoose = 3;
+		this.controller.restartButtonController().handleRestartTurn();
 	}
 
 	@Override
