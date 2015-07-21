@@ -61,4 +61,12 @@ public class GameState {
 		this.controller.weatherTileController().handleWeatherTilePressed();
 	}
 
+	public void handleRestartButtonPressed() {
+		this.controller.restartButtonController().handleRestartTurn();
+	}
+
+	public boolean restartButtonIsVisible() {
+		return false;
+	}
+
 }

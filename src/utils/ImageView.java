@@ -169,5 +169,9 @@ public class ImageView implements Node {
 	public double getScale() {
 		return this.scale;
 	}
+	
+	public void setd() {
+		this.imageView.setDisable(true);
+	}
 
 }

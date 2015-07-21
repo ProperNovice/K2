@@ -58,4 +58,15 @@ public class ChooseCardToPlay extends GameState {
 
 	}
 
+	@Override
+	public void handleRestartButtonPressed() {
+		super.handleRestartButtonPressed();
+		this.cardLeftToChoose = 3;
+	}
+
+	@Override
+	public boolean restartButtonIsVisible() {
+		return true;
+	}
+
 }

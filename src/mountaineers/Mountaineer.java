@@ -162,7 +162,7 @@ public class Mountaineer {
 
 	}
 
-	public void panelMovementSetVisible() {
+	public void panelMovementSetVisibleFalse() {
 		this.panelMovement.setVisibleFalse();
 	}
 
@@ -244,4 +244,5 @@ public class Mountaineer {
 	public void setCurrentVictoryPoints(int victoryPoints) {
 		this.victoryPoints = victoryPoints;
 	}
+	
 }

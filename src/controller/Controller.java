@@ -15,6 +15,7 @@ public class Controller {
 	private RiskTokenController riskTokenController = null;
 	private WeatherTileController weatherTileController = null;
 	private SaveGameController saveGameController = null;
+	private RestartButtonController restartButtonController = null;
 
 	public Controller() {
 
@@ -37,6 +38,7 @@ public class Controller {
 		this.riskTokenController = new RiskTokenController();
 		this.weatherTileController = new WeatherTileController();
 		this.saveGameController = new SaveGameController();
+		this.restartButtonController = new RestartButtonController();
 
 	}
 
@@ -70,6 +72,10 @@ public class Controller {
 
 	public SaveGameController saveGameController() {
 		return this.saveGameController;
+	}
+
+	public RestartButtonController restartButtonController() {
+		return this.restartButtonController;
 	}
 
 }

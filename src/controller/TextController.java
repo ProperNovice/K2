@@ -4,6 +4,7 @@ import enums.Coordinates;
 import enums.Credentials;
 import enums.TextEnum;
 import gui.TextGame;
+import instances.Instances;
 import utils.ArrayList;
 
 public class TextController {
@@ -67,6 +68,9 @@ public class TextController {
 	}
 
 	public void concealText() {
+
+		Instances.getControllerInstance().restartButtonController()
+				.setVisible(false);
 
 		for (TextGame textGame : this.textGameShowing)
 			textGame.setVisible(false);

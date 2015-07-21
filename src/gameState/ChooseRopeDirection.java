@@ -43,4 +43,9 @@ public class ChooseRopeDirection extends GameState {
 
 	}
 
+	@Override
+	public boolean restartButtonIsVisible() {
+		return true;
+	}
+
 }

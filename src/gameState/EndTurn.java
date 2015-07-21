@@ -43,26 +43,13 @@ public class EndTurn extends GameState {
 			break;
 
 		case RESTART_TURN:
-			handleRestartTurn();
+			super.controller.restartButtonController().handleRestartTurn();
 			break;
 
 		default:
 			break;
 
 		}
-
-	}
-
-	private void handleRestartTurn() {
-
-		super.controller.saveGameController().loadTurn();
-
-		Lock.lock();
-
-		super.controller.saveGameController().resetTurn();
-
-		super.controller.gameStateController().setGameState(
-				GameStateEnum.CHOOSE_CARD_TO_PLAY);
 
 	}
 

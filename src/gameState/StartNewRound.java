@@ -85,4 +85,9 @@ public class StartNewRound extends GameState {
 
 	}
 
+	@Override
+	public boolean restartButtonIsVisible() {
+		return true;
+	}
+
 }

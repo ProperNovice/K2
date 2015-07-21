@@ -1,7 +1,5 @@
 package controller;
 
-import components.RiskToken;
-import cards.Card;
 import enums.GameStateEnum;
 import enums.MountaineerEnum;
 import enums.TextEnum;
@@ -12,12 +10,16 @@ import gameState.ChooseMountaineerToApplyCard;
 import gameState.ChooseRiskToken;
 import gameState.ChooseRopeDirection;
 import gameState.EndTurn;
-import gameState.MountaineerMovement;
 import gameState.GameState;
+import gameState.MountaineerMovement;
 import gameState.StartGame;
 import gameState.StartNewRound;
+import instances.Instances;
 import space.Space;
 import utils.Logger;
+import cards.Card;
+
+import components.RiskToken;
 
 public class GameStateController {
 
@@ -88,6 +90,9 @@ public class GameStateController {
 
 		this.currentGameState.handleGameStateChange();
 
+		Instances.getControllerInstance().restartButtonController()
+				.setVisible(this.currentGameState.restartButtonIsVisible());
+
 	}
 
 	public void handleTextOptionPressed(TextEnum textEnum) {
@@ -118,6 +123,10 @@ public class GameStateController {
 
 	public final void handleWeatherTilePressed() {
 		this.currentGameState.handleWeatherTilePressed();
+	}
+
+	public void handleRestartButtonPressed() {
+		this.currentGameState.handleRestartButtonPressed();
 	}
 
 }

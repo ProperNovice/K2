@@ -332,4 +332,13 @@ public class MountaineerController implements SaveAble {
 
 	}
 
+	public void resetMountaineerMovementAndPanel() {
+
+		this.mountaineerI.resetMovement();
+		this.mountaineerI.panelMovementSetVisibleFalse();
+		this.mountaineerII.resetMovement();
+		this.mountaineerII.panelMovementSetVisibleFalse();
+
+	}
+
 }

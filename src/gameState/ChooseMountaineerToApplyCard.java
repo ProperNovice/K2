@@ -124,4 +124,9 @@ public class ChooseMountaineerToApplyCard extends GameState {
 
 	}
 
+	@Override
+	public boolean restartButtonIsVisible() {
+		return true;
+	}
+
 }

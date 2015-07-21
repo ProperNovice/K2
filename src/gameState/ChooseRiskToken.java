@@ -24,7 +24,7 @@ public class ChooseRiskToken extends GameState {
 
 		super.controller.riskTokenController()
 				.addRiskTokenFromPlayToDiscardAnimateSynchronous(riskToken);
-		
+
 		Lock.lock();
 
 		int value = riskToken.getValue();
@@ -44,6 +44,11 @@ public class ChooseRiskToken extends GameState {
 
 		}
 
+	}
+
+	@Override
+	public boolean restartButtonIsVisible() {
+		return true;
 	}
 
 }
