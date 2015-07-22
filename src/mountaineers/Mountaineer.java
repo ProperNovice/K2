@@ -10,8 +10,7 @@ import enums.MountaineerEnum;
 public class Mountaineer {
 
 	private MountaineerEnum mountaineerEnum = null;
-	private ImageView mountaineerMap = null, mountaineerScore = null,
-			tent = null;
+	private ImageView mountaineerMap = null, mountaineerScore = null;
 	private Space mountaineerSpace = null;
 	private Space mountaineerSpaceStarting = null;
 	private int acclimatization = 1;
@@ -54,7 +53,8 @@ public class Mountaineer {
 
 	private void createTent() {
 
-		String path = "tents/" + this.mountaineerEnum.fileName() + ".png";
+		String path = "/shelters/tents/" + this.mountaineerEnum.fileName()
+				+ ".png";
 
 		this.tent = new ImageView(path);
 		this.tent.setWidth(Dimensions.TENT_GAME.x());
@@ -244,5 +244,5 @@ public class Mountaineer {
 	public void setCurrentVictoryPoints(int victoryPoints) {
 		this.victoryPoints = victoryPoints;
 	}
-	
+
 }
