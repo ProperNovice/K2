@@ -1,5 +1,7 @@
 package mountaineers;
 
+import shelter.Shelter;
+import shelter.Tent;
 import space.Space;
 import utils.Animation;
 import utils.Animation.AnimationSynch;
@@ -11,6 +13,7 @@ public class Mountaineer {
 
 	private MountaineerEnum mountaineerEnum = null;
 	private ImageView mountaineerMap = null, mountaineerScore = null;
+	private Shelter shelter = null;
 	private Space mountaineerSpace = null;
 	private Space mountaineerSpaceStarting = null;
 	private int acclimatization = 1;
@@ -19,7 +22,6 @@ public class Mountaineer {
 	private int movementRopeUp = 0;
 	private int movementRopeDown = 0;
 	private PanelMovement panelMovement = null;
-	private double tentStartingX, tentStartingY;
 	private boolean hasPlacedHisTent = false;
 	private boolean hasPlacedHisTentThisRound = false;
 	private Space tentSpace = null;
@@ -29,8 +31,8 @@ public class Mountaineer {
 	public Mountaineer(MountaineerEnum mountaineerEnum) {
 
 		this.mountaineerEnum = mountaineerEnum;
+		this.shelter = new Tent(this.mountaineerEnum);
 
-		createTent();
 		createMountaineers();
 		createPanelMovement();
 
@@ -48,16 +50,6 @@ public class Mountaineer {
 		this.mountaineerScore.setHeight(Dimensions.MOUNTAINEER_GAME.y());
 
 		this.mountaineerMap.relocate(50, 50);
-
-	}
-
-	private void createTent() {
-
-		String path = "/shelters/tents/" + this.mountaineerEnum.fileName()
-				+ ".png";
-
-		this.tent = new ImageView(path);
-		this.tent.setWidth(Dimensions.TENT_GAME.x());
 
 	}
 
@@ -87,19 +79,16 @@ public class Mountaineer {
 	}
 
 	public void relocateTent(double x, double y) {
-
-		this.tentStartingX = x;
-		this.tentStartingY = y;
-
-		this.tent.relocate(x, y);
-
+		this.shelter.relocate(x, y);
 	}
 
-	public ImageView getTentAndSetHasBeenPlaced(Space space) {
-		this.tentSpace = space;
+	public void addTent() {
+
+		this.tentSpace = this.mountaineerSpace;
 		this.hasPlacedHisTent = true;
 		this.hasPlacedHisTentThisRound = true;
-		return this.tent;
+		this.tentSpace.addShelterAnimateSynchronous(this.shelter);
+
 	}
 
 	public void addAcclimatization(int acclimatization) {
@@ -228,8 +217,7 @@ public class Mountaineer {
 		this.hasPlacedHisTentThisRound = false;
 		this.tentSpace.setContainsTentFalse();
 
-		Animation.animate(this.tent, this.tentStartingX, this.tentStartingY,
-				AnimationSynch.SYNCHRONOUS);
+		this.shelter.animateToStartingPositionSynchronous();
 
 	}
 

@@ -3,15 +3,9 @@ package space;
 import java.util.ArrayList;
 
 import mountaineers.Mountaineer;
-import utils.Animation;
-import utils.Animation.AnimationSynch;
+import shelter.Shelter;
 import utils.Circle;
-import utils.EventHandler;
-import utils.EventHandler.EventHandlerAble;
-import utils.ImageView;
 import utils.Logger;
-import utils.Timer;
-import utils.Timer.TimerInterface;
 import enums.AltitudeZone;
 import enums.Coordinates;
 import enums.Dimensions;
@@ -19,7 +13,7 @@ import enums.Ratio;
 import enums.SpaceMountaineerLocationEnum;
 import enums.SpaceSize;
 
-public class Space implements TimerInterface {
+public class Space {
 
 	private int movementCost, acclimatizationIndicator, maximumMountaineers,
 			victoryPoints;
@@ -30,8 +24,6 @@ public class Space implements TimerInterface {
 	private ArrayList<Space> adjacentUp = new ArrayList<>();
 	private ArrayList<Space> adjacentDown = new ArrayList<>();
 	private boolean containsTent = false;
-	private ImageView tent = null;
-	private Timer timer = new Timer(1000, this);
 
 	public Space(int movementCost, int acclimatizationIndicator,
 			int maximumMountaineers, int victoryPoints,
@@ -185,10 +177,9 @@ public class Space implements TimerInterface {
 
 	}
 
-	public void addTentAnimateSynchronous(ImageView imageView) {
+	public void addShelterAnimateSynchronous(Shelter shelter) {
 
 		this.containsTent = true;
-		this.tent = imageView;
 
 		double tentHeight = Dimensions.TENT_GAME.y();
 
@@ -199,9 +190,7 @@ public class Space implements TimerInterface {
 		x = this.topLeftX + radius + 2;
 		y = this.topLeftY + radius - tentHeight;
 
-		Animation.animate(this.tent, x, y, AnimationSynch.SYNCHRONOUS);
-
-		addTentEventHandler(this.tent);
+		shelter.animateSynchronous(x, y);
 
 	}
 
@@ -211,26 +200,6 @@ public class Space implements TimerInterface {
 
 	public void setContainsTentFalse() {
 		this.containsTent = false;
-	}
-
-	private void addTentEventHandler(ImageView imageView) {
-
-		imageView.setEventHandler(new EventHandler(new EventHandlerAble() {
-
-			@Override
-			public void handleMouseEntered() {
-				tent.setVisible(false);
-				timer.startTimer();
-			}
-
-		}));
-
-	}
-
-	@Override
-	public void fireEvent() {
-		this.timer.stopTimer();
-		this.tent.setVisible(true);
 	}
 
 	public int getMaximumMountaineers() {

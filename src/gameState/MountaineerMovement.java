@@ -205,8 +205,7 @@ public class MountaineerMovement extends GameState {
 	private void handlePlaceTentAnimateSynchronous() {
 
 		Space mountaineerSpace = this.mountaineerMoving.getMountaineerSpace();
-		mountaineerSpace.addTentAnimateSynchronous(this.mountaineerMoving
-				.getTentAndSetHasBeenPlaced(mountaineerSpace));
+		this.mountaineerMoving.addTent();
 
 		int movementRopeUp = this.mountaineerMoving.getMovementRopeUp();
 
