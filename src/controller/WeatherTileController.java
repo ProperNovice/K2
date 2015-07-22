@@ -26,8 +26,8 @@ public class WeatherTileController {
 
 	public WeatherTileController() {
 
-		// createWeatherTilesSummer();
-		createWeatherTilesWinter();
+		createWeatherTilesSummer();
+		// createWeatherTilesWinter();
 		this.weatherTiles.shuffle();
 		relocateWeatherTiles();
 		createWeatherIndicator();

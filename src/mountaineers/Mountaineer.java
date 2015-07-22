@@ -31,7 +31,7 @@ public class Mountaineer {
 	public Mountaineer(MountaineerEnum mountaineerEnum) {
 
 		this.mountaineerEnum = mountaineerEnum;
-		this.shelter = new Tent(this.mountaineerEnum);
+		this.shelter = new Tent(this);
 
 		createMountaineers();
 		createPanelMovement();

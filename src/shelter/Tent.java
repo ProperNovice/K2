@@ -1,12 +1,12 @@
 package shelter;
 
-import enums.MountaineerEnum;
+import mountaineers.Mountaineer;
 
 public class Tent extends Shelter {
 
-	public Tent(MountaineerEnum mountaineerEnum) {
+	public Tent(Mountaineer mountaineer) {
 
-		super(mountaineerEnum);
+		super(mountaineer);
 		createShelter("tents");
 
 	}
