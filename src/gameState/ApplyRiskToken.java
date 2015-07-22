@@ -1,6 +1,5 @@
 package gameState;
 
-import javafx.application.Platform;
 import utils.Executor;
 import utils.Lock;
 import enums.GameStateEnum;
@@ -34,16 +33,8 @@ public class ApplyRiskToken extends GameState {
 
 		super.controller.textController().concealText();
 
-		Platform.runLater(new Runnable() {
-
-			@Override
-			public void run() {
-
-				runnable.run();
-				handleValueDecreased();
-
-			}
-		});
+		runnable.run();
+		handleValueDecreased();
 
 	}
 
