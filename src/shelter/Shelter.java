@@ -23,7 +23,7 @@ public class Shelter implements TimerInterface, EventHandlerAble {
 
 	protected void createShelter(String path) {
 
-		path = "/shelters/" + path + "/"
+		path = "shelters/" + path + "/"
 				+ this.mountaineer.getMountaineerEnum().fileName() + ".png";
 		this.shelter = new ImageView(path);
 		this.shelter.setWidth(Dimensions.TENT_GAME.x());
