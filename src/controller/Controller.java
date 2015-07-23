@@ -23,7 +23,7 @@ public class Controller {
 
 	public Controller() {
 
-		createInstances(DifficultyMap.HARD, DifficultyWeather.SUMMER);
+		createInstances(DifficultyMap.EASY, DifficultyWeather.SUMMER);
 
 		this.gameStateController.setGameState(GameStateEnum.START_GAME);
 
