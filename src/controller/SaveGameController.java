@@ -38,6 +38,7 @@ public class SaveGameController {
 		this.controller.mountaineerController().clearWasDealtCardThisTurn();
 		this.controller.mountaineerController()
 				.setTentsHasNotBeenPlacedInThisRound();
+		this.controller.weatherTileController().hideWeatherTiles();
 
 	}
 

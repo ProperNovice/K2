@@ -144,10 +144,15 @@ public class WeatherTileController {
 		} else if (this.weatherTilesAreShowing) {
 
 			this.weatherTilesAreShowing = false;
-			relocateWeatherTiles();
+
+			hideWeatherTiles();
 
 		}
 
+	}
+
+	public void hideWeatherTiles() {
+		relocateWeatherTiles();
 	}
 
 	private void showWeatherTiles() {
