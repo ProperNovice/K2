@@ -7,6 +7,7 @@ import mountaineers.ScoreIndicator;
 import space.Space;
 import utils.ArrayList;
 import enums.Coordinates;
+import enums.DifficultyMap;
 import enums.Dimensions;
 import enums.MountaineerEnum;
 import enums.ScoreLocationEnum;
@@ -16,10 +17,13 @@ public class MountaineerController implements SaveAble {
 
 	private Mountaineer mountaineerI = null, mountaineerII = null;
 	private AcclimatizationIndicator acclimatizationIndicator = null;
-	private ScoreIndicator scoreIndicator = new ScoreIndicator();
+	private ScoreIndicator scoreIndicator = null;
 	private ArrayList<MountaineerEnum> dealtCardThisTurn = new ArrayList<>();
 
-	public MountaineerController(Space spaceStarting) {
+	public MountaineerController(DifficultyMap difficultyMap,
+			Space spaceStarting) {
+
+		this.scoreIndicator = new ScoreIndicator(difficultyMap);
 
 		createMountaineers();
 		relocateMountaineers(spaceStarting);

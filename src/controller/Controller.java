@@ -3,6 +3,8 @@ package controller;
 import instances.Instances;
 import maps.Map;
 import maps.MapEasy;
+import maps.MapHard;
+import enums.DifficultyMap;
 import enums.DifficultyWeather;
 import enums.GameStateEnum;
 
@@ -21,27 +23,40 @@ public class Controller {
 
 	public Controller() {
 
-		createInstances();
+		createInstances(DifficultyMap.HARD, DifficultyWeather.SUMMER);
 
 		this.gameStateController.setGameState(GameStateEnum.START_GAME);
 
 	}
 
-	private void createInstances() {
+	private void createInstances(DifficultyMap difficultyMap,
+			DifficultyWeather difficultyWeather) {
 
 		Instances.setControllerInstance(this);
 
 		this.gameStateController = new GameStateController();
 		this.textController = new TextController();
-		this.map = new MapEasy();
-		this.mountaineerController = new MountaineerController(
+
+		switch (difficultyMap) {
+
+		case EASY:
+			this.map = new MapEasy();
+			break;
+
+		case HARD:
+			this.map = new MapHard();
+			break;
+
+		}
+
+		this.mountaineerController = new MountaineerController(difficultyMap,
 				this.map.getStartingSpace());
 		this.cardController = new CardController();
 		this.riskTokenController = new RiskTokenController();
-		
+
 		this.weatherTileController = new WeatherTileController(
-				DifficultyWeather.WINTER);
-		
+				difficultyWeather);
+
 		this.saveGameController = new SaveGameController();
 		this.restartButtonController = new RestartButtonController();
 		this.cardLeftToChooseController = new CardLeftToChooseController();

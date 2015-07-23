@@ -98,6 +98,7 @@ public class Space {
 		Logger.log("acclimatization " + this.acclimatizationIndicator);
 		Logger.log("altitude " + this.altitudeZone);
 		Logger.log("points " + this.victoryPoints);
+		Logger.log("maximum mountaineers " + this.maximumMountaineers);
 		Logger.newLine();
 
 	}

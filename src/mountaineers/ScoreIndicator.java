@@ -4,22 +4,35 @@ import utils.Animation;
 import utils.Animation.AnimationSynch;
 import utils.ArrayList;
 import enums.Coordinates;
+import enums.DifficultyMap;
 import enums.Dimensions;
 import enums.Ratio;
 import enums.ScoreLocationEnum;
 
 public class ScoreIndicator {
 
-	private double topLeftX = Coordinates.SCORE_TRACK_EASY_MAP_TOP_LEFT.x();
+	private double topLeftX = Coordinates.SCORE_TRACK_TOP_LEFT.x();
 	private ArrayList<ScoreCoordinates> scoreCoordinates = new ArrayList<>();
 
-	public ScoreIndicator() {
+	public ScoreIndicator(DifficultyMap difficultyMap) {
 
-		createCoordinatesY();
+		switch (difficultyMap) {
+
+		case EASY:
+			createEasyMapCoordinatesY();
+			break;
+
+		case HARD:
+			createHardMapCoordinatesY();
+			break;
+
+		}
+
+		createEasyMapCoordinatesY();
 
 	}
 
-	private void createCoordinatesY() {
+	private void createEasyMapCoordinatesY() {
 
 		this.scoreCoordinates.add(new ScoreCoordinates(1, 1007));
 		this.scoreCoordinates.add(new ScoreCoordinates(2, 881));
@@ -28,6 +41,20 @@ public class ScoreIndicator {
 		this.scoreCoordinates.add(new ScoreCoordinates(5, 494));
 		this.scoreCoordinates.add(new ScoreCoordinates(6, 352));
 		this.scoreCoordinates.add(new ScoreCoordinates(7, 178));
+		this.scoreCoordinates.add(new ScoreCoordinates(10, 24));
+
+	}
+
+	private void createHardMapCoordinatesY() {
+
+		this.scoreCoordinates.add(new ScoreCoordinates(1, 1007));
+		this.scoreCoordinates.add(new ScoreCoordinates(2, 880));
+		this.scoreCoordinates.add(new ScoreCoordinates(3, 765));
+		this.scoreCoordinates.add(new ScoreCoordinates(4, 654));
+		this.scoreCoordinates.add(new ScoreCoordinates(5, 494));
+		this.scoreCoordinates.add(new ScoreCoordinates(6, 353));
+		this.scoreCoordinates.add(new ScoreCoordinates(7, 229));
+		this.scoreCoordinates.add(new ScoreCoordinates(8, 126));
 		this.scoreCoordinates.add(new ScoreCoordinates(10, 24));
 
 	}
