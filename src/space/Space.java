@@ -103,25 +103,6 @@ public class Space {
 
 	}
 
-	public void printAdjacencies() { // TODO remove
-
-		System.out.println("up");
-		System.out.println();
-
-		for (Space space : this.adjacentUp)
-			space.print();
-
-		System.out.println("down");
-		System.out.println();
-
-		for (Space space : this.adjacentDown)
-			space.print();
-
-		System.out.println("-");
-		System.out.println();
-
-	}
-
 	public void relocateMountaineer(Mountaineer mountaineer,
 			SpaceMountaineerLocationEnum spaceMountaineerLocationEnum) {
 

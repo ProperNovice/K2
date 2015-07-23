@@ -50,10 +50,10 @@ public class ApplyRiskToken extends GameState {
 				.mountaineerAcclimatizationIsZero(mountaineerEnum))
 			return;
 
-		super.controller.textController().concealText();
-
 		super.controller.gameStateController().setGameState(
 				GameStateEnum.ANIMATING);
+
+		super.controller.textController().concealText();
 
 		super.controller.mountaineerController()
 				.addAcclimatizationToMountaineerAnimateSynchronous(
