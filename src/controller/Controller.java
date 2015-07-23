@@ -3,6 +3,7 @@ package controller;
 import instances.Instances;
 import maps.Map;
 import maps.MapEasy;
+import enums.DifficultyWeather;
 import enums.GameStateEnum;
 
 public class Controller {
@@ -37,7 +38,10 @@ public class Controller {
 				this.map.getStartingSpace());
 		this.cardController = new CardController();
 		this.riskTokenController = new RiskTokenController();
-		this.weatherTileController = new WeatherTileController();
+		
+		this.weatherTileController = new WeatherTileController(
+				DifficultyWeather.WINTER);
+		
 		this.saveGameController = new SaveGameController();
 		this.restartButtonController = new RestartButtonController();
 		this.cardLeftToChooseController = new CardLeftToChooseController();
