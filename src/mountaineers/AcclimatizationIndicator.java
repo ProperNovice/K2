@@ -42,6 +42,7 @@ public class AcclimatizationIndicator {
 		this.imageView.setHeight(Dimensions.ACCLIMATIZATION_INDICATOR_GAME.y());
 		this.imageView.relocate(Coordinates.ACCLIMATIZATION_INDICATOR.x(),
 				Coordinates.ACCLIMATIZATION_INDICATOR.y());
+		this.imageView.toBack();
 
 	}
 

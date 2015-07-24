@@ -57,7 +57,7 @@ public class GameState {
 
 	}
 
-	public final void handleWeatherTilePressed() {
+	public void handleWeatherTilePressed() {
 		this.controller.weatherTileController().handleWeatherTilePressed();
 	}
 
