@@ -8,6 +8,8 @@ public class StartGame extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
+		super.controller.createSaveGameController();
+
 		super.controller.textController().showText(TextEnum.START_GAME);
 
 	}

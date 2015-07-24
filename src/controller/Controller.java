@@ -20,22 +20,33 @@ public class Controller {
 	private SaveGameController saveGameController = null;
 	private RestartButtonController restartButtonController = null;
 	private CardLeftToChooseController cardLeftToChooseController = null;
+	private DifficultyOption difficultyOption = null;
 
 	public Controller() {
 
-		createInstances(DifficultyMap.EASY, DifficultyWeather.SUMMER);
+		createInstances();
 
-		this.gameStateController.setGameState(GameStateEnum.START_GAME);
+		this.gameStateController
+				.setGameState(GameStateEnum.CHOOSE_DIFFICULTY_MAP);
 
 	}
 
-	private void createInstances(DifficultyMap difficultyMap,
-			DifficultyWeather difficultyWeather) {
+	private void createInstances() {
 
 		Instances.setControllerInstance(this);
 
 		this.gameStateController = new GameStateController();
 		this.textController = new TextController();
+
+		this.cardController = new CardController();
+		this.riskTokenController = new RiskTokenController();
+		this.restartButtonController = new RestartButtonController();
+		this.cardLeftToChooseController = new CardLeftToChooseController();
+		this.difficultyOption = new DifficultyOption();
+
+	}
+
+	public void createMap(DifficultyMap difficultyMap) {
 
 		switch (difficultyMap) {
 
@@ -51,16 +62,18 @@ public class Controller {
 
 		this.mountaineerController = new MountaineerController(difficultyMap,
 				this.map.getStartingSpace());
-		this.cardController = new CardController();
-		this.riskTokenController = new RiskTokenController();
+
+	}
+
+	public void createWeatherTiles(DifficultyWeather difficultyWeather) {
 
 		this.weatherTileController = new WeatherTileController(
 				difficultyWeather);
 
-		this.saveGameController = new SaveGameController();
-		this.restartButtonController = new RestartButtonController();
-		this.cardLeftToChooseController = new CardLeftToChooseController();
+	}
 
+	public void createSaveGameController() {
+		this.saveGameController = new SaveGameController();
 	}
 
 	public GameStateController gameStateController() {
@@ -101,6 +114,10 @@ public class Controller {
 
 	public CardLeftToChooseController cardLeftToChooseController() {
 		return this.cardLeftToChooseController;
+	}
+
+	public DifficultyOption difficultyOption() {
+		return this.difficultyOption;
 	}
 
 }

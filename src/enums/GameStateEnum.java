@@ -12,6 +12,8 @@ public enum GameStateEnum {
 	APPLY_RISK_TOKEN("apply risk token"),
 	MOUNTAINEER_MOVEMENT("climber movement"),
 	END_TURN("end turn"),
+	CHOOSE_DIFFICULTY_MAP("choose difficulty map"),
+	CHOOSE_DIFFICULTY_WEATHER("choose difficulty weather"),
 
 	;
 

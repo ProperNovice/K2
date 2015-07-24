@@ -6,6 +6,8 @@ import enums.TextEnum;
 import gameState.Animating;
 import gameState.ApplyRiskToken;
 import gameState.ChooseCardToPlay;
+import gameState.ChooseDifficultyMap;
+import gameState.ChooseDifficultyWeather;
 import gameState.ChooseMountaineerToApplyCard;
 import gameState.ChooseRiskToken;
 import gameState.ChooseRopeDirection;
@@ -26,6 +28,8 @@ public class GameStateController {
 	private GameState currentGameState = new GameState();
 	private GameState startGame = new StartGame();
 	private GameState animating = new Animating();
+	private GameState chooseDifficultyMap = new ChooseDifficultyMap();
+	private GameState chooseDifficultyWeather = new ChooseDifficultyWeather();
 	private GameState startNewRound = new StartNewRound();
 	private GameState chooseCardToPlay = new ChooseCardToPlay();
 	private GameState chooseMountaineerToApplyCard = new ChooseMountaineerToApplyCard();
@@ -49,6 +53,14 @@ public class GameStateController {
 
 		case ANIMATING:
 			this.currentGameState = this.animating;
+			break;
+
+		case CHOOSE_DIFFICULTY_MAP:
+			this.currentGameState = this.chooseDifficultyMap;
+			break;
+
+		case CHOOSE_DIFFICULTY_WEATHER:
+			this.currentGameState = this.chooseDifficultyWeather;
 			break;
 
 		case START_NEW_ROUND:

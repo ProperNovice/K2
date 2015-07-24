@@ -16,6 +16,12 @@ public enum TextEnum {
 	END_TURN("End turn", TextTypeEnum.OPTION),
 	RESTART_TURN("Restart turn", TextTypeEnum.OPTION),
 	START_GAME("Start game", TextTypeEnum.OPTION),
+	CHOOSE_DIFFICULTY_MAP("Choose difficulty map", TextTypeEnum.INDICATOR),
+	EASY("Easy", TextTypeEnum.OPTION),
+	HARD("Hard", TextTypeEnum.OPTION),
+	CHOOSE_DIFFICULTY_WEATHER("Choose difficulty weather", TextTypeEnum.INDICATOR),
+	SUMMER("Summer", TextTypeEnum.OPTION),
+	WINTER("Winter", TextTypeEnum.OPTION),
 
 	;
 

@@ -106,4 +106,8 @@ public class EndTurn extends GameState {
 
 	}
 
+	public boolean restartButtonIsVisible() {
+		return true;
+	}
+
 }
