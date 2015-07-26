@@ -22,8 +22,15 @@ public class EndTurn extends GameState {
 			Lock.lock();
 
 		if (super.controller.mountaineerController()
+				.atLeastOneMountaineerHasZeroAcclimatization())
+			super.controller.textController().showText(TextEnum.END_GAME);
+
+		else if (super.controller.mountaineerController()
 				.mountaineerPlacementIsLegal())
-			super.controller.textController().showText(TextEnum.END_TURN);
+			if (super.controller.roundIndicator().getRoundIndicator() == 18)
+				super.controller.textController().showText(TextEnum.END_GAME);
+			else
+				super.controller.textController().showText(TextEnum.END_TURN);
 
 		super.controller.textController().showText(TextEnum.RESTART_TURN);
 
@@ -44,6 +51,11 @@ public class EndTurn extends GameState {
 
 		case RESTART_TURN:
 			super.controller.restartButtonController().handleRestartTurn();
+			break;
+
+		case END_GAME:
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.END_GAME);
 			break;
 
 		default:

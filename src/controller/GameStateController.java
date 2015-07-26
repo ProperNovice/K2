@@ -11,6 +11,7 @@ import gameState.ChooseDifficultyWeather;
 import gameState.ChooseMountaineerToApplyCard;
 import gameState.ChooseRiskToken;
 import gameState.ChooseRopeDirection;
+import gameState.EndGame;
 import gameState.EndTurn;
 import gameState.GameState;
 import gameState.MountaineerMovement;
@@ -38,6 +39,7 @@ public class GameStateController {
 	private GameState applyRiskToken = new ApplyRiskToken();
 	private GameState mountaineerMovement = new MountaineerMovement();
 	private GameState endTurn = new EndTurn();
+	private GameState endGame = new EndGame();
 
 	public GameStateController() {
 
@@ -93,6 +95,10 @@ public class GameStateController {
 
 		case END_TURN:
 			this.currentGameState = this.endTurn;
+			break;
+
+		case END_GAME:
+			this.currentGameState = this.endGame;
 			break;
 
 		}

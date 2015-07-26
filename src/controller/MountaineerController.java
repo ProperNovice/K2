@@ -338,4 +338,21 @@ public class MountaineerController implements SaveAble {
 
 	}
 
+	public boolean atLeastOneMountaineerHasZeroAcclimatization() {
+
+		if (this.mountaineerI.getAcclimatization() == 0)
+			return true;
+
+		if (this.mountaineerII.getAcclimatization() == 0)
+			return true;
+
+		return false;
+
+	}
+
+	public int getMountaineersTotalPoints() {
+		return (this.mountaineerI.getCurrentVictoryPoints() + this.mountaineerII
+				.getCurrentVictoryPoints());
+	}
+
 }

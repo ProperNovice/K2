@@ -7,28 +7,28 @@ import enums.MountaineerEnum;
 
 public class StartNewRound extends GameState {
 
-	private int currentRound = 0;
-
 	@Override
 	public void handleGameStateChange() {
 
 		super.controller.saveGameController().resetTurn();
 
-		this.currentRound++;
+		super.controller.roundIndicator().proceedNextRound();
+		int currentRound = super.controller.roundIndicator()
+				.getRoundIndicator();
 
 		handleCards();
 
 		super.controller.riskTokenController()
 				.addTokensFromDeckToPlayRearrangeSynchronous();
 
-		handleWeather();
+		handleWeather(currentRound);
 
 		Lock.lock();
 
 		super.controller.saveGameController().saveTurn();
 
-		if (this.currentRound > 1)
-			if (this.currentRound % 3 == 1)
+		if (currentRound > 1)
+			if (currentRound % 3 == 1)
 				super.controller.weatherTileController()
 						.setWeatherTileDiscardedVisibleFalse();
 
@@ -75,9 +75,9 @@ public class StartNewRound extends GameState {
 
 	}
 
-	private void handleWeather() {
+	private void handleWeather(int currentRound) {
 
-		if (this.currentRound == 1)
+		if (currentRound == 1)
 			return;
 
 		super.controller.weatherTileController()

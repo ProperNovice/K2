@@ -22,7 +22,11 @@ public enum TextEnum {
 	CHOOSE_DIFFICULTY_WEATHER("Choose difficulty weather", TextTypeEnum.INDICATOR),
 	SUMMER("Summer", TextTypeEnum.OPTION),
 	WINTER("Winter", TextTypeEnum.OPTION),
-
+	END_GAME("End game", TextTypeEnum.OPTION),
+	YOU_WON("You won", TextTypeEnum.INDICATOR),
+	YOU_LOST("You lost", TextTypeEnum.INDICATOR),
+	RESTART_GAME("Restart", TextTypeEnum.OPTION),
+	
 	;
 
 	private String string = null;

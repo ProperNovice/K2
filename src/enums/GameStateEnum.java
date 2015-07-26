@@ -14,6 +14,7 @@ public enum GameStateEnum {
 	END_TURN("end turn"),
 	CHOOSE_DIFFICULTY_MAP("choose difficulty map"),
 	CHOOSE_DIFFICULTY_WEATHER("choose difficulty weather"),
+	END_GAME("end game"),
 
 	;
 

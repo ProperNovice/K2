@@ -21,6 +21,7 @@ public class Controller {
 	private RestartButtonController restartButtonController = null;
 	private CardLeftToChooseController cardLeftToChooseController = null;
 	private DifficultyOption difficultyOption = null;
+	private RoundIndicator roundIndicator = null;
 
 	public Controller() {
 
@@ -43,6 +44,7 @@ public class Controller {
 		this.restartButtonController = new RestartButtonController();
 		this.cardLeftToChooseController = new CardLeftToChooseController();
 		this.difficultyOption = new DifficultyOption();
+		this.roundIndicator = new RoundIndicator();
 
 	}
 
@@ -118,6 +120,10 @@ public class Controller {
 
 	public DifficultyOption difficultyOption() {
 		return this.difficultyOption;
+	}
+
+	public RoundIndicator roundIndicator() {
+		return this.roundIndicator;
 	}
 
 }
