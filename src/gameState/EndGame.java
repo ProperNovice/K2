@@ -12,20 +12,20 @@ public class EndGame extends GameState {
 				.atLeastOneMountaineerHasZeroAcclimatization()) {
 
 			super.controller.textController().showText(TextEnum.YOU_LOST);
-			super.controller.textController().showText(TextEnum.RESTART_GAME);
-			return;
+
+		} else {
+
+			int pointsNeededToWin = super.controller.difficultyOption()
+					.getPointsNeededToWin();
+			int mountaineersTotalPoints = super.controller
+					.mountaineerController().getMountaineersTotalPoints();
+
+			if (mountaineersTotalPoints >= pointsNeededToWin)
+				super.controller.textController().showText(TextEnum.YOU_WON);
+			else
+				super.controller.textController().showText(TextEnum.YOU_LOST);
 
 		}
-
-		int pointsNeededToWin = super.controller.difficultyOption()
-				.getPointsNeededToWin();
-		int mountaineersTotalPoints = super.controller.mountaineerController()
-				.getMountaineersTotalPoints();
-
-		if (mountaineersTotalPoints >= pointsNeededToWin)
-			super.controller.textController().showText(TextEnum.YOU_WON);
-		else
-			super.controller.textController().showText(TextEnum.YOU_LOST);
 
 		super.controller.textController().showText(TextEnum.RESTART_GAME);
 
