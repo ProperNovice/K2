@@ -25,7 +25,7 @@ public enum TextEnum {
 	END_GAME("End game", TextTypeEnum.OPTION),
 	YOU_WON("You won", TextTypeEnum.INDICATOR),
 	YOU_LOST("You lost", TextTypeEnum.INDICATOR),
-	RESTART_GAME("Restart", TextTypeEnum.OPTION),
+	RESTART_GAME("Restart game", TextTypeEnum.OPTION),
 	
 	;
 

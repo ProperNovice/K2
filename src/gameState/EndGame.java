@@ -33,9 +33,7 @@ public class EndGame extends GameState {
 
 	@Override
 	public void handleTextOptionPressed(TextEnum textEnum) {
-
 		Instances.getPanelGameInstance().restartGame();
-
 	}
 
 }
