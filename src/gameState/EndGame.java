@@ -12,6 +12,7 @@ public class EndGame extends GameState {
 				.atLeastOneMountaineerHasZeroAcclimatization()) {
 
 			super.controller.textController().showText(TextEnum.YOU_LOST);
+			super.controller.textController().showText(TextEnum.RESTART_GAME);
 			return;
 
 		}
