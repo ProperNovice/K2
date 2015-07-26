@@ -3,8 +3,8 @@ package gui;
 import javafx.scene.image.ImageView;
 import utils.EventHandler;
 import utils.EventHandler.EventHandlerAble;
+import utils.Logger;
 import utils.Parent;
-import utils.ShutDown;
 
 public class Panel extends Parent implements EventHandlerAble {
 
@@ -22,14 +22,23 @@ public class Panel extends Parent implements EventHandlerAble {
 
 	}
 
-	public void removeCurrentPanelGame() {
+	public void restartGame() {
+
+		Logger.logNewLine("restarting");
+
+		removeCurrentPanelGame();
+		createNewPanelGame();
+
+	}
+
+	private void removeCurrentPanelGame() {
 
 		this.panelGame.setVisible(false);
 		this.getChildren().remove(this.panelGame);
 
 	}
 
-	public void createNewPanelGame() {
+	private void createNewPanelGame() {
 
 		this.panelGame = new PanelGame(this);
 		this.getChildren().add(this.panelGame);
@@ -38,7 +47,7 @@ public class Panel extends Parent implements EventHandlerAble {
 
 	@Override
 	public void handleMouseButtonPressedSecondary() {
-		ShutDown.execute();
+		restartGame();
 	}
 
 }

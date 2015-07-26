@@ -2,7 +2,6 @@ package gui;
 
 import instances.Instances;
 import utils.Parent;
-import utils.PlatformFX;
 import controller.Controller;
 
 public class PanelGame extends Parent {
@@ -18,14 +17,7 @@ public class PanelGame extends Parent {
 	}
 
 	public void restartGame() {
-
-		PlatformFX.runLater(() -> {
-
-			this.panel.removeCurrentPanelGame();
-			this.panel.createNewPanelGame();
-
-		});
-
+		this.panel.restartGame();
 	}
 
 }
