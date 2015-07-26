@@ -9,11 +9,10 @@ public class EndGame extends GameState {
 	public void handleGameStateChange() {
 
 		if (super.controller.mountaineerController()
-				.atLeastOneMountaineerHasZeroAcclimatization()) {
-
+				.atLeastOneMountaineerHasZeroAcclimatization())
 			super.controller.textController().showText(TextEnum.YOU_LOST);
 
-		} else {
+		else {
 
 			int pointsNeededToWin = super.controller.difficultyOption()
 					.getPointsNeededToWin();
