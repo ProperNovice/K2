@@ -10,7 +10,7 @@ public class ChooseDifficultyMap extends GameState {
 	public void handleGameStateChange() {
 
 		super.controller.textController().showText(
-				TextEnum.CHOOSE_DIFFICULTY_MAP);
+				TextEnum.CHOOSE_MAP_DIFFICULTY);
 		super.controller.textController().showText(TextEnum.EASY);
 		super.controller.textController().showText(TextEnum.HARD);
 

@@ -10,7 +10,7 @@ public class ChooseDifficultyWeather extends GameState {
 	public void handleGameStateChange() {
 
 		super.controller.textController().showText(
-				TextEnum.CHOOSE_DIFFICULTY_WEATHER);
+				TextEnum.CHOOSE_WEATHER_DIFFICULTY);
 		super.controller.textController().showText(TextEnum.SUMMER);
 		super.controller.textController().showText(TextEnum.WINTER);
 
