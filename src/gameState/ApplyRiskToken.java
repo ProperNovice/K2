@@ -1,6 +1,7 @@
 package gameState;
 
 import utils.Lock;
+import utils.Logger;
 import enums.GameStateEnum;
 import enums.MountaineerEnum;
 import enums.TextEnum;
@@ -21,9 +22,13 @@ public class ApplyRiskToken extends GameState {
 		if (!this.firstTimeRunning)
 			return;
 
+		Logger.log("first time applying: " + this.firstTimeRunning);
+
 		this.firstTimeRunning = false;
 		this.valueLeftToApply = super.controller.riskTokenController()
 				.getLastRiskTokenPlayedValue();
+
+		logTotalValueLeftToApply();
 
 	}
 
@@ -66,7 +71,11 @@ public class ApplyRiskToken extends GameState {
 
 	private void handleValueDecreased() {
 
+		Logger.logNewLine("decreasing risk token value");
+
 		this.valueLeftToApply--;
+
+		logTotalValueLeftToApply();
 
 		if (this.valueLeftToApply > 0) {
 
@@ -90,6 +99,10 @@ public class ApplyRiskToken extends GameState {
 			super.controller.gameStateController().setGameState(
 					GameStateEnum.MOUNTAINEER_MOVEMENT);
 
+	}
+
+	private void logTotalValueLeftToApply() {
+		Logger.logNewLine("value left to apply: " + this.valueLeftToApply);
 	}
 
 	@Override
