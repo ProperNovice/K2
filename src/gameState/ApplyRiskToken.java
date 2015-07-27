@@ -71,7 +71,8 @@ public class ApplyRiskToken extends GameState {
 
 		if (this.valueLeftToApply > 0) {
 
-			handleGameStateChange();
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.APPLY_RISK_TOKEN);
 			return;
 
 		}
