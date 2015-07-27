@@ -1,6 +1,5 @@
 package gameState;
 
-import utils.Executor;
 import utils.Lock;
 import enums.GameStateEnum;
 import enums.MountaineerEnum;
@@ -84,12 +83,12 @@ public class ApplyRiskToken extends GameState {
 
 		if (!super.controller.mountaineerController()
 				.atLeastOneMountaineerHasMovementPoint())
-			Executor.runLater(() -> super.controller.gameStateController()
-					.setGameState(GameStateEnum.END_TURN));
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.END_TURN);
 
 		else
-			Executor.runLater(() -> super.controller.gameStateController()
-					.setGameState(GameStateEnum.MOUNTAINEER_MOVEMENT));
+			super.controller.gameStateController().setGameState(
+					GameStateEnum.MOUNTAINEER_MOVEMENT);
 
 	}
 
