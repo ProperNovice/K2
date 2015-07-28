@@ -19,10 +19,10 @@ public class ApplyRiskToken extends GameState {
 		super.controller.mountaineerController()
 				.setAllMinusButtonsVisible(true);
 
+		Logger.log("first time applying: " + this.firstTimeRunning);
+
 		if (!this.firstTimeRunning)
 			return;
-
-		Logger.log("first time applying: " + this.firstTimeRunning);
 
 		this.firstTimeRunning = false;
 		this.valueLeftToApply = super.controller.riskTokenController()
@@ -99,6 +99,12 @@ public class ApplyRiskToken extends GameState {
 			super.controller.gameStateController().setGameState(
 					GameStateEnum.MOUNTAINEER_MOVEMENT);
 
+	}
+
+	@Override
+	public void handleRestartButtonPressed() {
+		super.handleRestartButtonPressed();
+		this.firstTimeRunning = true;
 	}
 
 	private void logTotalValueLeftToApply() {

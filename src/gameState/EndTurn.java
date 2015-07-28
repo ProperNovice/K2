@@ -1,5 +1,6 @@
 package gameState;
 
+import javafx.scene.input.KeyCode;
 import mountaineers.Mountaineer;
 import space.Space;
 import utils.Lock;
@@ -11,6 +12,7 @@ import enums.TextEnum;
 public class EndTurn extends GameState {
 
 	private boolean animationExecuted = false;
+	private TextEnum firstOption = null;
 
 	@Override
 	public void handleGameStateChange() {
@@ -22,15 +24,27 @@ public class EndTurn extends GameState {
 			Lock.lock();
 
 		if (super.controller.mountaineerController()
-				.atLeastOneMountaineerHasZeroAcclimatization())
+				.atLeastOneMountaineerHasZeroAcclimatization()) {
+
 			super.controller.textController().showText(TextEnum.END_GAME);
+			this.firstOption = TextEnum.END_GAME;
+
+		}
 
 		else if (super.controller.mountaineerController()
 				.mountaineerPlacementIsLegal())
-			if (super.controller.roundIndicator().getRoundIndicator() == 18)
+
+			if (super.controller.roundIndicator().getRoundIndicator() == 18) {
+
 				super.controller.textController().showText(TextEnum.END_GAME);
-			else
+				this.firstOption = TextEnum.END_GAME;
+
+			} else {
+
 				super.controller.textController().showText(TextEnum.END_TURN);
+				this.firstOption = TextEnum.END_TURN;
+
+			}
 
 		super.controller.textController().showText(TextEnum.RESTART_TURN);
 
@@ -56,6 +70,26 @@ public class EndTurn extends GameState {
 		case END_GAME:
 			super.controller.gameStateController().setGameState(
 					GameStateEnum.END_GAME);
+			break;
+
+		default:
+			break;
+
+		}
+
+	}
+
+	@Override
+	public void handleKeyPressed(KeyCode keyCode) {
+
+		switch (keyCode) {
+
+		case Z:
+			handleTextOptionPressed(this.firstOption);
+			break;
+
+		case X:
+			handleTextOptionPressed(TextEnum.RESTART_TURN);
 			break;
 
 		default:
