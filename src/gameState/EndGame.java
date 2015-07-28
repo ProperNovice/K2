@@ -1,6 +1,7 @@
 package gameState;
 
 import instances.Instances;
+import javafx.scene.input.KeyCode;
 import enums.TextEnum;
 
 public class EndGame extends GameState {
@@ -32,11 +33,19 @@ public class EndGame extends GameState {
 
 	@Override
 	public void handleTextOptionPressed(TextEnum textEnum) {
-		Instances.getPanelGameInstance().restartGame();
+		restartGame();
 	}
 
-	public boolean restartButtonIsVisible() {
-		return true;
+	@Override
+	public void handleKeyPressed(KeyCode keyCode) {
+
+		if (keyCode.equals(KeyCode.R))
+			restartGame();
+
+	}
+
+	private void restartGame() {
+		Instances.getPanelGameInstance().restartGame();
 	}
 
 }

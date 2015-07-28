@@ -39,6 +39,8 @@ public class SaveGameController {
 		this.controller.mountaineerController()
 				.setTentsHasNotBeenPlacedInThisRound();
 		this.controller.weatherTileController().hideWeatherTiles();
+		this.controller.gameStateController()
+				.setApplyRiskTokenFirstTimeRunningTrue();
 
 	}
 

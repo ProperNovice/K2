@@ -114,6 +114,13 @@ public class GameStateController {
 
 	}
 
+	public void setApplyRiskTokenFirstTimeRunningTrue() {
+
+		ApplyRiskToken gameState = (ApplyRiskToken) this.applyRiskToken;
+		gameState.setFirstTimeRunningTrue();
+
+	}
+
 	public void handleTextOptionPressed(TextEnum textEnum) {
 		this.currentGameState.handleTextOptionPressed(textEnum);
 	}

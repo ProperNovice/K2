@@ -18,6 +18,8 @@ public class EndTurn extends GameState {
 	@Override
 	public void handleGameStateChange() {
 
+		this.animationExecuted = false;
+
 		handleMountaineerAcclimatization(MountaineerEnum.I);
 		handleMountaineerAcclimatization(MountaineerEnum.II);
 
@@ -53,8 +55,6 @@ public class EndTurn extends GameState {
 
 	@Override
 	public void handleTextOptionPressed(TextEnum textEnum) {
-
-		this.animationExecuted = false;
 
 		super.controller.textController().concealText();
 
