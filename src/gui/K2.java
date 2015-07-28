@@ -4,6 +4,7 @@ import instances.Instances;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -34,8 +35,16 @@ public class K2 extends Application {
 
 			@Override
 			public void handle(KeyEvent event) {
+
 				Instances.getControllerInstance().gameStateController()
 						.handleKeyPressed(event.getCode());
+
+				if (event.getCode().equals(KeyCode.R))
+					if (Instances.getControllerInstance().gameStateController()
+							.restartButtonIsVisible())
+						Instances.getControllerInstance()
+								.restartButtonController().handleRestartTurn();
+
 			}
 		});
 

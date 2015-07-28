@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.scene.input.KeyCode;
 import enums.GameStateEnum;
 import enums.MountaineerEnum;
 import enums.TextEnum;
@@ -19,9 +18,11 @@ import gameState.MountaineerMovement;
 import gameState.StartGame;
 import gameState.StartNewRound;
 import instances.Instances;
+import javafx.scene.input.KeyCode;
 import space.Space;
 import utils.Logger;
 import cards.Card;
+
 import components.RiskToken;
 
 public class GameStateController {
@@ -149,6 +150,10 @@ public class GameStateController {
 
 	public void handleKeyPressed(KeyCode keyCode) {
 		this.currentGameState.handleKeyPressed(keyCode);
+	}
+
+	public boolean restartButtonIsVisible() {
+		return this.currentGameState.restartButtonIsVisible();
 	}
 
 }

@@ -35,4 +35,8 @@ public class EndGame extends GameState {
 		Instances.getPanelGameInstance().restartGame();
 	}
 
+	public boolean restartButtonIsVisible() {
+		return true;
+	}
+
 }
