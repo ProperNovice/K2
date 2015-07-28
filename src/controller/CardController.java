@@ -81,15 +81,23 @@ public class CardController implements SaveAble {
 
 	public void addCardsFromDeckToHandRearrangeSynchronous() {
 
+		ArrayList<Card> cardsAdded = new ArrayList<>();
+
 		int numberOfCards = 6 - this.hand.size();
 
-		for (int counter = 1; counter <= numberOfCards; counter++)
-			this.hand.add(this.deck.removeRandom());
+		for (int counter = 1; counter <= numberOfCards; counter++) {
+
+			Card card = this.deck.removeRandom();
+
+			this.hand.add(card);
+			cardsAdded.add(card);
+
+		}
 
 		if (!this.deck.isEmpty())
 			rearrangeDeckSynchronous();
 
-		rearrangeHandSynchronous();
+		rearrangeHandSynchronous(cardsAdded);
 
 	}
 
@@ -120,7 +128,7 @@ public class CardController implements SaveAble {
 
 	}
 
-	public void rearrangeHandSynchronous() {
+	public void rearrangeHandSynchronous(ArrayList<Card> cardsNewlyAdded) {
 
 		double topLeftX = Coordinates.HAND.x();
 		double topLeftY = Coordinates.HAND.y();
@@ -148,6 +156,13 @@ public class CardController implements SaveAble {
 
 		}
 
+		for (Card card : cardsNewlyAdded)
+			card.toFront();
+
+	}
+
+	public void rearrangeHandSynchronous() {
+		rearrangeHandSynchronous(new ArrayList<Card>());
 	}
 
 	public boolean handContains(Card card) {
@@ -205,12 +220,18 @@ public class CardController implements SaveAble {
 	@Override
 	public void loadState() {
 
+		ArrayList<Card> cardsAdded = new ArrayList<>();
+
+		for (Card card : this.handSave)
+			if (!this.hand.contains(card))
+				cardsAdded.add(card);
+
 		this.hand.clear();
 		this.hand.addAll(this.handSave);
 		this.discard.clear();
 		this.discard.addAll(this.discardSave);
 
-		rearrangeHandSynchronous();
+		rearrangeHandSynchronous(cardsAdded);
 
 	}
 

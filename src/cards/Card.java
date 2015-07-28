@@ -35,4 +35,8 @@ public class Card implements EventHandlerAble {
 
 	}
 
+	public void toFront() {
+		this.imageView.toFront();
+	}
+
 }
