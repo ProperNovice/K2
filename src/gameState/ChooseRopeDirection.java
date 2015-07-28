@@ -2,6 +2,7 @@ package gameState;
 
 import javafx.scene.input.KeyCode;
 import enums.GameStateEnum;
+import enums.KeyCodeEnum;
 import enums.RopeMovement;
 import enums.TextEnum;
 
@@ -47,20 +48,11 @@ public class ChooseRopeDirection extends GameState {
 	@Override
 	public void handleKeyPressed(KeyCode keyCode) {
 
-		switch (keyCode) {
-
-		case Z:
+		if (keyCode.equals(KeyCodeEnum.FIRST_OPTION.keyCode()))
 			handleTextOptionPressed(TextEnum.UP);
-			break;
 
-		case X:
+		else if (keyCode.equals(KeyCodeEnum.SECOND_OPTION.keyCode()))
 			handleTextOptionPressed(TextEnum.DOWN);
-			break;
-
-		default:
-			break;
-
-		}
 
 	}
 

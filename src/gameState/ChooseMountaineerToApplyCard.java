@@ -7,6 +7,7 @@ import cards.CardAcclimatization;
 import cards.CardMovement;
 import cards.CardRope;
 import enums.GameStateEnum;
+import enums.KeyCodeEnum;
 import enums.MountaineerEnum;
 import enums.RopeMovement;
 import enums.TextEnum;
@@ -64,20 +65,11 @@ public class ChooseMountaineerToApplyCard extends GameState {
 	@Override
 	public void handleKeyPressed(KeyCode keyCode) {
 
-		switch (keyCode) {
-
-		case Z:
+		if (keyCode.equals(KeyCodeEnum.FIRST_OPTION.keyCode()))
 			handleTextOptionPressed(TextEnum.MOUNTAINEER_I);
-			break;
 
-		case X:
+		else if (keyCode.equals(KeyCodeEnum.SECOND_OPTION.keyCode()))
 			handleTextOptionPressed(TextEnum.MOUNTAINEER_II);
-			break;
-
-		default:
-			break;
-
-		}
 
 	}
 

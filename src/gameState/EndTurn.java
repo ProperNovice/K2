@@ -6,6 +6,7 @@ import space.Space;
 import utils.Lock;
 import enums.AltitudeZone;
 import enums.GameStateEnum;
+import enums.KeyCodeEnum;
 import enums.MountaineerEnum;
 import enums.TextEnum;
 
@@ -82,20 +83,11 @@ public class EndTurn extends GameState {
 	@Override
 	public void handleKeyPressed(KeyCode keyCode) {
 
-		switch (keyCode) {
-
-		case Z:
+		if (keyCode.equals(KeyCodeEnum.FIRST_OPTION.keyCode()))
 			handleTextOptionPressed(this.firstOption);
-			break;
 
-		case X:
+		else if (keyCode.equals(KeyCodeEnum.SECOND_OPTION.keyCode()))
 			handleTextOptionPressed(TextEnum.RESTART_TURN);
-			break;
-
-		default:
-			break;
-
-		}
 
 	}
 
