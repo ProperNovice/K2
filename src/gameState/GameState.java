@@ -1,11 +1,10 @@
 package gameState;
 
+import javafx.scene.input.KeyCode;
 import instances.Instances;
 import space.Space;
 import cards.Card;
-
 import components.RiskToken;
-
 import controller.Controller;
 import enums.MountaineerEnum;
 import enums.TextEnum;
@@ -19,6 +18,10 @@ public class GameState {
 	}
 
 	public void handleTextOptionPressed(TextEnum textEnum) {
+
+	}
+
+	public void handleKeyPressed(KeyCode keyCode) {
 
 	}
 

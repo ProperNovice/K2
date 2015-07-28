@@ -1,5 +1,6 @@
 package gameState;
 
+import javafx.scene.input.KeyCode;
 import utils.Lock;
 import cards.Card;
 import cards.CardAcclimatization;
@@ -57,6 +58,26 @@ public class ChooseMountaineerToApplyCard extends GameState {
 
 		else if (cardLastPlayed instanceof CardRope)
 			handleCardRope(mountaineerEnum, (CardRope) cardLastPlayed);
+
+	}
+
+	@Override
+	public void handleKeyPressed(KeyCode keyCode) {
+
+		switch (keyCode) {
+
+		case Z:
+			handleTextOptionPressed(TextEnum.MOUNTAINEER_I);
+			break;
+
+		case X:
+			handleTextOptionPressed(TextEnum.MOUNTAINEER_II);
+			break;
+
+		default:
+			break;
+
+		}
 
 	}
 

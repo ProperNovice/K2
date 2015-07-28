@@ -1,5 +1,6 @@
 package gameState;
 
+import javafx.scene.input.KeyCode;
 import enums.GameStateEnum;
 import enums.RopeMovement;
 import enums.TextEnum;
@@ -40,6 +41,26 @@ public class ChooseRopeDirection extends GameState {
 
 		super.controller.gameStateController().setGameState(
 				GameStateEnum.CHOOSE_MOUNTAINEER_TO_APPLY_CARD);
+
+	}
+
+	@Override
+	public void handleKeyPressed(KeyCode keyCode) {
+
+		switch (keyCode) {
+
+		case Z:
+			handleTextOptionPressed(TextEnum.UP);
+			break;
+
+		case X:
+			handleTextOptionPressed(TextEnum.DOWN);
+			break;
+
+		default:
+			break;
+
+		}
 
 	}
 
