@@ -36,8 +36,12 @@ public class K2 extends Application {
 			@Override
 			public void handle(KeyEvent event) {
 
+				KeyCode keyCode = event.getCode();
+
+				Logger.logNewLine(keyCode + " keyCode pressed");
+
 				Instances.getControllerInstance().gameStateController()
-						.handleKeyPressed(event.getCode());
+						.handleKeyPressed(keyCode);
 
 				if (event.getCode().equals(KeyCode.R))
 					if (Instances.getControllerInstance().gameStateController()
