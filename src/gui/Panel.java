@@ -5,6 +5,7 @@ import utils.EventHandler;
 import utils.EventHandler.EventHandlerAble;
 import utils.Logger;
 import utils.Parent;
+import utils.ShutDown;
 
 public class Panel extends Parent implements EventHandlerAble {
 
@@ -47,7 +48,7 @@ public class Panel extends Parent implements EventHandlerAble {
 
 	@Override
 	public void handleMouseButtonPressedSecondary() {
-		restartGame();
+		ShutDown.execute();
 	}
 
 }
