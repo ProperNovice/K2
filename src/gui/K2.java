@@ -43,11 +43,14 @@ public class K2 extends Application {
 				Instances.getControllerInstance().gameStateController()
 						.handleKeyPressed(keyCode);
 
-				if (event.getCode().equals(KeyCode.R))
+				if (event.getCode().equals(KeyCode.R)) {
 					if (Instances.getControllerInstance().gameStateController()
 							.restartButtonIsVisible())
 						Instances.getControllerInstance()
 								.restartButtonController().handleRestartTurn();
+
+				} else if (event.getCode().equals(KeyCode.BACK_QUOTE))
+					panel.restartGame();
 
 			}
 		});
