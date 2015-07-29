@@ -1,5 +1,6 @@
 package gameState;
 
+import javafx.scene.input.KeyCode;
 import mountaineers.Mountaineer;
 import space.Space;
 import utils.Lock;
@@ -59,6 +60,16 @@ public class MountaineerMovement extends GameState {
 		}
 
 		setNewGameState();
+
+	}
+
+	@Override
+	public void handleKeyPressed(KeyCode keyCode) {
+
+		if (keyCode.equals(KeyCode.C))
+			handleTextOptionPressed(TextEnum.CONTINUE);
+		else if (keyCode.equals(KeyCode.T) && tentCanBePlaced())
+			handleTextOptionPressed(TextEnum.PLACE_TENT);
 
 	}
 

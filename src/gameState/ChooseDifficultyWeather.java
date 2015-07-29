@@ -1,5 +1,6 @@
 package gameState;
 
+import javafx.scene.input.KeyCode;
 import enums.DifficultyWeather;
 import enums.GameStateEnum;
 import enums.TextEnum;
@@ -44,6 +45,16 @@ public class ChooseDifficultyWeather extends GameState {
 
 		super.controller.gameStateController().setGameState(
 				GameStateEnum.START_GAME);
+
+	}
+
+	@Override
+	public void handleKeyPressed(KeyCode keyCode) {
+
+		if (keyCode.equals(KeyCode.Q))
+			handleTextOptionPressed(TextEnum.SUMMER);
+		else if (keyCode.equals(KeyCode.W))
+			handleTextOptionPressed(TextEnum.WINTER);
 
 	}
 
