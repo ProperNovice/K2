@@ -136,7 +136,7 @@ public class WeatherTileController {
 
 	public void handleWeatherTilePressed() {
 
-		if (!this.weatherTilesAreShowing) {
+		if (!this.weatherTilesAreShowing && this.weatherTiles.size() >= 2) {
 
 			this.weatherTilesAreShowing = true;
 			showWeatherTiles();
