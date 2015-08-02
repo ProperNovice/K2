@@ -194,4 +194,16 @@ public class RiskTokenController implements SaveAble {
 
 	}
 
+	public RiskToken getFirstRiskTokenFromPlay() {
+		return this.play.get(0);
+	}
+
+	public RiskToken getSecondRiskTokenFromPlay() {
+		return this.play.get(1);
+	}
+
+	public RiskToken getThirdRiskTokenFromPlay() {
+		return this.play.get(2);
+	}
+
 }

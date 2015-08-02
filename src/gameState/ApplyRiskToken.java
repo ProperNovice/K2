@@ -1,5 +1,6 @@
 package gameState;
 
+import javafx.scene.input.KeyCode;
 import utils.Lock;
 import utils.Logger;
 import enums.GameStateEnum;
@@ -66,6 +67,30 @@ public class ApplyRiskToken extends GameState {
 		Lock.lock();
 
 		handleValueDecreased();
+
+	}
+
+	@Override
+	public void handleKeyPressed(KeyCode keyCode) {
+
+		MountaineerEnum mountaineerEnum = null;
+
+		switch (keyCode) {
+
+		case Q:
+			mountaineerEnum = MountaineerEnum.I;
+			break;
+
+		case W:
+			mountaineerEnum = MountaineerEnum.II;
+			break;
+
+		default:
+			return;
+
+		}
+
+		handleAcclimatizationIndicatorPressed(mountaineerEnum);
 
 	}
 

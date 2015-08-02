@@ -1,7 +1,10 @@
 package gameState;
 
+import javafx.scene.input.KeyCode;
 import utils.Lock;
+
 import components.RiskToken;
+
 import enums.GameStateEnum;
 import enums.TextEnum;
 
@@ -43,6 +46,37 @@ public class ChooseRiskToken extends GameState {
 						GameStateEnum.END_TURN);
 
 		}
+
+	}
+
+	@Override
+	public void handleKeyPressed(KeyCode keyCode) {
+
+		RiskToken riskToken = null;
+
+		switch (keyCode) {
+
+		case Q:
+			riskToken = super.controller.riskTokenController()
+					.getFirstRiskTokenFromPlay();
+			break;
+
+		case W:
+			riskToken = super.controller.riskTokenController()
+					.getSecondRiskTokenFromPlay();
+			break;
+
+		case E:
+			riskToken = super.controller.riskTokenController()
+					.getThirdRiskTokenFromPlay();
+			break;
+
+		default:
+			return;
+
+		}
+
+		handleRiskTokenPlayPressed(riskToken);
 
 	}
 
