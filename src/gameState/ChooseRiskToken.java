@@ -58,17 +58,17 @@ public class ChooseRiskToken extends GameState {
 
 		case Q:
 			riskToken = super.controller.riskTokenController()
-					.getFirstRiskTokenFromPlay();
+					.getRiskTokenFromPlay(0);
 			break;
 
 		case W:
 			riskToken = super.controller.riskTokenController()
-					.getSecondRiskTokenFromPlay();
+					.getRiskTokenFromPlay(1);
 			break;
 
 		case E:
 			riskToken = super.controller.riskTokenController()
-					.getThirdRiskTokenFromPlay();
+					.getRiskTokenFromPlay(2);
 			break;
 
 		default:

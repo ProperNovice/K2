@@ -61,11 +61,6 @@ public class ChooseCardToPlay extends GameState {
 	}
 
 	@Override
-	public void handleRestartButtonPressed() {
-		this.controller.restartButtonController().handleRestartTurn();
-	}
-
-	@Override
 	public boolean restartButtonIsVisible() {
 		return true;
 	}

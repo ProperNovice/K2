@@ -5,7 +5,9 @@ import utils.ArrayList;
 import utils.Coordinate;
 import utils.CoordinatesRelocate;
 import utils.CoordinatesRelocateBuilder;
+
 import components.RiskToken;
+
 import enums.Coordinates;
 import enums.Dimensions;
 
@@ -194,16 +196,8 @@ public class RiskTokenController implements SaveAble {
 
 	}
 
-	public RiskToken getFirstRiskTokenFromPlay() {
-		return this.play.get(0);
-	}
-
-	public RiskToken getSecondRiskTokenFromPlay() {
-		return this.play.get(1);
-	}
-
-	public RiskToken getThirdRiskTokenFromPlay() {
-		return this.play.get(2);
+	public RiskToken getRiskTokenFromPlay(int index) {
+		return this.play.get(index);
 	}
 
 }

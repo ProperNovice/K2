@@ -235,4 +235,8 @@ public class CardController implements SaveAble {
 
 	}
 
+	public Card getCardFromHand(int index) {
+		return this.hand.get(index);
+	}
+
 }
