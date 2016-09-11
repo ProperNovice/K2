@@ -40,6 +40,9 @@ public class K2 extends Application {
 
 				Logger.logNewLine(keyCode + " keyCode pressed");
 
+				if (Animation.isRunning())
+					return;
+
 				Instances.getControllerInstance().gameStateController()
 						.handleKeyPressed(keyCode);
 
